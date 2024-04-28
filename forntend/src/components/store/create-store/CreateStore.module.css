@@ -1,0 +1,65 @@
+/* CreateStore.module.css */
+.button {
+    background-color: #6366f1; /* Indigo-700 */
+    color: white;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 250ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button:hover {
+    background-color: #4f46e5; /* Indigo-600 */
+  }
+  
+  .inputStyle {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb; /* Gray-300 */
+    border-radius: 6px;
+    transition: border-color 200ms ease-in-out;
+    width: 100%; /* Ensures input fields use the available space */
+  }
+  
+  .inputStyle:focus {
+    border-color: #6366f1; /* Indigo-700 */
+    outline: none; /* Removes default focus outline */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* Soft box shadow matches Indigo-700 */
+  }
+  
+  .formContainer {
+    background-color: #ffffff; /* White */
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin: 50px auto; /* Centering the form on the page */
+  }
+  
+  .fileInput {
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #f9fafb; /* Gray-50, very light gray for background */
+    cursor: pointer;
+  }
+  
+  .toggleButton {
+    background: none;
+    color: rgb(255, 255, 255); /* Gray-900 */
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: color 200ms ease-in-out;
+  }
+  
+  .toggleButton:hover {
+    color: #03eb63; /* Indigo-600 */
+  }
+  

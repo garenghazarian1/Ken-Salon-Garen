@@ -1,0 +1,77 @@
+/* General container styles */
+.container {
+    padding: 16px; /* Provide padding around the entire container */
+}
+
+/* Styles for the store header including the image and name */
+.storeHeader {
+    display: flex; /* Ensures items are laid out horizontally */
+    gap: 16px; /* Space between the elements */
+    height: 48px; /* Fixed height for consistency */
+}
+
+.storeImage {
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without being stretched */
+    object-position: center; /* Centers the image within its frame */
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+}
+
+.storeName {
+    display: flex; /* Aligns the store name properly */
+    align-items: center; /* Centers the name vertically within the div */
+}
+
+/* Styles for the toggle visibility text */
+.toggleVisibility {
+    font-size: 18px; /* Larger text for better clickability */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 8px; /* Space below the text */
+    cursor: pointer; /* Changes cursor to indicate it's clickable */
+}
+
+/* Button styles */
+.actionButtons {
+    margin-top: 16px;
+    padding: 8px 16px; /* Consistent padding around the text */
+    color: white; /* White text for contrast */
+    font-weight: bold; /* Bold text for readability */
+    border-radius: 8px; /* Rounded corners for modern look */
+    cursor: pointer; /* Indicates the element is clickable */
+    display: inline-block; /* Allows buttons to sit in line */
+}
+
+.buttonUpdate {
+    background-color: #0057ff; /* Blue color for the update button */
+}
+
+.buttonUpdate:hover {
+    background-color: #0041d9; /* Darker blue on hover for visual feedback */
+}
+
+.buttonDelete {
+    background-color: #d90015; /* Red color for the delete button */
+}
+
+.buttonDelete:hover {
+    background-color: #b30012; /* Darker red on hover */
+}
+
+.buttonCreate {
+    background-color: #00d94c; /* Green color for the create button */
+}
+
+.buttonCreate:hover {
+    background-color: #00b43b; /* Darker green on hover */
+}
+
+/* Utility styles */
+.flexRow {
+    display: flex; /* Makes the container a flexbox */
+}
+
+.flexCenter {
+    display: flex; /* Makes the container a flexbox */
+    align-items: center; /* Centers children vertically */
+}

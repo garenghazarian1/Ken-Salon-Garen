@@ -1,0 +1,78 @@
+/* StoreHoursDisplay.module.css */
+.container {
+    padding: 20px;
+    background: linear-gradient(145deg, #333, #000);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  
+  .header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .list {
+    padding-left: 24px;
+    list-style: none; /* Removes default list styling */
+  }
+  
+  .listItem {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle visual separation */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .listItem:last-child {
+    border-bottom: none; /* Removes border from the last item */
+  }
+  
+  .button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .buttonCreate {
+    background-color: #4CAF50;
+  }
+  
+  .buttonCreate:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+  }
+  
+  .buttonUpdate {
+    background-color: #2196F3;
+  }
+  
+  .buttonUpdate:hover {
+    background-color: #0b7dda;
+    transform: translateY(-2px);
+  }
+  
+  .buttonDelete {
+    background-color: #f44336;
+  }
+  
+  .buttonDelete:hover {
+    background-color: #dc2836;
+    transform: translateY(-2px);
+  }
+  
+  .noHours {
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+  }
+  
