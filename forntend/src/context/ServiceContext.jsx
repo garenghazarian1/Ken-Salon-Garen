@@ -1,11 +1,9 @@
 // context/ServiceContext.js
 "use client"
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo  } from 'react';
 import axios from 'axios';
 import { baseUrl } from '@/api/ports';
 import { useStore } from "@/context/StoreContext";
-
-
 
 const ServiceContext = createContext();
 
@@ -18,6 +16,7 @@ export const ServiceProvider = ({ children }) => {
   const [currentService, setCurrentService] = useState(null);
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
+  const [activeSection, setActiveSection] = useState(null);
   
 
   useEffect(() => {
@@ -67,14 +66,24 @@ export const ServiceProvider = ({ children }) => {
     fetchServiceDetails();
   }, [currentServiceId]); // Fetch service details whenever the currentServiceId changes
 
-  
+    // Group services by sections and categories
+    const groupedServices = useMemo(() => {
+      return services.reduce((acc, service) => {
+        const section = service.section || 'Other';
+        acc[section] = acc[section] || {};
+        const category = service.category || 'Other';
+        acc[section][category] = acc[section][category] || [];
+        acc[section][category].push(service);
+        return acc;
+      }, {});
+    }, [services]);
 
   const setServiceId = (serviceId) => {
     setCurrentServiceId(serviceId);
   };
 
   return (
-    <ServiceContext.Provider value={{ currentServiceId, setServiceId, currentService, services, loading, error }}>
+    <ServiceContext.Provider value={{ currentServiceId, setServiceId,activeSection , setActiveSection, currentService, services, groupedServices, loading, error }}>
       {children}
     </ServiceContext.Provider>
   );

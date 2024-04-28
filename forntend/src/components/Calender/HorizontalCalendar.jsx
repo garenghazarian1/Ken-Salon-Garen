@@ -26,13 +26,11 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
   };
 
   const handleDateClick = (date) => {
-    setSelectedDate(date); 
+    setSelectedDate(date);
   };
 
-  const handleTimeChange = (time) => {
-    if (time) {
-      setSelectedTime(time); 
-    }
+  const isSelectedDay = (date) => {
+    return selectedDate && date.toDateString() === selectedDate.toDateString();
   };
 
   return (
@@ -43,11 +41,17 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
         navigation
         pagination={{ clickable: true }}
         className={styles.swiper}
-        breakpoints={{ 0: { slidesPerView: 4, }, 768: {slidesPerView: 6,}, 1024: { slidesPerView: 8, },  1280: { slidesPerView: 10, }, 1536: { slidesPerView: 12, }, }}
+        breakpoints={{
+          0: { slidesPerView: 4 },
+          768: { slidesPerView: 6 },
+          1024: { slidesPerView: 8 },
+          1280: { slidesPerView: 10 },
+          1536: { slidesPerView: 12 },
+        }}
       >
         {days.map((day, index) => (
           <SwiperSlide key={index} onClick={() => handleDateClick(day)}>
-            <div className={styles.slide}>
+            <div className={`${styles.slide} ${isSelectedDay(day) ? styles.selected : ''}`}>
               {formatDate(day)}
             </div>
           </SwiperSlide>
@@ -58,7 +62,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
           <span className='mr-4 text-center'>Choose a time</span>
           <ReactDatePicker
             selected={selectedTime}
-            onChange={handleTimeChange}
+            onChange={(date) => setSelectedTime(date)}
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={15}
@@ -71,5 +75,6 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
     </div>
   );
 }
+
 
 export default HorizontalCalendar;
