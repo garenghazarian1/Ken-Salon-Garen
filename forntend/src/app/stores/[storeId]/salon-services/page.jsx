@@ -13,9 +13,8 @@ import styles from './ServicesPage.module.css';
 
 const ServicesPage = () => {
   const { currentStoreId } = useStore();
-  const { services, activeSection, loading: servicesLoading, error: servicesError } = useService();
+  const { services, activeSection, selectedServices, handleServiceSelectionChange, loading: servicesLoading, error: servicesError } = useService()
   const [groupedServices, setGroupedServices] = useState({});
-  const [selectedServices, setSelectedServices] = useState(new Set());
   const { data: session, status: sessionStatus  } = useSession();
 
   // Effect for grouping services by section and category
@@ -35,28 +34,13 @@ const ServicesPage = () => {
     }
   }, [services, activeSection]);
 
- // Handlers for selecting and deselecting services
-  const handleServiceSelectionChange = (serviceId) => {
-    const updatedSelection = new Set(selectedServices);
-    if (updatedSelection.has(serviceId)) {
-      updatedSelection.delete(serviceId);
-    } else {
-      updatedSelection.add(serviceId);
-    }
-    setSelectedServices(updatedSelection);
-    console.log("Updated Selection:", Array.from(updatedSelection));
-    // Added session check to safely log user ID and email
-    if (session) {  
-      console.log("User ID:", session?.user?._id , "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
-    }
-  };
-
-
 
 // Loading and error handling
 if (!currentStoreId) return <p>Please select a store to view its services.</p>;
 if (sessionStatus === "loading") return <p>Loading session...</p>; // Handling session loading state
 if (servicesError) return <p className="text-red-500">Error loading services: {servicesError.message}</p>;
+
+const isServiceSelected = selectedServices.size > 0;
 
 return (
   <div className={styles.container}>
@@ -77,10 +61,10 @@ return (
               <SwiperSlide key={service._id}>
                 <div className={styles.serviceCard}>
                   <div>
-                    <h4>{service.title}</h4>
-                    <p>{service.description}</p>
-                    <p>Duration: {service.duration} minutes</p>
-                    <p>Price: AED {service.price}</p>
+                  <h4 className={styles.serviceTitle}>{service.title}</h4>
+                  <p className={styles.serviceText}>{service.description}</p>
+                  <p className={`${styles.serviceText} ${styles.serviceDetail}`}>Duration: {service.duration} minutes</p>
+                  <p className={`${styles.serviceText} ${styles.serviceDetail}`}>Price:  {service.price} AED</p>
                     <button
                       className={`${styles.button} ${selectedServices.has(service._id) ? 'styles.selected' : 'styles.notSelected'}`}
                       onClick={() => handleServiceSelectionChange(service._id)}
@@ -88,15 +72,25 @@ return (
                       {selectedServices.has(service._id) ? 'Deselect' : 'Select'}
                     </button>
                   </div>
+                  <div className="mt-2">
+                            <Link className={styles.button1} href={`/stores/${currentStoreId}/salon-services/${service._id}`}>
+                              Learn more
+                            </Link>
+                          </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       ))}
-      <Link className={styles.linkButton} href={`/stores/${currentStoreId}/salon-services/booking-details`}>
-        Next
-      </Link>
+      {!isServiceSelected && (
+          <p className="text-red-500">Please select at least one service to proceed.</p>
+        )}
+        <div className={styles.linkDiv}>
+          <Link className={styles.linkButton} href={isServiceSelected ? `/stores/${currentStoreId}/salon-services/booking-details` : "#!"}>
+            Next
+          </Link>
+        </div>
     </div>
   </div>
 );

@@ -6,8 +6,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  border: 1px solid #e5e7eb; /* Tailwind gray-300 */
-  border-radius: 0.375rem; /* 6px */
+  border: 0.5px solid #e5e7eb; 
+  border-radius: 0.375rem;
+  background-color: rgb(208, 212, 212);
 }
 
 /* Title styling */
@@ -16,7 +17,7 @@
   font-weight: 700; /* bold */
   margin-left: 2rem; /* 32px */
   margin-top: 1rem; /* 16px */
-  color: rgb(7, 122, 36); /* Tailwind green-600 */
+  color: rgb(7, 122, 36); 
 }
 
 /* Section containing categories and services */
@@ -32,6 +33,7 @@
   font-size: 1.5rem; /* 18px */
   font-weight: 600; /* semi-bold */
   margin-bottom: 1rem; /* 16px */
+  color: rgb(7, 122, 36);
 }
 
 /* Styling for each service card */
@@ -51,24 +53,62 @@
   transform: scale(1.05);
 }
 
+/* Styling for the service title within each card */
+.serviceTitle {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600; /* semi-bold */
+  color: #ffffff; /* white for contrast against the dark card background */
+  margin-bottom: 0.5rem; /* space below the title */
+}
+
+/* General styling for paragraphs in service cards */
+.serviceText {
+  font-size: 1rem; /* 16px */
+  color: #cbd5e1; /* lighter gray for readability on dark background */
+  margin-bottom: 0.25rem; /* small space between paragraphs */
+}
+
+/* Styling for specific service details like duration and price */
+.serviceDetail {
+  font-weight: 500; /* medium weight for slight emphasis */
+  color: #e2e8f0; /* even lighter gray to differentiate from general text */
+}
+
+
 /* Styling for buttons, including conditional coloring */
 .button {
-  padding: 0.75rem; /* 12px */
+  margin: 1rem;
+  padding: 0.5rem; /* 12px */
   font-size: 0.875rem; /* 14px */
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.05em; /* wider */
   text-transform: uppercase;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.3s linear;
-  border-radius: 9999px; /* fully rounded */
-  outline: none; /* Focus ring handled separately */
+  border-radius: 20px; /* fully rounded */
+  outline: 1px solid; 
+  background: #15251c;
 }
 
 /* Focus styles for buttons */
 .button:focus {
-  outline: 4px solid;
+  outline: 2px solid;
   outline-offset: 2px;
+  background: #376149;
 }
+.button1 {
+  padding: 0.5rem; /* 12px */
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+  letter-spacing: 0.05em; /* wider */
+  transition: all 0.3s linear;
+}
+
+.button1:hover {
+ 
+ border: 1px solid;
+ border-radius: 1rem;
+}
+
 
 /* Selected state for the button */
 .selected {
@@ -96,17 +136,76 @@
   outline-color: #a7f3d0; /* Tailwind green-200 */
 }
 
-/* Styling for link buttons */
-.linkButton {
-  background-color: #3b82f6; /* Tailwind blue-500 */
-  color: white;
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  display: inline-block;
-  text-align: center;
+/* Styling for the container div around the button */
+.linkDiv {
+  width: 100%;  /* Takes the full width of its parent */
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  padding: 0 2rem; /* Padding for overall alignment */
 }
 
-.linkButton:hover {
-  background-color: #2563eb; /* Tailwind blue-700 */
+/* Styling for link buttons */
+.linkButton {
+  width: 100%; /* Button takes full width of its parent */
+  padding: 1rem; /* Padding inside the button */
+  font-size: 1rem; /* Font size of the text */
+  font-weight: 400; /* Font weight of the text */
+  letter-spacing: 0.05em; /* Letter spacing for a wider look */
+  text-transform: uppercase; /* Transform text to uppercase */
+  transition: all 0.3s linear; /* Smooth transition for all changes */
+  border-radius: 20px; /* Rounded corners of the button */
+  outline: 1px solid; /* Outline of the button */
+  background: linear-gradient(to right, #15251c 0%, #1f2937 100%); /* Background gradient */
+  overflow: hidden; /* Hides any child elements that go outside the button boundaries */
+  position: relative; /* Position relative for positioning child pseudo-elements */
+  display: flex; /* Flex display to help center the text */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: #ffffff62; /* Make the default text color transparent */
 }
+
+/* Pseudo-element for the button text */
+.linkButton::before {
+  content: attr(data-text); /* Content set to the data-text attribute of the button */
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 1.6rem; /* Line height for vertical centering */
+  text-align: center; /* Text alignment */
+  color: #FFF; /* Text color */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transition for fade and movement */
+  transform: translateY(0); /* Initial transform position */
+  opacity: 1; /* Fully opaque initially */
+}
+
+/* Adjustments on hover */
+.linkButton:hover::before {
+  opacity: 0; /* Fade out the text */
+  transform: translateY(-20px); /* Move the text up slightly */
+}
+
+/* Pseudo-element for the hover background effect */
+.linkButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, transparent 0%, #21c782 40%, transparent 70%); /* Radial gradient effect */
+  transform: translate(-50%, -50%) scale(0); /* Transform for scaling down to 0 */
+  transition: all 0.6s ease-in-out; /* Transition for the effect */
+}
+
+/* Background scale effect on hover */
+.linkButton:hover::after {
+  transform: translate(-50%, -50%) scale(1); /* Scale up the effect on hover */
+}
+
+/* Change text color on hover */
+.linkButton:hover {
+  color: #FFF; /* Change text color to white */
+}
+
+

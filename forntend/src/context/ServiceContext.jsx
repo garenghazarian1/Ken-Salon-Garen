@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect, useMemo  } from 
 import axios from 'axios';
 import { baseUrl } from '@/api/ports';
 import { useStore } from "@/context/StoreContext";
+import { useSession } from 'next-auth/react';
 
 const ServiceContext = createContext();
 
@@ -17,6 +18,8 @@ export const ServiceProvider = ({ children }) => {
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
   const [activeSection, setActiveSection] = useState(null);
+  const [selectedServices, setSelectedServices] = useState(new Set());
+  const { data: session, status: sessionStatus  } = useSession();
   
 
   useEffect(() => {
@@ -82,8 +85,24 @@ export const ServiceProvider = ({ children }) => {
     setCurrentServiceId(serviceId);
   };
 
+   // Handlers for selecting and deselecting services
+   const handleServiceSelectionChange = (serviceId) => {
+    const updatedSelection = new Set(selectedServices);
+    if (updatedSelection.has(serviceId)) {
+      updatedSelection.delete(serviceId);
+    } else {
+      updatedSelection.add(serviceId);
+    }
+    setSelectedServices(updatedSelection);
+    console.log("Updated Selection:", Array.from(updatedSelection));
+    // Added session check to safely log user ID and email
+    if (session) {  
+      console.log("User ID:", session?.user?._id , "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
+    }
+  };
+
   return (
-    <ServiceContext.Provider value={{ currentServiceId, setServiceId,activeSection , setActiveSection, currentService, services, groupedServices, loading, error }}>
+    <ServiceContext.Provider value={{selectedServices, setSelectedServices, handleServiceSelectionChange, currentServiceId, setServiceId,activeSection , setActiveSection, currentService, services, groupedServices, loading, error }}>
       {children}
     </ServiceContext.Provider>
   );
