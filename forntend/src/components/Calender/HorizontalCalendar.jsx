@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+"use client"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
 import ReactDatePicker from 'react-datepicker';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDate } from '@/context/DateContext'; // Ensure correct path
+import { useDate } from '@/context/DateContext'; 
 import styles from './HorizontalCalendar.module.css';
+ 
 
 const HorizontalCalendar = ({ startDate, numberOfDays }) => {
   const { selectedDate, setSelectedDate, selectedTime, setSelectedTime } = useDate();
-
+    
   const days = Array.from({ length: numberOfDays }, (_, i) => {
     const date = new Date(startDate);
     date.setDate(date.getDate() + i);
@@ -35,10 +35,10 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
 
   return (
     <div className={styles.container}>
+      <h2 className='mr-4 text-center'>Select day</h2>
       <Swiper
         slidesPerView={6}
         spaceBetween={5}
-        navigation
         pagination={{ clickable: true }}
         className={styles.swiper}
         breakpoints={{
@@ -49,6 +49,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
           1536: { slidesPerView: 12 },
         }}
       >
+        
         {days.map((day, index) => (
           <SwiperSlide key={index} onClick={() => handleDateClick(day)}>
             <div className={`${styles.slide} ${isSelectedDay(day) ? styles.selected : ''}`}>
@@ -65,7 +66,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
             onChange={(date) => setSelectedTime(date)}
             showTimeSelect
             showTimeSelectOnly
-            timeIntervals={15}
+            timeIntervals={30}
             timeCaption="Time"
             dateFormat="HH:mm"
             className={styles.input}

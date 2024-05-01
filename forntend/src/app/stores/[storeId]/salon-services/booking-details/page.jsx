@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import { useStore } from "@/context/StoreContext";
 import { useService } from "@/context/ServiceContext";
 import { useEmployee } from "@/context/EmployeeContext";
@@ -9,6 +9,9 @@ import { useAppointment } from '@/context/AppointmentContext';
 import Basket from "@/components/basket/Basket";
 import HorizontalCalendar from '@/components/Calender/HorizontalCalendar';
 import styles from './BookingPage.module.css';
+
+
+
 
 const BookingPage = () => {
     const { currentStoreId } = useStore();
@@ -20,6 +23,9 @@ const BookingPage = () => {
     const [sectionEmployees, setSectionEmployees] = useState({});
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [formErrors, setFormErrors] = useState('');
+    const confirmButtonRef = useRef(null);
+    
+    
 
     useEffect(() => {
         if (activeSection) {
@@ -34,6 +40,7 @@ const BookingPage = () => {
 
     const handleEmployeeSelection = (employeeId) => {
         setSelectedEmployee(employeeId);
+        confirmButtonRef.current?.focus();
     };
 
     const handleBooking = () => {
@@ -45,6 +52,7 @@ const BookingPage = () => {
         if (!selectedDate) errors.push("Date is not selected.");
         if (!selectedTime) errors.push("Time is not selected.");
     
+        
         if (errors.length > 0) {
             setFormErrors(errors.join(" ")); // Joins all error messages into a single string
             return;
@@ -72,6 +80,8 @@ const BookingPage = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Booking Page</h1>
             <HorizontalCalendar startDate={new Date()} numberOfDays={30} />
+            <div className={styles.employeeContainer}>
+            <p className={styles.text}>Select Employee</p>
             {Object.entries(sectionEmployees).map(([section, sectionEmps]) => (
                 <div key={section} className={styles.section}>
                     <div className="flex flex-row flex-wrap justify-start items-start">
@@ -80,14 +90,15 @@ const BookingPage = () => {
                                  className={`${styles.employee} ${selectedEmployee === employee._id ? styles.selected : ''}`}
                                  onClick={() => handleEmployeeSelection(employee._id)}>
                                 <img src={employee.userInfo.image} alt={employee.userInfo.name} className={styles.image} />
-                                <p className={styles.bold}>{employee.userInfo.name}</p>
+                                <p >{employee.userInfo.name}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             ))}
+            </div>
             <Basket selectedServices={selectedServices} services={services} onRemoveService={removeServiceFromBasket} />
-            <button onClick={handleBooking} className={styles.linkButton}>
+            <button ref={confirmButtonRef} onClick={handleBooking} className={styles.linkButton}>
                 Confirm Booking
             </button>
             {formErrors && <div className={`${styles.alert} ${styles.alertDanger}`}>{formErrors}</div>}

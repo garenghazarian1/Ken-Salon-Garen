@@ -10,12 +10,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import styles from './ServicesPage.module.css';
+import { useRouter } from "next/navigation"
 
 const ServicesPage = () => {
   const { currentStoreId } = useStore();
   const { services, activeSection, selectedServices, handleServiceSelectionChange, loading: servicesLoading, error: servicesError } = useService()
   const [groupedServices, setGroupedServices] = useState({});
   const { data: session, status: sessionStatus  } = useSession();
+  const router = useRouter();
 
   // Effect for grouping services by section and category
   useEffect(() => {
@@ -42,6 +44,13 @@ if (servicesError) return <p className="text-red-500">Error loading services: {s
 
 const isServiceSelected = selectedServices.size > 0;
 
+const handleNavigation = () => {
+  if (isServiceSelected) {
+      router.push(`/stores/${currentStoreId}/salon-services/booking-details`);
+  } else {
+      alert("Please select a service before proceeding to the next step.");
+  }
+};
 return (
   <div className={styles.container}>
     <h1 className={styles.title}>{activeSection}</h1>
@@ -84,12 +93,12 @@ return (
         </div>
       ))}
       {!isServiceSelected && (
-          <p className="text-red-500">Please select at least one service to proceed.</p>
+          <p className="text-black ml-8">Please select at least one service to proceed.</p>
         )}
         <div className={styles.linkDiv}>
-          <Link className={styles.linkButton} href={isServiceSelected ? `/stores/${currentStoreId}/salon-services/booking-details` : "#!"}>
+        <button className={styles.linkButton} onClick={handleNavigation}>
             Next
-          </Link>
+        </button>
         </div>
     </div>
   </div>

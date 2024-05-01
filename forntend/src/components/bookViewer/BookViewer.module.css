@@ -1,0 +1,53 @@
+/* styles/ImageGallery.module.css */
+.gallery {
+  width: 100%;
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 1s ease-in-out; /* Ensure transitions are smooth */
+  transform: translateX(0); /* Start centrally */
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease-in-out;
+}
+
+.slideLeft {
+  transform: translateX(-100%);
+}
+
+.slideRight {
+  transform: translateX(100%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .imageWrapper {
+      height: 60vh; /* Shorter height on smaller screens */
+  }
+
+  .slideLeft, .slideRight {
+      transform: translateX(-50%); /* Less movement on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+      height: 50vh; /* Even shorter height on very small screens */
+  }
+
+  .slideLeft, .slideRight {
+      transform: translateX(-30%); /* Minimal movement on very small screens */
+  }
+}

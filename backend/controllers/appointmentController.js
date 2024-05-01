@@ -4,7 +4,7 @@ import Service from '../models/Service.js';
 import StoreHours from '../models/StoreHours.js';
 import StoreClosure from '../models/StoreClosures.js';
 import Availability from "../models/EmployeeAvailability.js";
-import Unavailability from "../models/EmployeeUnavilability.js"
+import Unavailability from "../models/EmployeeUnavilability.js";
 
 async function isStoreOpen(storeId, date, startTime, endTime) {
     const dayOfWeek = new Date(date).getDay();
@@ -111,11 +111,6 @@ export const bookAppointment = async (req, res) => {
 
 
 
-
-
-
-
-
 // GET ALL APPOINTMENTS ***********************
 export const getAllAppointments = async (req, res) => {
     try {
@@ -129,11 +124,26 @@ export const getAllAppointments = async (req, res) => {
 
 // GET USER APPOINTMENTS ***********************
 export const getUserAppointments = async (req, res) => {
-    const userId = req.user.id;  // Assuming req.user.id based on your delete function pattern.
+    const userId = req.user;  
     console.log("🚀 ~ getUserAppointments ~ userId:", userId);
 
     try {
-        const appointments = await Appointment.find({ user: userId }).populate('user', 'name');
+        const appointments = await Appointment.find({ user: userId })
+        .populate('user', 'name') // Populates user name
+        .populate({
+            path: 'employee',
+            populate: {
+                path: 'userInfo',
+                select: 'name' 
+            }
+        })
+        .populate({
+            path: 'services', // Populates service details
+            select: 'title description price duration category section isActive' // Selecting fields to populate
+        })
+        .exec();
+
+        console.log(JSON.stringify(appointments, null, 2));
         res.status(200).json({ success: true, appointments });
     } catch (error) {
         console.error('Failed to fetch appointments:', error);
@@ -145,8 +155,8 @@ export const getUserAppointments = async (req, res) => {
 // DELETE AN APPOINTMENT ************************
 export const deleteAppointment = async (req, res) => {
   const { appointmentId } = req.params; // ID of the appointment to delete
-  const userId = req.user.id; // User ID from the authenticated user
-  const userRole = req.user.role; // User role from the authenticated user
+  const userId = req.user;
+  const userRole = req.user.role; 
 
   try {
     const appointment = await Appointment.findById(appointmentId);

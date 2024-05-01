@@ -9,13 +9,19 @@
     border-radius: 0.375rem;
     background-color: rgb(208, 212, 212);
   }
+  .employeeContainer {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #5fa37c 0%, #1f2937 100%);
+    margin-bottom: 1rem;
+  }
   
   .title {
-    font-size: 1.875rem; /* 30px */
-    font-weight: 700; /* bold */
-    margin-left: 2rem; /* 32px */
-    margin-top: 1rem; /* 16px */
-    color: rgb(7, 122, 36); /* Tailwind green-600 */
+    font-size: 1.875rem;
+    font-weight: 400; 
+    margin: 1rem;
+    color: rgb(7, 122, 36);
+    align-self: center;
   }
   
   .section {
@@ -56,8 +62,12 @@
 
   
   
-  .bold {
-    font-weight: bold;
+  .text {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    /* color: rgb(7, 122, 36); */
+
   }
   
   .linkDiv {
@@ -140,9 +150,11 @@
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+    
   }
   
   .alert-danger {
+    
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -153,4 +165,5 @@
     background-color: #d4edda;
     border-color: #c3e6cb;
   }
+  
   

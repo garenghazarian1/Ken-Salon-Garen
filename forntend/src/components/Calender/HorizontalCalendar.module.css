@@ -1,64 +1,128 @@
 /* HorizontalCalendar.module.css */
 .container {
-    height: 100%;
-    width: 100%;
-    background-color: #4B5563; /* bg-gray-600 */
-  }
-  
-  .swiper {
-    width: 100%;
-    height: 100%;
-    background-color: #1F2937; /* bg-gray-800 */
-  }
-  
-  .slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    height:fit-content; /* h-24 */
-    background-color: #D1D5DB; /* bg-gray-300 */
-    color: black;
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
-    padding: 1rem; 
-    margin: 1rem; 
-    cursor: pointer;
-  }
-  
-  .datePickerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-  }
-  
-  .input {
-    padding: 0.5rem 1rem; 
-    font-size: 1rem; 
-    color: #4B5563; 
-    background-color: #FFFFFF; 
-    border: 2px solid #E5E7EB; 
-    border-radius: 0.375rem; 
-    width: 100%; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #15251c 0%, #1f2937 100%);
 }
-    .input:hover {
-        border-color: #D1D5DB; 
-      }
-      
-      .input:focus {
-        outline: none;
-        border-color: #236e4b; 
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
-      }
-  
-  
-      .slide.selected {
-        background-color: #6366F1; /* bg-indigo-500 */
-        color: white;
-        border: 2px solid #4F46E5; /* more contrast border */
-        box-shadow: 0 4px 6px -1px rgba(72, 77, 233, 0.45), 0 2px 4px -1px rgba(72, 77, 233, 0.25);
-      }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #15251c 0%, #1f2937 100%);
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  background-color: #15251c;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.slide:hover {
+  background-color: #6f7270;
+  box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.slide.selected {
+  background-color: #077739;
+  color: white;
+  border: 3px solid #05a84f;
+  box-shadow: 0 6px 8px -2px #118a47, 0 3px 6px -2px #07d464;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* HorizontalCalendar.module.css */
+
+/* HorizontalCalendar.module.css */
+
+.datePickerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(to right, #065f46, #033524); /* Elegant dark gradient */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Deeper shadow for a popping effect */
+}
+
+.input {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem; /* Larger font for readability */
+  color: #E3E3E3; /* Lighter color for better contrast */
+  background-color: #15251c; /* Darker background to match the theme */
+  border: 2px solid #34D399; /* Mint green border for a pop of color */
+  border-radius: 0.5rem;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Inner shadow for depth */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for interactive effects */
+}
+
+.input:hover {
+  border-color: #81E6D9; /* Lighter green for hover state */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 8px rgba(34, 211, 198, 0.6); /* Outer glow effect on hover */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2DD4BF; /* Cyan border for focus state */
+  box-shadow: 0 0 0 4px rgba(32, 211, 158, 0.5); /* Cyan glow for focus effect */
+}
+
+.react-datepicker {
+  font-family: 'Arial', sans-serif;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, #2D3748, #1A202C); /* Darker gradient for date picker background */
+  color: #CBD5E0; /* Soft white for text */
+}
+
+.react-datepicker__time-container {
+  background-color: transparent;
+}
+
+.react-datepicker__time-box {
+  border-radius: 0.5rem;
+  background: #111827; /* Even darker for time selection background */
+}
+
+.react-datepicker__time-list {
+  padding: 0;
+  height: auto;
+  overflow-y: auto; /* Ensure the list is scrollable */
+}
+
+.react-datepicker__time-list-item {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #E2E8F0; /* Light bluish-gray for readability */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: #4A5568; /* Dark blue for hover background */
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #2C7A7B; /* Teal for selected item */
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+
+
+

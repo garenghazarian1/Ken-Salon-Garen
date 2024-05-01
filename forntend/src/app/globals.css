@@ -63,3 +63,7 @@ body {
     opacity: 1; /* Fade in to fully opaque */
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
