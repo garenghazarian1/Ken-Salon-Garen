@@ -1,39 +1,54 @@
-"use client"
-import React, { useEffect, useRef, useState } from 'react';
-import styles from './BookViewer.module.css';  
+"use client" // This directive indicates client-only usage in Next.js
+import React, { useState } from 'react';
+import Tilt from 'react-parallax-tilt';
+import styles from './BookViewer.module.css';
 
 const ImageBook = () => {
-    const galleryRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const triggerHeight = windowHeight * 0.5;  // Trigger at 50% of the viewport height
-
-      // Calculate the current index based on the scroll position
-      const index = Math.floor((scrollY + triggerHeight) / windowHeight);
-      setCurrentIndex(index);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  // Create an array of image URLs
   const images = Array.from({ length: 14 }, (_, i) => `/aboutMe/am${i + 1}.jpg`);
+
+  // State to track which image is clicked
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Function to handle click on image
+  const handleImageClick = (index) => {
+    setSelectedImage(index);
+  };
+
+  // Function to handle click on fullscreen image to close it
+  const handleCloseFullscreen = () => {
+    setSelectedImage(null);
+  };
+
   return (
-    <div ref={galleryRef} className={styles.gallery}>
+    <div className={styles.gallery}>
       {images.map((src, index) => (
-        <div key={index} className={`${styles.imageWrapper} ${index < currentIndex ? (index % 2 === 0 ? styles.slideLeft : styles.slideRight) : ''}`}>
-          <img className={styles.img}
-            src={src}
-            alt={`Gallery Image ${index + 1}`}
-            layout="fill"
-            objectFit="cover"
-          />
+        <div key={index} onClick={() => handleImageClick(index)}>
+          <Tilt
+            className={styles.imageWrapper}
+            tiltMaxAngleX={20}
+            tiltMaxAngleY={20}
+            glareEnable={true}
+            glareMaxOpacity={0.5}
+            scale={1.05}
+          >
+            <img
+              src={src}
+              alt={`Gallery Image ${index + 1}`}
+              className={styles.img}
+            />
+          </Tilt>
         </div>
       ))}
+      {selectedImage !== null && (
+        <div className={styles.fullscreen} onClick={handleCloseFullscreen}>
+          <img
+            src={images[selectedImage]}
+            alt={`Gallery Image ${selectedImage + 1}`}
+            className={styles.fullscreenImg}
+          />
+        </div>
+      )}
     </div>
   );
 };
