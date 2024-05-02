@@ -55,7 +55,7 @@ const Contact = () => {
               <p>Phone: (02) 635 9993</p>
             </div>
           </div>
-          
+
           {/* Google Map */}
           <div className="mb-8 w-2/3 rounded-lg overflow-hidden">
             <iframe

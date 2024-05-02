@@ -20,9 +20,9 @@ export default function Links() {
 
    const  Links =[
     { title:"Home", path:"/"},
-    { title:"Locations", path:"/stores"},
-    { title:"Book", path:"/book"},
-    { title: "About Me", path: "/about" },
+   
+    { title:"Book", path:"/stores"},
+    { title: "About Us", path: "/about" },
     { title: "Contact", path: "/contact" },
     { title: "Gallery", path: "/gallery",}
    ];
@@ -60,11 +60,13 @@ export default function Links() {
         {Links.map((link) => (<NavLink item={link} key={link.title} />))}
 
         {session ? (
+          <Link href="/user">
           <div className='flex gap-2 justify-center items-center z-100 ' >       
             <img src={session.user?.image} alt="Profile" width={50} height={50}   className=" rounded-full" />
           <h2>Welcome {session.user?.name}</h2>
           <button onClick={handleLogout} className={button}>Logout</button>
           </div>
+          </Link>
         ) : (
           <>
             <Link href="/login" className={button}>Login</Link>

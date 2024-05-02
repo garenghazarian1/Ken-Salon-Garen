@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useStore } from "@/context/StoreContext"
- import ServicesPage from './salon-services/page';
 import StoreHoursCalendar from "@/components/store/storeHoursCalendar/StoreHoursCalendar";
 import StoreClosureDisplay from '@/components/store/StoreClosureForm';
 import styles from './StorePage.module.css';
-
+import { useService } from "@/context/ServiceContext";
+import Link from 'next/link';
 
 const StorePage = ({ params }) => {
   const [store, setStore] = useState(null);
@@ -18,15 +18,18 @@ const StorePage = ({ params }) => {
   const [error, setError] = useState(null);
   const { storeId } = params;
   const { data: session} = useSession();
-  const { setStoreId } = useStore();
+  const { setStoreId, currentStoreId } = useStore();
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
+  const {groupedServices, setActiveSection  } = useService();
+  
+
+
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
   
-
   useEffect(() => {
     const fetchStore = async () => {
       setLoading(true);
@@ -50,8 +53,7 @@ const StorePage = ({ params }) => {
 
   const isOwner = session?.user?.role === 'owner';
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching store details</div>;
+  
 
   const handleDeleteStore = async () => {
     if (window.confirm("Are you sure you want to delete this store? This action cannot be undone.")) {
@@ -70,30 +72,30 @@ const StorePage = ({ params }) => {
     }
   };
 
- 
+  const handleSectionSelect = (section) => {
+    console.log("🚀 ~ handleSectionSelect ~ section:", section)
+    setActiveSection(section);  // Set the active section in context
+    // Navigation is handled by Link
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching store details</div>;
+
   return (
     <div className={styles.container}>
       {store ? (
         <>
           <div className={`${styles.storeHeader} ${styles.flexRow}`}>
-            <img
-              src={store.imageStore}
-              alt={`${store.name} Store Image`}
-              width={50}
-              height={50}
-              className={styles.storeImage}
-            />
             <div className={styles.flexCenter}>
-              <h1 className="text-2xl">{store.name}</h1>
+              <h1 className={styles.title1}>{store.name}</h1>
             </div>
+            <img src={store.imageStore} alt={`${store.name} Store Image`}  className={styles.storeImage}/>
           </div>
-          <h2 onClick={toggleVisibility} className={styles.toggleVisibility}>...</h2>
-          {isVisible && (
-            <div className={`${styles.relative} ${styles.flexRow} mt-2`}>
-              <StoreHoursCalendar />
-              <StoreClosureDisplay />
-            </div>
-          )}
+          <div className={styles.circle + ' ' + styles['circle-green']}></div>
+       {/* <div className={styles.circle + ' ' + styles['circle-blue']}></div>  */}
+      <div className={styles.circle + ' ' + styles['circle-gray']}></div>
+       {/* <div className={styles.circle + ' ' + styles['circle-yellow']}></div>  */}
+
           {isOwner && (
             <>
               <button
@@ -114,13 +116,41 @@ const StorePage = ({ params }) => {
               >
                 Create Service
               </button>
+              <h2 onClick={toggleVisibility} className={styles.toggleVisibility}>...</h2>
+              {isVisible && (
+                        <div className={`${styles.relative} ${styles.flexRow} mt-2`}>
+                          <StoreHoursCalendar />
+                          <StoreClosureDisplay />
+                        </div>
+                      )}
             </>
+                      
           )}
         </>
       ) : (
         <div>Store not found</div>
       )}
-      <ServicesPage/>
+
+
+<div className={styles.serviceSection}>
+
+  <h2 className={styles.title}>Select the service section</h2>
+  <div className={styles.serviceSectionLink}>
+  {Object.entries(groupedServices).map(([section]) => (
+    <div className={styles.serviceLinkDiv}>
+    <Link 
+                href={`/stores/${currentStoreId}/salon-services/`}
+                className={styles.serviceLink}
+                onClick={() => handleSectionSelect(section)} 
+                prefetch={false} 
+              >
+      {section}
+    </Link>
+    </div>
+  ))}
+  </div>
+</div>
+
     </div>
     
   );
