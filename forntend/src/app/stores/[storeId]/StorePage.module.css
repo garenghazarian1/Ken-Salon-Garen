@@ -11,7 +11,7 @@
 .title1{
    
     /* Custom font style, replace with actual font-family if known */
-    font-family: 'Kaushan Script', cursive; 
+    /* font-family: 'Kaushan Script', cursive;  */
     align-self: center;
     font-size: 1rem;        
     margin-bottom: 1rem;
@@ -28,7 +28,7 @@
 .title{
    
         /* Custom font style, replace with actual font-family if known */
-        font-family: 'Kaushan Script', cursive; 
+        /* font-family: 'Kaushan Script', cursive;  */
         align-self: center;
         font-size: 1rem;        
         margin-bottom: 1rem;
@@ -158,7 +158,7 @@
 }
 
 .serviceSectionLink {
-    font-family: 'Kaushan Script', cursive; 
+    /* font-family: "Great Vibes", cursive; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -235,73 +235,3 @@
   
 
 
-
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 70%;
-}
-
-.circle-green {
-    width: 128px;
-    height: 128px;
-    background-color: #1d4e0f; /* dark green */
-    top: 70vh; /* centered vertically */
-    left: 80vw; /* centered horizontally */
-    animation: move-randomly1 20s infinite ease-in-out;
-}
-
-.circle-blue {
-    width: 96px;
-    height: 96px;
-    background-color: #00008b; /* navy blue */
-    top: 70vh;
-    left: 90vw;
-    animation: move-randomly2 25s infinite ease-in-out;
-}
-
-.circle-gray {
-    width: 96px;
-    height: 96px;
-    background-color: #e0e0e0; /* light gray */
-    top: 20vh;
-    left: 40vw;
-    animation: move-randomly3 22s infinite ease-out;
-}
-
-.circle-yellow {
-    width: 150px;
-    height: 150px;
-    background-color: #ffd700; /* gold */
-    top: 10vh;
-    left: 30vw;
-    animation: move-randomly1 30s infinite ease-in-out reverse;
-}
-
-
-@keyframes move-randomly1 {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(5vw, -5vh); }
-    30% { transform: translate(-10vw, 15vh); }
-    50% { transform: translate(15vw, -10vh); }
-    70% { transform: translate(-20vw, 5vh); }
-    90% { transform: translate(10vw, -15vh); }
-}
-
-@keyframes move-randomly2 {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-5vw, 10vh); }
-    30% { transform: translate(10vw, -20vh); }
-    50% { transform: translate(-15vw, 10vh); }
-    70% { transform: translate(20vw, -5vh); }
-    90% { transform: translate(-10vw, 20vh); }
-}
-
-@keyframes move-randomly3 {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(10vw, -5vh); }
-    30% { transform: translate(-5vw, 10vh); }
-    50% { transform: translate(5vw, -15vh); }
-    70% { transform: translate(-15vw, 15vh); }
-    90% { transform: translate(20vw, -10vh); }
-}

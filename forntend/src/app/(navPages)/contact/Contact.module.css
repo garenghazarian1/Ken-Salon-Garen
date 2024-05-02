@@ -1,0 +1,104 @@
+.container {
+    margin: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #9a9b9b;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    gap: 2rem;
+    flex-wrap: wrap; 
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+.section {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow:
+        40px 10px 20px rgba(21, 70, 45, 0.5), /* Blue shadow for cool light effect */
+        -10px -10px 20px rgba(26, 53, 40, 0.5), /* Red shadow for warm light effect */
+        15px 15px 30px rgba(52, 68, 59, 0.3), /* Green shadow for natural light effect */
+        0 0 15px rgba(0, 0, 0, 0.2), /* Neutral shadow for adding depth */
+        0 0 40px rgba(255, 255, 255, 0.2) inset;
+    width: 400px;
+    height: 600px;
+    transform: rotateY(5deg); /* Tilt effect on Y-axis */
+    transition: transform 0.3s; /* Smooth transition for tilt effect */
+}
+
+
+.section:hover {
+    transform: rotateY(0deg); /* Flatten on hover for better readability */
+}
+.mapContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem;
+}
+
+.sectionHeader {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.a:hover {
+    text-decoration: underline;
+}
+
+.error, .loading {
+    color: #dc3545;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 1024px) { /* Tablets and below */
+    .container {
+        margin: 2rem auto;
+    }
+
+    .section, .mapContainer {
+        flex: 1 1 100%; /* Full width on smaller screens */
+    }
+
+    .sectionHeader {
+        font-size: 20px; /* Smaller font size for tablets */
+    }
+}
+
+@media (max-width: 768px) { /* Mobile devices */
+    .flex {
+        flex-direction: column;
+    }
+
+    .sectionHeader {
+        font-size: 18px; /* Even smaller font size for better readability on mobiles */
+    }
+
+    .mapContainer {
+        height: 250px; /* Adjusted for mobile screen sizes */
+    }
+}

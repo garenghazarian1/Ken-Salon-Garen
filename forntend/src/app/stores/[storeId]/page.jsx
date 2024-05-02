@@ -12,6 +12,9 @@ import styles from './StorePage.module.css';
 import { useService } from "@/context/ServiceContext";
 import Link from 'next/link';
 
+
+
+
 const StorePage = ({ params }) => {
   const [store, setStore] = useState(null);
   const [loading, setLoading] = useState(false);

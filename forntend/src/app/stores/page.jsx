@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useStore } from '@/context/StoreContext';
 import styles from './StoresPage.module.css';
-import StoreHoursCalendar from "@/components/store/storeHoursCalendar/StoreHoursCalendar";
+
 
 
 const StoresPage = () => {

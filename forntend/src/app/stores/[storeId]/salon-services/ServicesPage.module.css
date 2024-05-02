@@ -24,8 +24,8 @@
 .section {
   
   width: 100%;
-  margin-left: 1rem; /* 32px */
-  margin-top: 1rem; /* 16px */
+  margin-left: 1rem; 
+  margin-top: 1rem; 
 }
 
 /* Category title */
@@ -55,16 +55,16 @@
 
 /* Styling for the service title within each card */
 .serviceTitle {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 600; /* semi-bold */
-  color: #ffffff; /* white for contrast against the dark card background */
-  margin-bottom: 0.5rem; /* space below the title */
+  font-size: 1rem; 
+ 
+  color: #ffffff; 
+  margin-bottom: 0.5rem; 
 }
 
 /* General styling for paragraphs in service cards */
 .serviceText {
   font-size: 1rem; /* 16px */
-  color: #cbd5e1; /* lighter gray for readability on dark background */
+  color: #cbd1d8; /* lighter gray for readability on dark background */
   margin-bottom: 0.25rem; /* small space between paragraphs */
 }
 

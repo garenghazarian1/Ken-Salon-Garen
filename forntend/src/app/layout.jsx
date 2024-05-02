@@ -1,5 +1,5 @@
 
-import { Inter } from "next/font/google";
+import { Inter, Kalam} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -14,6 +14,11 @@ import { AppointmentProvider } from "@/context/AppointmentContext"
 
 
 const inter = Inter({ subsets: ["latin"] });
+const arapeyStatic = Kalam ({
+  weight: '400',  
+  display: 'swap',
+  subsets: ['latin']
+});
 
 export const metadata = {
   title: "KEN BEAUTY CENTER",
@@ -23,9 +28,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.className}, ${arapeyStatic.className} `}>
     
-      <body className={inter.className}>
+      <body >
         <div className="flex flex-col min-h-screen">
           <AuthProvider>
               <UserProvider>

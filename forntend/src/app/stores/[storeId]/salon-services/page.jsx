@@ -60,7 +60,7 @@ return (
         <div key={category} className={styles.section}>
           <h2 className={styles.sectionTitle}>{category}</h2>
           <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} breakpoints={{
-                  320: { slidesPerView: 1, spaceBetween: 5 },
+                  320: { slidesPerView: 1, spaceBetween: 10 },
                   660: { slidesPerView: 2, spaceBetween: 10 },
                   1024: { slidesPerView: 3, spaceBetween: 10 },
                   1440: { slidesPerView: 5, spaceBetween: 10 }
