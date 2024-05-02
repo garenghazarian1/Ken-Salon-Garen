@@ -1,11 +1,10 @@
 // context/ServiceContext.js
 "use client"
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo  } from 'react';
 import axios from 'axios';
 import { baseUrl } from '@/api/ports';
 import { useStore } from "@/context/StoreContext";
-
-
+import { useSession } from 'next-auth/react';
 
 const ServiceContext = createContext();
 
@@ -18,6 +17,9 @@ export const ServiceProvider = ({ children }) => {
   const [currentService, setCurrentService] = useState(null);
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
+  const [activeSection, setActiveSection] = useState(null);
+  const [selectedServices, setSelectedServices] = useState(new Set());
+  const { data: session, status: sessionStatus  } = useSession();
   
 
   useEffect(() => {
@@ -67,14 +69,40 @@ export const ServiceProvider = ({ children }) => {
     fetchServiceDetails();
   }, [currentServiceId]); // Fetch service details whenever the currentServiceId changes
 
-  
+    // Group services by sections and categories
+    const groupedServices = useMemo(() => {
+      return services.reduce((acc, service) => {
+        const section = service.section || 'Other';
+        acc[section] = acc[section] || {};
+        const category = service.category || 'Other';
+        acc[section][category] = acc[section][category] || [];
+        acc[section][category].push(service);
+        return acc;
+      }, {});
+    }, [services]);
 
   const setServiceId = (serviceId) => {
     setCurrentServiceId(serviceId);
   };
 
+   // Handlers for selecting and deselecting services
+   const handleServiceSelectionChange = (serviceId) => {
+    const updatedSelection = new Set(selectedServices);
+    if (updatedSelection.has(serviceId)) {
+      updatedSelection.delete(serviceId);
+    } else {
+      updatedSelection.add(serviceId);
+    }
+    setSelectedServices(updatedSelection);
+    console.log("Updated Selection:", Array.from(updatedSelection));
+    // Added session check to safely log user ID and email
+    if (session) {  
+      console.log("User ID:", session?.user?._id , "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
+    }
+  };
+
   return (
-    <ServiceContext.Provider value={{ currentServiceId, setServiceId, currentService, services, loading, error }}>
+    <ServiceContext.Provider value={{selectedServices, setSelectedServices, handleServiceSelectionChange, currentServiceId, setServiceId,activeSection , setActiveSection, currentService, services, groupedServices, loading, error }}>
       {children}
     </ServiceContext.Provider>
   );
