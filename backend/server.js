@@ -13,13 +13,21 @@ import storeClosureRoutes from './routes/storeClosureRoutes.js';
 import availabilityRoutes from './routes/availabilityRoutes.js';
 import employeeUnavailabilityRoutes from './routes/employeeUnavailabilityRoutes.js';
 
+
 dotenv.config();
 const app = express();
 connectDB();
 
+const CLIENT_URL=process.env.CLIENT_URL
+
 app.use(morgan('dev'));
 
-app.use(cors());
+const corsOptions = {
+  origin: CLIENT_URL,
+  // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 //  ROUTES ********************** */
