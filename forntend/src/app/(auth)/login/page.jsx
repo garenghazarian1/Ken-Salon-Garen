@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {redirect, useSearchParams  } from 'next/navigation';
-import { useRegister } from '@/context/userContext.jsx';
+import { useRegister } from '../../../context/UserContext.jsx';
 import { signIn, useSession } from "next-auth/react";
 import styles from "@/app/(auth)/login/LoginPage.module.css"
 
