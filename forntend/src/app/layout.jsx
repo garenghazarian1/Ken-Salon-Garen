@@ -3,7 +3,7 @@ import { Inter, Kalam} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { UserProvider } from "@/context/userContext";
+import { UserProvider } from "@/context/userContext.jsx";
 import AuthProvider from "@/context/auth";
 import { CalendarProvider } from '@/context/CalendarContext';
 import { StoreProvider } from '@/context/StoreContext';
