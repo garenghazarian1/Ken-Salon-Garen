@@ -2,7 +2,7 @@
 "use client"
 import{ useState } from 'react';
 import Link from 'next/link';
-import { useRegister } from '@/context/userContext.jsx';
+import { useRegister } from '../../../context/UserContext.jsx';
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import styles from "@/app/(auth)/register/RegisterPage.module.css"
