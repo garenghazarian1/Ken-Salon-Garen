@@ -62,8 +62,8 @@ export default function Links() {
         {session ? (
           <Link href="/user">
           <div className='flex gap-2 justify-center items-center z-100 ' >       
-            <img src={session.user?.image} alt="Profile" width={50} height={50}   className=" rounded-full" />
-          <h2>Welcome {session.user?.name}</h2>
+            <Image src={session?.user?.image} alt="Profile" width={50} height={50}  style={{ width: 'auto', height: 'auto', borderRadius: "50%" }} />
+          <h2>Welcome {session?.user?.name}</h2>
           <button onClick={handleLogout} className={button}>Logout</button>
           </div>
           </Link>
@@ -86,7 +86,7 @@ export default function Links() {
 
             {session ? (
               <>
-              <img src={session.user.image } alt="Profile" width={50} height={50} className="rounded-full" />
+              <Image src={session.user.image } alt="Profile" width={50} height={50} style={{ width: 'auto', height: 'auto' , borderRadius: "50%" }} />
               <button onClick={handleLogout} className={button}>Logout</button>
               </>
             ) : (

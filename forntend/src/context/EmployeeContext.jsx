@@ -123,7 +123,7 @@ useEffect(() => {
   };
 
   fetchUnavailabilities();
-}, [selectedEmployeeId]); // Re-run this effect if selectedEmployeeId changes
+}, [selectedEmployeeId,  session?.accessToken]); // Re-run this effect if selectedEmployeeId changes
 
 
 const addUnavailability = async (unavailabilityDetails) => {

@@ -63,7 +63,7 @@ export const CalendarProvider = ({ children }) => {
             if (selectedDate) {
               generateTimeSlots(selectedDate);
             }
-          }, []);
+          }, [selectedDate, generateTimeSlots]);
 
           return (
             <CalendarContext.Provider

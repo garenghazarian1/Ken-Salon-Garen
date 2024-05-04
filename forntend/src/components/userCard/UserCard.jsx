@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './UserCard.module.css';
 import { useAppointment } from '@/context/AppointmentContext'; 
+import Image from 'next/image';
 
 const UserCard = ({ session }) => {
     const { appointments, fetchUserAppointments,deleteAppointment, isLoading } = useAppointment();
@@ -22,7 +23,7 @@ const UserCard = ({ session }) => {
 
     return (
         <div className={styles.card}>
-            <img src={session.user.image || '/default-profile.png'} alt={session.user.name} className={styles.userImage} />
+            <Image src={session.user.image || '/default-profile.png'} alt={session.user.name} width={50} height={50} style={{ width: 'auto', height: 'auto' , borderRadius: "50%" }} />
             <div className={styles.userInfo}>
                 <h3 className={styles.userName}>Welcome, {session.user.name}</h3>
                 <ul className={styles.appointmentList}>

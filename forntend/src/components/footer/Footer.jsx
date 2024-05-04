@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="text-white bg-black px-4 py-6 flex flex-wrap justify-between items-center">
       <div className="mb-4 flex-grow sm:flex-grow-0">
         <Link href="/" passHref>
-          <span className="flex title-font font-medium items-center justify-center text-white text-xl cursor-pointer">Ken's Salon</span>
+          <span className="flex title-font font-medium items-center justify-center text-white text-xl cursor-pointer">Ken&apos;s Salon</span>
         </Link>
       </div>
       
@@ -29,7 +29,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <p className="text-sm text-gray-400">© 2024 Ken's Salon —
+        <p className="text-sm text-gray-400">© 2024 Ken&apos;s Salon —
           <Link href="https://twitter.com/kenssalon" className="text-gray-500 ml-1">
             @kenssalon
           </Link>

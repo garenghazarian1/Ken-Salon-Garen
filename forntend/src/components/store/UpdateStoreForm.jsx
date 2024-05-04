@@ -4,6 +4,7 @@ import axios from 'axios';
 import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
 import { useStore } from "@/context/StoreContext"
+import Image from 'next/image';
 
 const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
 const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
@@ -112,9 +113,14 @@ const handleSubmit = async (e) => {
             name="imageStore"
             onChange={handleChange}
           />
-          <div className="mt-4">
+          <div className="mt-4 w-24">
               {previewUrl && (
-                <img src={previewUrl} alt="Store Preview" className="max-w-xs max-h-64" />
+                <Image
+                src={previewUrl}
+                alt="Store Preview"
+                width={50} height={50} style={{ width: 'auto', height: 'auto' }}
+               
+              />
               )}
             </div>
         </div>

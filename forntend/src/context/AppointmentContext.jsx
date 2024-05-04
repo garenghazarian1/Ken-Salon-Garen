@@ -17,12 +17,36 @@ export const AppointmentProvider = ({ children }) => {
     const [appointments, setAppointments] = useState([]);
     const router = useRouter();
 
+    const fetchAppointments = useCallback(async () => {
+        if (!session?.user) {
+            setBookingStatus({ error: 'Not authenticated', success: '' });
+            return;
+        }
+        try {
+            const response = await axios.get(`${baseUrl}/api/appointments/allAppointments`, {
+                headers: {
+                    Authorization: `Bearer ${session.accessToken}`
+                }
+            });
+            //console.log("Fetched All Appointments:", response.data.allAppointments);
+            if (response.data.success) {
+                setAppointments(response.data.allAppointments);
+            } else {
+                throw new Error(response.data.message);
+            }
+    
+        } catch (error) {
+            console.error('Failed to fetch all appointments:', error);
+            setBookingStatus({ error: error.response ? error.response.data.message : error.message, success: '' });
+        }
+    }, [session]);
+
     const bookAppointment = useCallback(async ({ currentStoreId, selectedServices, selectedEmployee, selectedDate, selectedTime }) => {
         const userId = session?.user?._id;
         const serviceIds = Array.from(selectedServices);
         if (!selectedEmployee || serviceIds.length === 0 || !selectedDate || !selectedTime) {
             const errorMessage = 'All fields must be selected.';
-            console.error(errorMessage);  // Log error to console
+            //console.error(errorMessage);  // Log error to console
             setBookingStatus({ error: errorMessage, success: '' });
             return;
         }
@@ -50,7 +74,7 @@ export const AppointmentProvider = ({ children }) => {
             });
 
             if (response.data.success) {
-                console.log('Appointment booked successfully:', response.data); 
+                //console.log('Appointment booked successfully:', response.data); 
                 fetchAppointments();
                 setBookingStatus({ success: response.data.message, error: '' });
                 alert("Appointment booked successfully: ");
@@ -62,35 +86,10 @@ export const AppointmentProvider = ({ children }) => {
             console.error('Error booking appointment:', error.response ? error.response.data.message : error.message);  // Log error to console
             setBookingStatus({ error: error.response ? error.response.data.message : error.message, success: '' });
         }
-    }, [session]);
+    }, [session, fetchAppointments, router]);
 
 
-    const fetchAppointments = useCallback(async () => {
-        if (!session?.user) {
-            setBookingStatus({ error: 'Not authenticated', success: '' });
-            return;
-        }
-
-        try {
-            const response = await axios.get(`${baseUrl}/api/appointments/allAppointments`, {
-                headers: {
-                    Authorization: `Bearer ${session.accessToken}`
-                }
-            });
-
-            //console.log("Fetched All Appointments:", response.data.allAppointments);
-
-            if (response.data.success) {
-                setAppointments(response.data.allAppointments);
-            } else {
-                throw new Error(response.data.message);
-            }
     
-        } catch (error) {
-            console.error('Failed to fetch all appointments:', error);
-            setBookingStatus({ error: error.response ? error.response.data.message : error.message, success: '' });
-        }
-    }, [session]);
 
 
     const fetchUserAppointments = useCallback(async () => {
