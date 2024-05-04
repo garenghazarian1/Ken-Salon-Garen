@@ -11,6 +11,7 @@ import StoreClosureDisplay from '@/components/store/StoreClosureForm';
 import styles from './StorePage.module.css';
 import { useService } from "@/context/ServiceContext";
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 
@@ -92,7 +93,7 @@ const StorePage = ({ params }) => {
             <div className={styles.flexCenter}>
               <h1 className={styles.title1}>{store.name}</h1>
             </div>
-            <img src={store.imageStore} alt={`${store.name} Store Image`}  className={styles.storeImage}/>
+            <Image src={store.imageStore} alt={`${store.name} Store Image`} width={50} height={50}  className={styles.storeImage}/>
           </div>
           <div className={styles.circle + ' ' + styles['circle-green']}></div>
        {/* <div className={styles.circle + ' ' + styles['circle-blue']}></div>  */}

@@ -9,6 +9,7 @@ import { useAppointment } from '@/context/AppointmentContext';
 import Basket from "@/components/basket/Basket";
 import HorizontalCalendar from '@/components/Calender/HorizontalCalendar';
 import styles from './BookingPage.module.css';
+import Image from 'next/image';
 
 
 
@@ -89,7 +90,7 @@ const BookingPage = () => {
                             <div key={employee._id}
                                  className={`${styles.employee} ${selectedEmployee === employee._id ? styles.selected : ''}`}
                                  onClick={() => handleEmployeeSelection(employee._id)}>
-                                <img src={employee.userInfo.image} alt={employee.userInfo.name} className={styles.image} />
+                                <Image src={employee.userInfo.image} alt={employee.userInfo.name} width={100} height={100} style={{ width: 'auto', height: 'auto' }} className={styles.image} />
                                 <p >{employee.userInfo.name}</p>
                             </div>
                         ))}

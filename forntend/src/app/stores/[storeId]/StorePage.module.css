@@ -13,6 +13,7 @@
 .container {
     padding: 16px; /* Provide padding around the entire container */
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100vw;
@@ -25,7 +26,6 @@
     /* font-family: 'Kaushan Script', cursive;  */
     align-self: center;
     font-size: 1rem;        
-    margin-bottom: 1rem;
     cursor: pointer;
     transition: color 300ms ease-in-out, transform 300ms ease-in-out; 
     color: rgb(7, 122, 36);
@@ -37,9 +37,6 @@
 }
 
 .title{
-   
-        /* Custom font style, replace with actual font-family if known */
-        /* font-family: 'Kaushan Script', cursive;  */
         font-family: "Dancing Script", cursive;
         align-self: center;
         font-size: 1rem;        
@@ -62,29 +59,18 @@
     justify-content: center;
     gap: 2rem; 
     width: 100%;
-    height: 50px;
+    height: 60px;
 
 }
 
 .storeImage {
-    border-radius: 50%; 
+    border-radius: 20%; 
     object-fit: cover; 
     object-position: center; 
-    width: 75px; 
-    height: 75px; 
+    width: auto; 
+    height: auto; 
+    
 }
-
-/* Media query for small screens */
-@media (max-width: 768px) {
-    .storeImage {
-        display: none;
-    }
-    .storeHeader{
-        display: none;
-    }
-}
-
-
 
 /* Styles for the toggle visibility text */
 .toggleVisibility {
@@ -114,46 +100,54 @@
 }
 
 .buttonDelete {
-    background-color: #d90015; /* Red color for the delete button */
+    background-color: #d90015; 
 }
 
 .buttonDelete:hover {
-    background-color: #b30012; /* Darker red on hover */
+    background-color: #b30012; 
 }
 
 .buttonCreate {
-    background-color: #00d94c; /* Green color for the create button */
+    background-color: #00d94c; 
 }
 
 .buttonCreate:hover {
-    background-color: #00b43b; /* Darker green on hover */
+    background-color: #00b43b; 
 }
 
 /* Utility styles */
 .flexRow {
-    display: flex; /* Makes the container a flexbox */
+    display: flex; 
 }
 
 .flexCenter {
-    display: flex; /* Makes the container a flexbox */
-    align-items: center; /* Centers children vertically */
+    display: flex; 
+    align-items: center; 
+    margin: 0%;
 }
 
 @media (max-width: 768px) {
     .actionButtons {
-        padding: 12px 24px; /* Larger padding for better touch targets */
-        font-size: 16px; /* Larger font size for readability */
+        padding: 12px 24px; 
+        font-size: 16px; 
     }
 
     .storeHeader {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column; 
         align-items: center;
         margin-bottom: 4rem;
+        display: none;
     }
 
     .container {
         padding: 8px;
     }
+    
+        .storeImage {
+            display: none;
+        }
+       
+    
 }
 
 /* Service Section Styles */

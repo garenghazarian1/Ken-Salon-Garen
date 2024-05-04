@@ -27,7 +27,7 @@ const LoginPage = () => {
       // For any other authenticated user, redirect to the callback URL or homepage
       redirect(callbackUrl);
     }
-  }, [session, status]);
+  }, [session, status, callbackUrl]);
 
    const togglePasswordVisibility = () => {setShowPassword(!showPassword);};
 
