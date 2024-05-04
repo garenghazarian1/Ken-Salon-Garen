@@ -141,7 +141,7 @@ const StorePage = ({ params }) => {
   <h2 className={styles.title}>Select the service section</h2>
   <div className={styles.serviceSectionLink}>
   {Object.entries(groupedServices).map(([section]) => (
-    <div className={styles.serviceLinkDiv}>
+    <div className={styles.serviceLinkDiv} key={section}>
     <Link 
                 href={`/stores/${currentStoreId}/salon-services/`}
                 className={styles.serviceLink}

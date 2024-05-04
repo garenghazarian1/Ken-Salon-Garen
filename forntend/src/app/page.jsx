@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -44,12 +45,13 @@ export default function Home() {
         </p>
       </div>
     </div>
-    <img
+    <Image
           src="/ken.jpg"
           alt="logo"
           className="object-cover  rounded-full"
           width={500}
           height={500}
+          style={{ width: 'auto', height: 'auto' }}
         />
     </div>
    

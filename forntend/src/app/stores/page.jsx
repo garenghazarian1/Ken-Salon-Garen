@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useStore } from '@/context/StoreContext';
 import styles from './StoresPage.module.css';
+import Image from 'next/image';
 
 
 
@@ -24,7 +25,7 @@ const StoresPage = () => {
             
             {store.imageStore && (
               <div className={styles.storeImage}>
-                <img className={styles.storeImage} src={store.imageStore} alt="Store" width={500} height={500} />
+                <Image className={styles.storeImage} src={store.imageStore} alt="Store" width={500} height={500} priority />
               </div>
             )}
              
