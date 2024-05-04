@@ -1,5 +1,5 @@
 
-import { Inter, Kalam} from "next/font/google";
+import { Inter, Lora} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -14,7 +14,7 @@ import { AppointmentProvider } from "@/context/AppointmentContext"
 
 
 const inter = Inter({ subsets: ["latin"] });
-const arapeyStatic = Kalam ({
+const arapeyStatic = Lora ({
   weight: '400',  
   display: 'swap',
   subsets: ['latin']
