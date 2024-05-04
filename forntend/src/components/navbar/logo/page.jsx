@@ -1,17 +1,16 @@
 import Image from "next/image";
-
+import styles from './Logo.module.css';
 
 export default function Logo() {
   return (
-    <div className="flex items-center justify-center pl-2">
-      <div className="p-2 relative overflow-hidden"> 
+    <div className={styles.flexCenter}>
+      <div className={styles.paddedRelative}>
         <Image
           src="/logo01.png"
           alt="logo"
           width={50}
           height={50}
-          style={{ width: 'auto', height: 'auto' }}
-          priority
+          className={styles.image}
         />
       </div>
     </div>

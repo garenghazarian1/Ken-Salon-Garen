@@ -1,26 +1,20 @@
 "use client"
 import { useState, useEffect, useRef  } from 'react';
 import Link from 'next/link'
-//import { usePathname } from 'next/navigation';
 import NavLink from './navLink/navLink';
 import HamburgerButton from '../HamburgerButton/HamburgerButton';
-//import { useRegister } from "@/context/userContext"
 import { useSession, signOut } from "next-auth/react";
 import Image from 'next/image';
+//import styles from './Links.module.css'; 
 
 
 export default function Links() {
   const { data: session, status } = useSession();
-  //const pathName = usePathname();
-  //const { userLog, logout } = useRegister();
   const [open, setOpen] = useState(false);
   const menuRef = useRef();
 
-  
-
    const  Links =[
     { title:"Home", path:"/"},
-   
     { title:"Book", path:"/stores"},
     { title: "About Us", path: "/about" },
     { title: "Contact", path: "/contact" },
@@ -31,8 +25,7 @@ export default function Links() {
    // CLICK OUTSIDE MENU TO CLOSE MENU
    useEffect(() => {
     function handleClickOutside(event) {
-        if (open && menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.hamburger-btn')) {
-            setOpen(false);
+        if (open && menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.hamburger-btn')) { setOpen(false);
         }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -62,7 +55,7 @@ export default function Links() {
         {session ? (
           <Link href="/user">
           <div className='flex gap-2 justify-center items-center z-100 ' >       
-            <Image src={session?.user?.image} alt="Profile" width={50} height={50}  style={{ width: 'auto', height: 'auto', borderRadius: "50%" }} />
+            <Image src={session?.user?.image} alt="Profile" width={50} height={50}  style={{ width: 'auto', height: 'auto' }} />
           <h2>Welcome {session?.user?.name}</h2>
           <button onClick={handleLogout} className={button}>Logout</button>
           </div>
@@ -86,7 +79,7 @@ export default function Links() {
 
             {session ? (
               <>
-              <Image src={session.user.image } alt="Profile" width={50} height={50} style={{ width: 'auto', height: 'auto' , borderRadius: "50%" }} />
+              <Image src={session.user.image } alt="Profile" width={50} height={50} style={{ width: 'auto', height: 'auto'  }} />
               <button onClick={handleLogout} className={button}>Logout</button>
               </>
             ) : (
