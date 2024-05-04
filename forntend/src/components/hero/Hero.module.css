@@ -109,24 +109,24 @@
     border-radius: 50%;
   }
   
-  /* Media Queries for Responsive Adjustments */
+
 @media (max-width: 900px) {
     .gradientA {
-        padding: 2rem; /* Larger padding on larger screens */
+        padding: 2rem; 
     }
 
     .title, .mainTitle, .subTitle {
-        font-size: 3rem; /* Larger text on larger screens */
+        font-size: 2rem; 
     }
 
     .subtitle {
-        font-size: 1rem; /* Larger subtitle on larger screens */
-        margin-bottom: 2rem;
+        font-size: 1rem; 
+        margin-bottom: 1rem;
         margin-right: 1.5rem;
     }
 
     .button {
-        padding: 1rem 2rem; /* Larger buttons on larger screens */
+        padding: 1rem 2rem; 
     }
 
     .flexContainer {
@@ -139,53 +139,54 @@
     }
 
     .paragraph {
-        width: 66.66667%; /* Adjust width for better reading on larger screens */
+        width: 66.66667%; 
     }
 }
 
-/* Responsive Design Adjustments */
 @media (max-width: 599px) {
     .gradientA {
-        padding: 1rem; /* Smaller padding for smaller screens */
+        padding: 1rem; 
     }
 
     .title {
-        font-size: 1.5rem; /* Smaller font size for smaller screens */
+      margin-top: 3rem;
+        font-size: 1rem; 
     }
 
     .subtitle {
-        font-size: 0.875rem; /* Slightly larger subtitle font size for readability */
+        font-size: 0.5rem;
     }
 }
 
 @media (min-width: 600px) and (max-width: 1199px) {
     .gradientA {
-        padding: 1.5rem; /* Medium padding for medium screens */
+        padding: 1.5rem;
     }
 
     .title {
-        font-size: 2.5rem; /* Medium font size for medium screens */
+        font-size: 2.5rem;
     }
 
     .subtitle {
-        font-size: 1rem; /* Appropriate subtitle font size for medium screens */
+        font-size: 1rem;
     }
 }
 
 @media (min-width: 1200px) {
     .gradientA {
-        padding: 2rem; /* Larger padding for larger screens */
+        padding: 2rem;
     }
 
     .title {
-        font-size: 3rem; /* Larger font size for better visibility on large screens */
+      
+        font-size: 3rem;
     }
 
     .subtitle {
-        font-size: 1.25rem; /* Larger subtitle font size for better readability */
+        font-size: 1.25rem;
     }
 
     .button {
-        padding: 1rem 2rem; /* Larger button padding for an easier click on desktop */
+        padding: 1rem 2rem;
     }
 }

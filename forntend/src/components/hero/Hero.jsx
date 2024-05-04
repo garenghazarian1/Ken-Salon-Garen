@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <>
     <div className={styles.relative}>
-          <video src="/hero.mp4" alt="Salon Video" autoPlay muted loop className={styles.video}/>
+          <video src="/hero.mp4" alt="Salon Video" autoPlay muted loop playsInline preload="auto" className={styles.video}/>
           <div className={styles.absolute}>
           <div className={styles.gradient}>
             <div className={styles.gradientA}>
