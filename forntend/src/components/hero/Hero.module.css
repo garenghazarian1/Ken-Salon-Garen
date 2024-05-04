@@ -1,0 +1,179 @@
+.relative {
+    position: relative;
+    width: 100%;
+  }
+  
+  .video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .absolute {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .gradient {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, #000000, transparent);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .gradientA {
+    padding: 1rem;
+  } 
+  
+  .title {
+    margin-top: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0.75;
+    text-align: center;
+  }
+  
+  .green {
+    background-clip: text;
+    color: transparent;
+    background-color: #10b981;
+  }
+  
+  .subtitle {
+    font-size: 0.75rem;
+    color: #ffffff;
+    text-align: center;
+}
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .button {
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #10b981;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+  }
+  
+  .flexContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;   
+  }
+  
+  .mainTitle, .subTitle {
+    font-size: 2rem; /* Standardized sizes */
+    margin-bottom: 2rem;
+}
+
+.white, .subTitle, .paragraph {
+    color: #ffffff;
+}
+  
+  .paragraph {
+    width: 70%; /* Full width and adjust via media queries */
+    margin-left: 1rem;
+  }
+  
+  .logo {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  /* Media Queries for Responsive Adjustments */
+@media (max-width: 900px) {
+    .gradientA {
+        padding: 2rem; /* Larger padding on larger screens */
+    }
+
+    .title, .mainTitle, .subTitle {
+        font-size: 3rem; /* Larger text on larger screens */
+    }
+
+    .subtitle {
+        font-size: 1rem; /* Larger subtitle on larger screens */
+        margin-bottom: 2rem;
+        margin-right: 1.5rem;
+    }
+
+    .button {
+        padding: 1rem 2rem; /* Larger buttons on larger screens */
+    }
+
+    .flexContainer {
+        gap: 1rem; 
+        flex-direction: column;
+    }
+
+    .mainTitle, .subTitle {
+        align-self: center;
+    }
+
+    .paragraph {
+        width: 66.66667%; /* Adjust width for better reading on larger screens */
+    }
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 599px) {
+    .gradientA {
+        padding: 1rem; /* Smaller padding for smaller screens */
+    }
+
+    .title {
+        font-size: 1.5rem; /* Smaller font size for smaller screens */
+    }
+
+    .subtitle {
+        font-size: 0.875rem; /* Slightly larger subtitle font size for readability */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+    .gradientA {
+        padding: 1.5rem; /* Medium padding for medium screens */
+    }
+
+    .title {
+        font-size: 2.5rem; /* Medium font size for medium screens */
+    }
+
+    .subtitle {
+        font-size: 1rem; /* Appropriate subtitle font size for medium screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .gradientA {
+        padding: 2rem; /* Larger padding for larger screens */
+    }
+
+    .title {
+        font-size: 3rem; /* Larger font size for better visibility on large screens */
+    }
+
+    .subtitle {
+        font-size: 1.25rem; /* Larger subtitle font size for better readability */
+    }
+
+    .button {
+        padding: 1rem 2rem; /* Larger button padding for an easier click on desktop */
+    }
+}
