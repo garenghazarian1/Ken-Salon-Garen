@@ -23,7 +23,6 @@ const arapeyStatic = Lora ({
 export const metadata = {
   title: "KEN BEAUTY CENTER",
   description: "BEAUTY CENTER",
- 
 };
 
 export default function RootLayout({ children }) {
