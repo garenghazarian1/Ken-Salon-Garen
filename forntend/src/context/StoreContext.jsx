@@ -14,20 +14,14 @@ export const StoreProvider = ({ children }) => {
   const [storeHours, setStoreHours] = useState([]);
   const [storeClosures, setStoreClosures] = useState([]);
   const [stores, setStores] = useState([]);
-  
-  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
  
   const setStoreId = (storeId) => setCurrentStoreId(storeId);
   const setStoreHourId = (storeHourId) => setCurrentStoreHourId(storeHourId);
   const setStoreClosureId = (storeClosureId) => setCurrentStoreClosureId(storeClosureId);
 
-
   useEffect(() => {
     const fetchStores = async () => {
-      //setLoading(true);
-      //console.log('Fetching stores...');
-      //setError('');
       try {
         const response = await axios.get(`${baseUrl}/api/stores`);
         setStores(response.data);
@@ -35,9 +29,6 @@ export const StoreProvider = ({ children }) => {
         setError('Failed to load stores. Please try again later.');
         console.error('Error fetching stores:', error);
        }
-       //finally {
-      //   setLoading(false);
-      // }
     };
     fetchStores();
     return () => {

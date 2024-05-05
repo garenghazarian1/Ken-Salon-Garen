@@ -5,8 +5,6 @@ import { useStore } from '@/context/StoreContext';
 import styles from './StoresPage.module.css';
 import Image from 'next/image';
 
-
-
 const StoresPage = () => {
   const { stores, error } = useStore();
   
