@@ -14,12 +14,16 @@ export const registerUser = async (req, res) => {
   console.log("Registering user...", req.body, req.file);
   
    try {
-     const { name, email, password, confirmPassword,  } = req.body;
+     const { name, email, phoneNumber, password, confirmPassword,  } = req.body;
      if (req.file) req.body.image = req.file.path;
 
      if (!password || !confirmPassword || password !== confirmPassword) {
          return res.status(400).json({ message: 'Passwords do not match or are missing' });
        }
+       if (password.length < 6) {
+        return res.status(400).json({ message: 'Password must be at least 6 characters long.' });
+      }
+
      const existingUser = await User.findOne({ email });
      if (existingUser) {
        return res.status(400).json({ message: 'User already exists' });
@@ -29,6 +33,7 @@ export const registerUser = async (req, res) => {
      const user = new User({
        name,
        email,
+       phoneNumber,
        password: hashedPassword,
        image: req.file ? req.file.path : "",
      })
@@ -37,7 +42,7 @@ export const registerUser = async (req, res) => {
      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' })
      res.status(201).json({ user: { name: user.name, email: user.email, id: user._id, image: user.image }, token });
    } catch (error) {
-     res.status(500).json({ success: false, message: 'Something went wrong', error: error.message });
+     res.status(500).json({error: error.message, success: false, message: 'Something went wrong',  });
      console.log(error);
    }
    

@@ -5,13 +5,12 @@ import NavLink from './navLink/navLink';
 import HamburgerButton from '../HamburgerButton/HamburgerButton';
 import { useSession, signOut } from "next-auth/react";
 import Image from 'next/image';
-//import styles from './Links.module.css'; 
-
 
 export default function Links() {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const menuRef = useRef();
+  
 
    const  Links =[
     { title:"Home", path:"/"},
@@ -36,6 +35,12 @@ export default function Links() {
 
    //styling
    const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+
+  // Function to close the menu
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
    
    //LOGOUT *******************************************
    const handleLogout = async () => {
@@ -75,7 +80,7 @@ export default function Links() {
         </div>
         {open && (
           <div ref={menuRef} className="absolute top-6 right-2 flex flex-col gap-4 lg:hidden bg-black shadow-md p-4 rounded-lg w-36 z-100">
-            {Links.map((link) => (<NavLink item={link} key={link.title} />))}
+            {Links.map((link) => (<NavLink item={link} key={link.title} onClick={closeMenu} />))}
 
             {session ? (
               <>

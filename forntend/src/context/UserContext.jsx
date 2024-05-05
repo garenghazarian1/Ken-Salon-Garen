@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
       return response.data;
     } catch (error) {
       const errorMessage = error.response && error.response.data.message ? error.response.data.message : 'Something went wrong frontend';
-      console.error('Registration error:', errorMessage);
+      console.error(error.message, 'Registration error:', errorMessage);
     }
   };
 

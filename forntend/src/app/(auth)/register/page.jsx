@@ -11,7 +11,7 @@ import Image from 'next/image.js';
 const RegisterPage = () => {
  const router = useRouter();
   const { register, error } = useRegister();
-  const [formData, setFormData] = useState({name: '', email: '', password: '', confirmPassword: '', image: null,
+  const [formData, setFormData] = useState({name: '', email: '', password: '', confirmPassword: '', phoneNumber: '', image: null,
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,15 +38,18 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
+      alert(error.message, 'Passwords do not match client side')
       console.log(error.message, 'Passwords do not match client side');
     }
 
      // Create a FormData instance
   const formDataToSend = new FormData();
+  console.log("🚀 ~ handleSubmit ~ formDataToSend:", formDataToSend)
   formDataToSend.append('name', formData.name);
   formDataToSend.append('email', formData.email);
   formDataToSend.append('password', formData.password);
   formDataToSend.append('confirmPassword', formData.confirmPassword);
+  formDataToSend.append('phoneNumber', formData.phoneNumber);
   
   if (formData.image) {
     formDataToSend.append('logo', formData.image);
@@ -79,31 +82,31 @@ const RegisterPage = () => {
           <div className={styles.circle + ' ' + styles['circle-gray']}></div>
       <form onSubmit={handleSubmit} className={styles.form} >
         <h2 className={styles.heading}>Register</h2>
-        {/* Name field */}
         <div className={styles.filed}>
-          <label htmlFor="name" className={styles.label}>Name</label>
-          <input type="text" id="name" name="name" onChange={handleChange} value={formData.name} className={styles.inputField} />
+          <input type="text" id="name" name="name" onChange={handleChange} value={formData.name} className={styles.inputField} required placeholder='Name' />
         </div>
-        {/* Email field */}
+
         <div className={styles.filed}>
-          <label htmlFor="email" className={styles.label}>Email</label>
-          <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} className={styles.inputField} />
+          <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} className={styles.inputField} required placeholder="Your email @ken.com" pattern=".+@ken\.com$"
+  title="Email must be a @ken.com address." />
         </div>
          {/* Password field with toggle */}
          <div className={styles.filed1}>
-          <label htmlFor="password" className={styles.label}>Password</label>
-          <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} value={formData.password} className={styles.inputField} />
+          <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} value={formData.password} className={styles.inputField} required placeholder='Password - 6 characters at least ' />
           <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
             {showPassword ? <span >Hide</span> : <span  >Show</span>}
           </span>
         </div>
         {/* Confirm Password field with toggle */}
         <div className={styles.filed1}>
-          <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
-          <input type={showPassword ? "text" : "password"} id="confirmPassword" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} className={styles.inputField} />
+          <input type={showPassword ? "text" : "password"} id="confirmPassword" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} className={styles.inputField} required placeholder='Password - 6 characters at least ' />
           <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
             {showPassword ?  <span >Hide</span> : <span >Show</span> }
           </span>
+        </div>
+
+        <div className={styles.field}>
+          <input type="tel" id="phoneNumber" name="phoneNumber" onChange={handleChange} value={formData.phoneNumber} className={styles.inputField} placeholder="Enter your phone number" pattern="^\+[1-9]\d{1,14}$" title="International phone number format, e.g., +1234567890" required />
         </div>
         
         <div className={styles.filed1}>

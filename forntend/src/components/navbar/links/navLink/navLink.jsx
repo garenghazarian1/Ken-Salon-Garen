@@ -2,12 +2,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavLink = ({ item }) => {
+const NavLink = ({ item, onClick }) => {
   const pathName = usePathname();
 
   return (
     <Link
       href={item.path} 
+      onClick={onClick}
       className={`text-sm cursor-pointer text-gray-100 p-4 rounded-full  transition duration-300 ease-in-out 
             ${pathName === item.path
               ? 'text-green-400'  
