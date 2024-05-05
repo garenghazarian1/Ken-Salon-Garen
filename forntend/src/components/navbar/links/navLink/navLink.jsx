@@ -10,8 +10,8 @@ const NavLink = ({ item }) => {
       href={item.path} 
       className={`text-sm cursor-pointer text-gray-100 p-4 rounded-full  transition duration-300 ease-in-out 
             ${pathName === item.path
-              ? 'text-green-500'  
-            : 'text-green-100 hover:bg-gray-600 hover:text-green-600' 
+              ? 'text-green-400'  
+            : 'text-green-100 hover:bg-gray-600 hover:text-green-500' 
             }`}
     >
       {item.title}

@@ -1,0 +1,25 @@
+/* HamburgerButton.module.css */
+.hamburgerBtn {
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    z-index: 50;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75rem;
+    background-color: transparent;
+}
+
+.hamburgerBtn:hover {
+    background-color: #5a775a;
+}
+
+@media (min-width: 1024px) {
+    .hamburgerBtn {
+        display: none;
+    }
+}

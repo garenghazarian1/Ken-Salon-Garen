@@ -24,6 +24,8 @@
   }
   .gradientA {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
   } 
   
   .title {
@@ -110,54 +112,33 @@
   }
   
 
-@media (max-width: 900px) {
-    .gradientA {
-        padding: 2rem; 
-    }
 
-    .title, .mainTitle, .subTitle {
-        font-size: 2rem; 
-    }
-
-    .subtitle {
-        font-size: 1rem; 
-        margin-bottom: 1rem;
-        margin-right: 1.5rem;
-    }
-
-    .button {
-        padding: 1rem 2rem; 
-    }
-
-    .flexContainer {
-        gap: 1rem; 
-        flex-direction: column;
-    }
-
-    .mainTitle, .subTitle {
-        align-self: center;
-    }
-
-    .paragraph {
-        width: 66.66667%; 
-    }
-}
-
+/* max-width: 599px */
 @media (max-width: 599px) {
     .gradientA {
         padding: 1rem; 
     }
 
     .title {
-      margin-top: 3rem;
-        font-size: 1rem; 
+      display: none; 
     }
 
     .subtitle {
-        font-size: 0.5rem;
+      display: none; 
     }
+    .gradient {
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .gradientA {
+      justify-content:flex-end;
+      align-items: flex-end;
+    }
+
+
 }
 
+/* min-width: 600px */
 @media (min-width: 600px) and (max-width: 1199px) {
     .gradientA {
         padding: 1.5rem;
@@ -172,6 +153,41 @@
     }
 }
 
+/* max-width: 900px */
+@media (max-width: 900px) {
+  .gradientA {
+      padding: 2rem; 
+  }
+
+  .title, .mainTitle, .subTitle {
+      font-size: 2rem; 
+  }
+
+  .subtitle {
+      font-size: 1rem; 
+      margin-bottom: 1rem;
+      margin-right: 1.5rem;
+  }
+
+  .button {
+      padding: 1rem 2rem; 
+  }
+
+  .flexContainer {
+      gap: 1rem; 
+      flex-direction: column;
+  }
+
+  .mainTitle, .subTitle {
+      align-self: center;
+  }
+
+  .paragraph {
+      width: 66.66667%; 
+  }
+}
+
+/* min-width: 1200px */
 @media (min-width: 1200px) {
     .gradientA {
         padding: 2rem;
