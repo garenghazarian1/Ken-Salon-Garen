@@ -92,7 +92,7 @@ const LoginPage = () => {
         {/* Error Message Display */}
         {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
         {/* Submit Button */}
-        <button type="submit" className=" flex justify-center text-sm cursor-pointer text-gray-100 p-6 rounded-lg  transition duration-300 ease-in-out   hover:text-green-500 hover:bg-gray-200">Login</button>
+        <button type="submit" className={styles.linkButton}>Login</button>
       </form>
       {/* Google Sign-in Button */}
       <button type="button" onClick={handleGoogleSignIn} className="mt-4 bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:from-green-400 hover:via-green-500 hover:to-green-600 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-800/80 text-white font-semibold py-2 px-4 rounded block text-center transition-all duration-700 ease-in-out">
