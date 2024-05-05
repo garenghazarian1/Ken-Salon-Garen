@@ -74,9 +74,9 @@ const RegisterPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.videoContainer}>
+      
             <video className={styles.videoStyle} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo1.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
-          </div>
+          
           <div className={styles.container1}>
           <div className={styles.circle + ' ' + styles['circle-green']}></div>
           <div className={styles.circle + ' ' + styles['circle-gray']}></div>
@@ -120,7 +120,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Submit button */}
-        <button type="submit" className={styles.registerButton} >Register</button>
+        <button type="submit" className={styles.linkButton} >Register</button>
       </form>
       <div className="mt-4">
         <Link href="/login" className={styles.loginLink}>
@@ -140,10 +140,10 @@ const RegisterPage = () => {
         </Link>
       </div>
       </div>
-      <div className={styles.videoContainer}>
+      
         <video className={styles.videoStyle1} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
       </div>
-    </div>
+   
   );
 };
 
