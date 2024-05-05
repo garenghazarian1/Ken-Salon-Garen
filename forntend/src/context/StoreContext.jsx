@@ -14,7 +14,8 @@ export const StoreProvider = ({ children }) => {
   const [storeHours, setStoreHours] = useState([]);
   const [storeClosures, setStoreClosures] = useState([]);
   const [stores, setStores] = useState([]);
-  const [loading, setLoading] = useState(false);
+  
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
  
   const setStoreId = (storeId) => setCurrentStoreId(storeId);
@@ -24,18 +25,19 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchStores = async () => {
-      setLoading(true);
+      //setLoading(true);
       //console.log('Fetching stores...');
-      setError('');
+      //setError('');
       try {
         const response = await axios.get(`${baseUrl}/api/stores`);
         setStores(response.data);
       } catch (error) {
         setError('Failed to load stores. Please try again later.');
         console.error('Error fetching stores:', error);
-      } finally {
-        setLoading(false);
-      }
+       }
+       //finally {
+      //   setLoading(false);
+      // }
     };
     fetchStores();
     return () => {
@@ -75,7 +77,7 @@ export const StoreProvider = ({ children }) => {
   }, [currentStoreId]);
 
   return (
-    <StoreContext.Provider value={{ currentStoreId, setStoreId, currentStoreHourId, setStoreHourId, currentStoreClosureId, setStoreClosureId, storeHours, setStoreHours, storeClosures, setStoreClosures, stores, loading, error }}>
+    <StoreContext.Provider value={{ currentStoreId, setStoreId, currentStoreHourId, setStoreHourId, currentStoreClosureId, setStoreClosureId, storeHours, setStoreHours, storeClosures, setStoreClosures, stores }}>
       {children}
     </StoreContext.Provider>
   );

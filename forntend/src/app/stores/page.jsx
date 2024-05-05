@@ -8,10 +8,10 @@ import Image from 'next/image';
 
 
 const StoresPage = () => {
-  const { stores, loading, error } = useStore();
+  const { stores, error } = useStore();
   
   if (error) return <p className="text-red-500">{error}</p>;
-  if (loading) return <p>Loading...</p>;
+  
 
   return (
     <div className={styles.pageContainer}>

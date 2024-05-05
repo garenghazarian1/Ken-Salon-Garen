@@ -61,8 +61,9 @@ export default function Hero() {
           src="/ken.jpg"
           alt="logo"
           className={styles.logo}
-          width={500}
-          height={500}
+          width={100}
+          height={100}
+          
         />
       </div>
     </>
