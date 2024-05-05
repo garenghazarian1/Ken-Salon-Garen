@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <link rel="icon" href="/logo01" sizes="any" />
+        <link rel="icon" href="/logo01.png" sizes="any" />
       </Head>
       <Hero />
     </>
