@@ -59,7 +59,7 @@ const LoginPage = () => {
   return (
     <div className={styles.container}>
           <div className={styles.videoContainer}>
-            <video className={styles.videoStyle} autoPlay  loop  muted  src="loginVideo.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
+            <video className={styles.videoStyle} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
           </div>
       <div className={styles.circle + ' ' + styles['circle-green']}></div>
       {/* <div className={styles.circle + ' ' + styles['circle-blue']}></div> */}
@@ -103,7 +103,7 @@ const LoginPage = () => {
       </div>
       </div>
       <div className={styles.videoContainer}>
-        <video className={styles.videoStyle1} autoPlay  loop  muted  src="loginVideo1.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
+        <video className={styles.videoStyle1} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo1.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
       </div>
     </div>
   );
