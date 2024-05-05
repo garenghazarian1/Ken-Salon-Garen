@@ -5,13 +5,13 @@ import NavLink from './navLink/navLink';
 import HamburgerButton from '../HamburgerButton/HamburgerButton';
 import { useSession, signOut } from "next-auth/react";
 import Image from 'next/image';
+import styles from './Links.module.css';
 
 export default function Links() {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const menuRef = useRef();
   
-
    const  Links =[
     { title:"Home", path:"/"},
     { title:"Book", path:"/stores"},
@@ -19,7 +19,6 @@ export default function Links() {
     { title: "Contact", path: "/contact" },
     { title: "Gallery", path: "/gallery",}
    ];
-
 
    // CLICK OUTSIDE MENU TO CLOSE MENU
    useEffect(() => {
@@ -33,15 +32,13 @@ export default function Links() {
     };
 }, [open]);
 
-   //styling
-   const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+   
 
   // Function to close the menu
   const closeMenu = () => {
     setOpen(false);
   };
 
-   
    //LOGOUT *******************************************
    const handleLogout = async () => {
     try {
@@ -54,28 +51,27 @@ export default function Links() {
 
    return (
     <>
-      <div className='hidden lg:flex gap-4 p-4 '>
+      <div className={styles.container}>
         {Links.map((link) => (<NavLink item={link} key={link.title} />))}
-
         {session ? (
           <Link href="/user">
-          <div className='flex gap-2 justify-center items-center z-100 ' >       
-            <Image src={session?.user?.image} alt="Profile" width={50} height={50}  style={{ width: 'auto', height: 'auto' }} />
+          <div className={styles.imageContainer} >       
+            <Image src={session?.user?.image} alt="Profile" width={50} height={50} className={styles.image}   />
           <h2>Welcome {session?.user?.name}</h2>
-          <button onClick={handleLogout} className={button}>Logout</button>
+          <button onClick={handleLogout} className={styles.button}>Logout</button>
           </div>
           </Link>
         ) : (
           <>
-            <Link href="/login" className={button}>Login</Link>
-            <Link href="/register" className={button}>Register</Link>
+            <Link href="/login" className={styles.button}>Login</Link>
+            <Link href="/register" className={styles.button}>Register</Link>
           </>
         )}
       </div>
 
       {/* Toggle button for smaller screens */}
-      <div className='relative '>
-        <div className='flex justify-center items-center z-20'>
+      <div className={styles.toggleContainer}>
+        <div className={styles.hamburgerContainer}>
           <HamburgerButton isOpen={open} toggle={() => setOpen((prevOpen) => !prevOpen)} />
         </div>
         {open && (
@@ -84,13 +80,16 @@ export default function Links() {
 
             {session ? (
               <>
-              <Image src={session.user.image } alt="Profile" width={50} height={50} style={{ width: 'auto', height: 'auto'  }} />
-              <button onClick={handleLogout} className={button}>Logout</button>
+              <Link href="/user" onClick={closeMenu}>
+              <Image src={session.user.image } alt="Profile" width={50} height={50} className={styles.image} />
+              </Link>
+              <button onClick={handleLogout} className={styles.button}>Logout</button>
+              
               </>
             ) : (
               <>
-                <Link href="/login" className={button}>Login</Link>
-                <Link href="/register" className={button}>Register</Link>
+                <Link href="/login" className={styles.button}>Login</Link>
+                <Link href="/register" className={styles.button}>Register</Link>
               </>
             )}
           </div>
