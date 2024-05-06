@@ -67,7 +67,7 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit} className={styles.form}>
         <h2 className={styles.heading}>Login</h2>
         {/* Email field */}
-        <div className={styles.field}>
+        <div className={styles.filed}>
           
           <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} required placeholder='E-mail' />
         </div>

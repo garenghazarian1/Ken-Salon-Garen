@@ -76,9 +76,7 @@ export default function Links() {
         </div>
         {open && (
           <div ref={menuRef} className="absolute top-6 right-2 flex flex-col gap-4 lg:hidden bg-black shadow-md p-4 rounded-lg w-36 z-100">
-            {Links.map((link) => (<NavLink item={link} key={link.title} onClick={closeMenu} />))}
-
-            {session ? (
+             {session ? (
               <>
               <Link href="/user" onClick={closeMenu}>
               <Image src={session.user.image } alt="Profile" width={50} height={50} className={styles.image} />
@@ -92,6 +90,9 @@ export default function Links() {
                 <Link href="/register" className={styles.button} onClick={closeMenu}>Register</Link>
               </>
             )}
+            {Links.map((link) => (<NavLink item={link} key={link.title} onClick={closeMenu} />))}
+
+           
           </div>
         )}
       </div>
