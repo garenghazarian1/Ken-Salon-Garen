@@ -55,53 +55,52 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-          <div className={styles.videoContainer}>
+          
             <video className={styles.videoStyle} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
-          </div>
+         
+            <div className={styles.container1}> 
       <div className={styles.circle + ' ' + styles['circle-green']}></div>
-      {/* <div className={styles.circle + ' ' + styles['circle-blue']}></div> */}
       <div className={styles.circle + ' ' + styles['circle-gray']}></div>
-      {/* <div className={styles.circle + ' ' + styles['circle-yellow']}></div> */}
+      
 
-      <div className='flex flex-1 flex-col justify-center items-center w-3/4 md:w-auto h-screen bg-green-300 bg-opacity-50  '>
-        <form onSubmit={handleSubmit} className="w-3/4 max-w-md p-4  shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-gray-100">Login</h2>
+    
+        <form onSubmit={handleSubmit} className={styles.form}>
+        <h2 className={styles.heading}>Login</h2>
         {/* Email field */}
-        <div className="mb-4 ">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-100">Email</label>
-          <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="text-black mt-1 p-2 w-full border rounded-md" />
+        <div className={styles.field}>
+          
+          <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} required placeholder='E-mail' />
         </div>
         {/* Password field with toggle */}
-        <div className="mb-4 relative">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-100">Password</label>
-          <input type={showPassword ? "text" : "password"} id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="text-black mt-1 p-2 w-full border rounded-md pr-10" />
-          <span onClick={togglePasswordVisibility} className="absolute inset-y-0 right-0 pr-3 pt-5 flex items-center cursor-pointer text-black">
-            {showPassword ? <span className='text-sm'>Hide</span> : <span  className='text-sm'>Show</span>}
+        <div className={styles.filed1}>     
+          <input type={showPassword ? "text" : "password"} id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} required placeholder='Password' />
+          <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
+            {showPassword ? <span >Hide</span> : <span  >Show</span>}
           </span>
         </div>
         {/* Remember Me Checkbox */}
-        <div className="mb-4">
-          <label htmlFor="rememberMe" className="block text-sm font-medium text-gray-100">
-            <input type="checkbox" id="rememberMe" name="rememberMe" checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} />
+        <div className={styles.field}>
+          <label htmlFor="rememberMe" className={styles.label}>
+            <input type="checkbox" id="rememberMe" name="rememberMe" checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} className={styles.checkbox} />
             Remember Me
           </label>
         </div>
         {/* Error Message Display */}
-        {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
+        {error && <div className={styles.errorMessage}>{error}</div>}
         {/* Submit Button */}
         <button type="submit" className={styles.linkButton}>Login</button>
       </form>
       {/* Google Sign-in Button */}
-      <button type="button" onClick={handleGoogleSignIn} className="mt-4 bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:from-green-400 hover:via-green-500 hover:to-green-600 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-800/80 text-white font-semibold py-2 px-4 rounded block text-center transition-all duration-700 ease-in-out">
+      <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
         </button>
-      <div className="mt-2">
-        <Link href="/" className="text-white hover:underline">Back to main page</Link>
+      <div className={styles.field}>
+        <Link href="/" className={styles.loginLink}>Back to main page</Link>
       </div>
-      </div>
-      <div className={styles.videoContainer}>
+     </div>
+      
         <video className={styles.videoStyle1} autoPlay  loop  muted playsInline preload="auto"  src="loginVideo1.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
-      </div>
+      
     </div>
   );
 };

@@ -6,6 +6,8 @@ import StoreClosure from '../models/StoreClosures.js';
 import Availability from "../models/EmployeeAvailability.js";
 import Unavailability from "../models/EmployeeUnavilability.js";
 
+
+// MAKE AN APPOINTMENT*****************************************************
 async function isStoreOpen(storeId, date, startTime, endTime) {
     const dayOfWeek = new Date(date).getDay();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -196,3 +198,25 @@ export const getAppointmentsByDate = async (req, res) => {
   }
 };
 
+// GET EMPLOYEE APPOINTMENTS USING AUTHENTICATED EMPLOYEE ID ***********************
+export const getEmployeeAppointments = async (req, res) => {
+    const employeeId = req.user;  // Assuming that req.user is set to the employee's ID after authentication
+    console.log("🚀 ~ getEmployeeAppointments ~ employeeId:", employeeId);
+
+    try {
+        const appointments = await Appointment.find({ employee: employeeId })
+            .populate('user', 'name') // Populates user name
+            .populate({
+                path: 'services', // Populates service details
+                select: 'title description price duration category section isActive' // Selecting fields to populate
+            })
+            .sort('date') // Sorts appointments by date
+            .exec();
+
+        console.log(JSON.stringify(appointments, null, 2));
+        res.status(200).json({ success: true, appointments });
+    } catch (error) {
+        console.error('Failed to fetch appointments for employee:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch employee appointments', error: error.message });
+    }
+};

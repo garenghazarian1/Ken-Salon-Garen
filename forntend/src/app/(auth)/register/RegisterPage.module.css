@@ -19,11 +19,7 @@
     width: 80%;
 }
 
-@media (min-width: 768px) { 
-    .container1 {
-        width: auto;
-    }
-}
+
 
 .heading {
     font-size: 2rem;
@@ -35,6 +31,7 @@
 .filed{
     margin-bottom: 1rem;
 }
+
 .filed1 {
     margin-bottom: 1rem; 
     position: relative;
@@ -121,7 +118,7 @@
     text-decoration: underline;
 }
 
-/* styles.module.css */
+
 .googleSignInButton {
     margin-top: 0.5rem;
     background-image: linear-gradient(to right, #48bb78, #2f855a, #276749);
@@ -146,12 +143,7 @@
     box-shadow: 0 0 0 4px rgba(209, 213, 219, 0.5);
 }
 
-/* Dark mode specific styles */
-@media (prefers-color-scheme: dark) {
-    .googleSignInButton:focus {
-        box-shadow: 0 0 0 4px rgba(31, 41, 55, 0.8);
-    }
-}
+
 
 .circle {
     position: absolute;
@@ -313,6 +305,13 @@
 
 }
 
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+
 @media (min-width: 800px) {
     .videoStyle {
         display: block;
@@ -325,9 +324,5 @@
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-}
+
 
