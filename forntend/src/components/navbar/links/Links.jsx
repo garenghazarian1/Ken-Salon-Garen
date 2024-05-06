@@ -88,8 +88,8 @@ export default function Links() {
               </>
             ) : (
               <>
-                <Link href="/login" className={styles.button}>Login</Link>
-                <Link href="/register" className={styles.button}>Register</Link>
+                <Link href="/login" className={styles.button} onClick={closeMenu}>Login</Link>
+                <Link href="/register" className={styles.button} onClick={closeMenu}>Register</Link>
               </>
             )}
           </div>

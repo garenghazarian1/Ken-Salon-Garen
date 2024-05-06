@@ -6,9 +6,6 @@ import { useRegister } from '../../../context/UserContext.jsx';
 import { signIn, useSession } from "next-auth/react";
 import styles from "@/app/(auth)/login/LoginPage.module.css"
 
-
-
-
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

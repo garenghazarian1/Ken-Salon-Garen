@@ -3,7 +3,7 @@
 import{ useState } from 'react';
 import Link from 'next/link';
 import { useRegister } from '../../../context/UserContext.jsx';
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import styles from "./RegisterPage.module.css"
 import Image from 'next/image.js';
