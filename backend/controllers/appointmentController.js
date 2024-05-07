@@ -6,7 +6,7 @@ import StoreClosure from '../models/StoreClosures.js';
 import Availability from "../models/EmployeeAvailability.js";
 import Unavailability from "../models/EmployeeUnavilability.js";
 import Employee from "../models/Employee.js"
-import User from '../models/UserModel.js';
+
 
 
 // MAKE AN APPOINTMENT*****************************************************

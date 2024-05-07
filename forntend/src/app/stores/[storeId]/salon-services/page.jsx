@@ -38,7 +38,12 @@ const ServicesPage = () => {
 
 
 // Loading and error handling
-if (!currentStoreId) return <p>Please select a store to view its services.</p>;
+useEffect(() => {
+  if (!currentStoreId) {
+    router.push('/stores');
+  }
+}, [currentStoreId, router]); 
+
 if (sessionStatus === "loading") return <p>Loading session...</p>; // Handling session loading state
 if (servicesError) return <p className="text-red-500">Error loading services: {servicesError.message}</p>;
 
@@ -63,7 +68,7 @@ return (
                   320: { slidesPerView: 1, spaceBetween: 10 },
                   660: { slidesPerView: 2, spaceBetween: 10 },
                   1024: { slidesPerView: 3, spaceBetween: 10 },
-                  1440: { slidesPerView: 5, spaceBetween: 10 }
+                  1440: { slidesPerView: 4, spaceBetween: 10 }
                 }}
                 >
             {services.map((service) => (

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useRef  } from 'react';
+import { useState, useEffect, useRef  } from 'react';
 import { useStore } from "@/context/StoreContext";
 import { useService } from "@/context/ServiceContext";
 import { useEmployee } from "@/context/EmployeeContext";
@@ -10,6 +10,7 @@ import Basket from "@/components/basket/Basket";
 import HorizontalCalendar from '@/components/Calender/HorizontalCalendar';
 import styles from './BookingPage.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 
@@ -74,7 +75,7 @@ const BookingPage = () => {
     };
 
     if (sessionStatus === "loading") return <p>Loading session...</p>;
-    if (!session) return <p>Please log in to continue.</p>;
+    if (!session) return <p className={styles.title}>Please log in to continue. <Link className={styles.linkButton} href="/login">Log in</Link></p>;
     if (!currentStoreId) return <p>Please select a store first.</p>;
 
     return (
