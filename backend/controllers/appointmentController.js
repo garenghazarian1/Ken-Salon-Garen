@@ -5,6 +5,8 @@ import StoreHours from '../models/StoreHours.js';
 import StoreClosure from '../models/StoreClosures.js';
 import Availability from "../models/EmployeeAvailability.js";
 import Unavailability from "../models/EmployeeUnavilability.js";
+import Employee from "../models/Employee.js"
+import User from '../models/UserModel.js';
 
 
 // MAKE AN APPOINTMENT*****************************************************
@@ -198,25 +200,29 @@ export const getAppointmentsByDate = async (req, res) => {
   }
 };
 
-// GET EMPLOYEE APPOINTMENTS USING AUTHENTICATED EMPLOYEE ID ***********************
 export const getEmployeeAppointments = async (req, res) => {
-    const employeeId = req.user;  // Assuming that req.user is set to the employee's ID after authentication
-    console.log("🚀 ~ getEmployeeAppointments ~ employeeId:", employeeId);
+    
 
     try {
-        const appointments = await Appointment.find({ employee: employeeId })
-            .populate('user', 'name') // Populates user name
+        const employeeData = await Employee.findOne({ userInfo: req.user});
+        if (!employeeData) {
+            return res.status(404).json({ message: 'Employee profile not found' });
+        }
+
+        const appointments = await Appointment.find({ employee: employeeData._id })
+            .populate('user', 'name email')  // Optionally populating user's name and email
             .populate({
-                path: 'services', // Populates service details
-                select: 'title description price duration category section isActive' // Selecting fields to populate
+                path: 'services',
+                select: 'title description price duration category section isActive'
             })
-            .sort('date') // Sorts appointments by date
+            .sort({ date: 1 })
             .exec();
 
-        console.log(JSON.stringify(appointments, null, 2));
+        console.log("Fetched Appointments: ", JSON.stringify(appointments, null, 2));
         res.status(200).json({ success: true, appointments });
     } catch (error) {
         console.error('Failed to fetch appointments for employee:', error);
         res.status(500).json({ success: false, message: 'Failed to fetch employee appointments', error: error.message });
     }
 };
+

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import{ useEffect } from 'react';
 import styles from './UserCard.module.css';
 import { useAppointment } from '@/context/AppointmentContext'; 
 import Image from 'next/image';
