@@ -7,9 +7,6 @@ import { useSession, signIn } from 'next-auth/react';
 import styles from './CreateStore.module.css';
 
 
-// const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-// const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
-
 const CreateStore = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState({ name: '', street: '', city: '', state: '', zipCode: '', country: '', phone: '', mobile: '', email: '', image: null,});

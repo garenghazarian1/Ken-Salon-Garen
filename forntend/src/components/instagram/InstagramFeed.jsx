@@ -1,19 +1,15 @@
-// components/instagram/InstagramFeed.js
+import styles from './InstagramFeed.module.css';
 
 const InstagramFeed = () => {
   return (
-    <div className="flex justify-center  border-0 shadow-lg rounded-lg m-4 overflow-auto h-full" >
-      <iframe
-        src="//lightwidget.com/widgets/0df751793acd50a8a639c5a6d27cadeb.html"
-        frameborder="0"
-        scrolling="yes"
-        allowtransparency="true"
-        className="w-3/4 h-screen"
-      
+    <div className={styles.container}>
+      <iframe src="https://cdn.lightwidget.com/widgets/0df751793acd50a8a639c5a6d27cadeb.html" 
+      scrolling="no" 
+      allowtransparency="true" 
+      className={styles.iframe} 
       ></iframe>
     </div>
   );
 };
-
 
 export default InstagramFeed;

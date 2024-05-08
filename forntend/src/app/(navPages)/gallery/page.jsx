@@ -9,16 +9,19 @@ export default function Gallery() {
       <Head>
         <title>Gallery | Our Site</title>
         <meta name="description" content="Explore our curated gallery featuring Instagram content." />
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" async></script>
+        {/* <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" async></script> */}
+        {/* <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script> */}
+        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
       </Head>
       <main className="min-h-screen bg-gray-200 p-5">
         <h1 className="text-center text-4xl font-bold my-8 text-gray-800">Welcome to Our Gallery</h1>
-        <section className="container mx-auto">
+        <section >
           <InstagramFeed />
-          {/* Uncomment below if you want to include static Instagram embeds */}
-          {/* <InstagramEmbed /> */}
         </section>
       </main>
     </>
   );
 }
+
+
+
