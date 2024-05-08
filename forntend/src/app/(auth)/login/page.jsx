@@ -67,12 +67,12 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit} className={styles.form}>
         <h2 className={styles.heading}>Login</h2>
         {/* Email field */}
-        <div className={styles.filed}>
+        <div className={styles.field}>
           
           <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputField} required placeholder='E-mail' />
         </div>
         {/* Password field with toggle */}
-        <div className={styles.filed1}>     
+        <div className={styles.field1}>     
           <input type={showPassword ? "text" : "password"} id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inputField} required placeholder='Password' />
           <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
             {showPassword ? <span >Hide</span> : <span  >Show</span>}
@@ -90,10 +90,10 @@ const LoginPage = () => {
         {/* Submit Button */}
         <button type="submit" className={styles.linkButton}>Login</button>
       </form>
-      {/* Google Sign-in Button */}
+      {/* Google Sign-in Button 
       <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
-        </button>
+        </button>*/}
       <div className={styles.field}>
         <Link href="/" className={styles.loginLink}>Back to main page</Link>
       </div>

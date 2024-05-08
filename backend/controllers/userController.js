@@ -76,7 +76,6 @@ const user = await User.findOne({ email });
 if(!user) {
 
   const newUser = new User({
-   
     name,
     email,
     password: 'google auth',

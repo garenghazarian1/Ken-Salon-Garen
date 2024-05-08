@@ -82,23 +82,23 @@ const RegisterPage = () => {
           <div className={styles.circle + ' ' + styles['circle-gray']}></div>
       <form onSubmit={handleSubmit} className={styles.form} >
         <h2 className={styles.heading}>Register</h2>
-        <div className={styles.filed}>
+        <div className={styles.field}>
           <input type="text" id="name" name="name" onChange={handleChange} value={formData.name} className={styles.inputField} required placeholder='Name' />
         </div>
 
-        <div className={styles.filed}>
+        <div className={styles.field}>
           <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} className={styles.inputField} required placeholder="Your email @ken.com" pattern=".+@ken\.com$"
   title="Email must be a @ken.com address." />
         </div>
          {/* Password field with toggle */}
-         <div className={styles.filed1}>
+         <div className={styles.field1}>
           <input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} value={formData.password} className={styles.inputField} required placeholder='Password - 6 characters at least ' />
           <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
             {showPassword ? <span >Hide</span> : <span  >Show</span>}
           </span>
         </div>
         {/* Confirm Password field with toggle */}
-        <div className={styles.filed1}>
+        <div className={styles.field1}>
           <input type={showPassword ? "text" : "password"} id="confirmPassword" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} className={styles.inputField} required placeholder='Password - 6 characters at least ' />
           <span onClick={togglePasswordVisibility} className={styles.passwordToggle}>
             {showPassword ?  <span >Hide</span> : <span >Show</span> }
@@ -109,7 +109,7 @@ const RegisterPage = () => {
           <input type="tel" id="phoneNumber" name="phoneNumber" onChange={handleChange} value={formData.phoneNumber} className={styles.inputField} placeholder="Enter your phone number" pattern="^\+[1-9]\d{1,14}$" title="International phone number format, e.g., +1234567890" required />
         </div>
         
-        <div className={styles.filed1}>
+        <div className={styles.field1}>
           {/* Image upload field */}
           <label htmlFor="imageUpload" className={styles.label}>Profile Image</label>
           <input type="file" id="imageUpload" name="image" onChange={handleImageSelect} className={styles.fileInput} />
@@ -129,10 +129,10 @@ const RegisterPage = () => {
       </div>
 
 
- {/* Google Sign-in Button */}
+ {/* Google Sign-in Button
  <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
-        </button>
+        </button> */}
 
       <div className="mt-2">
         <Link href="/" className={styles.loginLink}>

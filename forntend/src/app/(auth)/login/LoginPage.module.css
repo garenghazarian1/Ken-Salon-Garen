@@ -23,7 +23,8 @@
     
 }
 
-.filed{
+.field{
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -46,7 +47,8 @@
     font-size: 0.7rem; 
 }
 
-.filed1 {
+.field1 {
+    margin-top: 1rem;
     margin-bottom: 1rem; 
     position: relative;
 }
@@ -107,6 +109,7 @@
   }
 
   .loginLink {
+    margin-top: 1rem;
     color: #ffffff; 
     text-decoration: none; 
 }

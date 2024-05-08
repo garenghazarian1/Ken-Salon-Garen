@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     state: { type: String, required: false, trim: true },
     zipCode: { type: String, required: false, trim: true }
   },
-  phoneNumber: { type: String, required: false, trim: true }
+  phoneNumber: { type: String, required: true, trim: true }
 }, 
   {timestamps: true,}
 );
