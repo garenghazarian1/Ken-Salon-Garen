@@ -13,9 +13,6 @@ import { useService } from "@/context/ServiceContext";
 import Link from 'next/link';
 import Image from 'next/image';
 
-
-
-
 const StorePage = ({ params }) => {
   const [store, setStore] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,37 +24,41 @@ const StorePage = ({ params }) => {
   const [isVisible, setIsVisible] = useState(false);
   const {groupedServices, setActiveSection  } = useService();
   
-
-
-
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
   
   useEffect(() => {
+    if (!storeId) return; // Early return if no storeId is available.
+  
     const fetchStore = async () => {
       setLoading(true);
       try {
         const response = await axios.get(`${baseUrl}/api/stores/${storeId}`);
         setStore(response.data);
-        setStoreId(storeId);
-        setError(null);
+        console.log("🚀 FETCHSTORE", response.data);
       } catch (error) {
-        console.error(error, 'Failed to fetch store:' );
+        console.error(error, 'Failed to fetch store:');
         setError(error);
       } finally {
         setLoading(false);
       }
     };
-
-    if (storeId) {
-      fetchStore();
+  
+    fetchStore();
+  }, [storeId]);
+  
+  useEffect(() => {
+    // Separate effect to handle storeId setting which might depend on other logic
+    if (storeId && storeId !== currentStoreId) {
+      setStoreId(storeId);
     }
-  }, [storeId, setStoreId]);
+  }, [storeId, currentStoreId, setStoreId]);
+  
+  console.log('Effect run:', { setStoreId, storeId });
 
   const isOwner = session?.user?.role === 'owner';
 
-  
 
   const handleDeleteStore = async () => {
     if (window.confirm("Are you sure you want to delete this store? This action cannot be undone.")) {
