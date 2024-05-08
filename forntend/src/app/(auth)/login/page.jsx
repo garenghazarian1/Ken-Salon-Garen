@@ -49,9 +49,9 @@ const LoginPage = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    signIn('google');
-  };
+  // const handleGoogleSignIn = () => {
+  //   signIn('google');
+  // };
 
   return (
     <div className={styles.container}>

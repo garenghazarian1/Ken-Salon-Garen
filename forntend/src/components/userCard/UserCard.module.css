@@ -58,3 +58,22 @@
 .deleteButton:hover {
     background-color: darkred;
 }
+
+.employeeLink {
+    padding: 8px 16px;
+    background-color: #10b981;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .employeeLink:hover {
+    background-color: #26d198;
+  }
+
+  .employeeLink:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(96, 161, 170, 0.5);
+  }

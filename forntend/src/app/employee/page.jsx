@@ -44,7 +44,7 @@ function EmployeeAppointments() {
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
       {appointments.map((appointment) => (
         <div key={appointment._id} className="p-4 border shadow rounded-lg">
-          <h2 className="text-lg font-bold">Appointment with {appointment.user.name}</h2>
+          <h2 className="text-lg font-bold">Appointment with {appointment?.user?.name}</h2>
           <p>Date: {appointment.date}</p>
           <p>Time: {appointment.startTime} - {appointment.endTime}</p>
           <div className="mt-2">

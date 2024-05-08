@@ -1,21 +1,33 @@
-import{ useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './UserCard.module.css';
 import { useAppointment } from '@/context/AppointmentContext'; 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';  // Corrected from 'next/navigation'
+import LoadingSkeleton from '../loading/LoadingSkeleton';
+import Link from 'next/link';
 
 const UserCard = ({ session }) => {
-    const { appointments, fetchUserAppointments,deleteAppointment, isLoading } = useAppointment();
+    const { appointments, fetchUserAppointments, deleteAppointment, isLoading } = useAppointment();
+    const router = useRouter();
 
     useEffect(() => {
+    
         if (session?.user) {
             fetchUserAppointments(); 
         }
     }, [session, fetchUserAppointments]);
 
-    if (!session) return <p>Please log in to continue.</p>;
-    if (isLoading) return <p>Loading appointments...</p>;
+    useEffect(() => {
+        // Redirect if not logged in
+        if (!session) {
+          router.push('/');
+        }
+    }, [session, router]);
+
+    if (isLoading) return <LoadingSkeleton />;
 
     const handleDelete = (appointmentId) => {
+        // Confirm before deleting an appointment
         if (window.confirm('Are you sure you want to delete this appointment?')) {
             deleteAppointment(appointmentId);
         }
@@ -23,9 +35,21 @@ const UserCard = ({ session }) => {
 
     return (
         <div className={styles.card}>
-            <Image src={session.user.image || '/default-profile.png'} alt={session.user.name} width={50} height={50} style={{ width: 'auto', height: 'auto' , borderRadius: "50%" }} />
+            <Image 
+                src={session?.user?.image || '/default-profile.png'} 
+                alt={session?.user?.name || 'Default User'} 
+                width={50} 
+                height={50} 
+                style={{ borderRadius: "50%" }} 
+                layout="fixed"
+            />
             <div className={styles.userInfo}>
-                <h3 className={styles.userName}>Welcome, {session.user.name}</h3>
+                <h3 className={styles.userName}>Welcome, {session?.user?.name}</h3>
+                {session?.user?.role === 'employee' && (
+                    <Link href="/employee" className={styles.employeeLink}>
+                        Employee Dashboard
+                    </Link>
+                )}
                 <ul className={styles.appointmentList}>
                     <h2>Your Appointments</h2>
                     {appointments.length > 0 ? (
@@ -34,14 +58,14 @@ const UserCard = ({ session }) => {
                                 Date: {appt.date} <br />
                                 Time: {appt.startTime} - {appt.endTime} <br />
                                 Employee: {appt.employee ? appt?.employee?.userInfo?.name : 'No Employee Assigned'} <br />
-                                Services: {appt.services.map(service => `${service.title} : ${service.description} ${service.price} AED ${service.category}`).join(', ')} <br />
+                                Services: {appt.services.map(service => `${service.title}: ${service.description} ${service.price} AED, ${service.category}`).join(', ')} <br />
                                 <button onClick={() => handleDelete(appt._id)} className={styles.deleteButton}>
-                                   <span className={styles.deleteButtonText}>Delete Appointment</span> 
+                                    Delete Appointment
                                 </button>
                             </li>
                         ))
                     ) : (
-                        <li className={styles.appointmentItem}>No appointments available.</li>
+                        <li>No appointments available.</li>
                     )}
                 </ul>
             </div>
