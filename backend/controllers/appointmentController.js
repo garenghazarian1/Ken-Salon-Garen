@@ -210,7 +210,7 @@ export const getEmployeeAppointments = async (req, res) => {
         }
 
         const appointments = await Appointment.find({ employee: employeeData._id })
-            .populate('user', 'name email')  // Optionally populating user's name and email
+            .populate('user', 'name email phoneNumber')  // Optionally populating user's name and email
             .populate({
                 path: 'services',
                 select: 'title description price duration category section isActive'
