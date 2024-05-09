@@ -1,5 +1,5 @@
-"use client"
-import styles from './Basket.module.css'; // Import the CSS module
+
+import styles from './Basket.module.css'; 
 
 const Basket = ({ selectedServices, services, onRemoveService }) => {
     if (selectedServices.size === 0) {

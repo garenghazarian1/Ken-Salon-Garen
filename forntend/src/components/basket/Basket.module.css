@@ -20,20 +20,20 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: #4A5568; /* Gray */
+    color: #4A5568; 
 }
 
 .itemPrice {
     margin-right: 8px;
-    color: #48BB78; /* Green */
+    color: #48BB78; 
 }
 
 .removeButton {
-    color: #E53E3E; /* Red for remove button */
+    color: #E53E3E; 
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .removeButton:hover {
-    color: #C53030; /* Darker red on hover */
+    color: #C53030; 
 }

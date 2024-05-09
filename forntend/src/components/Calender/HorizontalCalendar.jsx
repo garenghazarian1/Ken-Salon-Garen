@@ -34,8 +34,10 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
   };
 
   return (
+    <>
+    <h2 className={styles.headOne}>Select day and time</h2>
     <div className={styles.container}>
-      <h2 className='mr-4 text-center'>Select day</h2>
+      
       <Swiper
         slidesPerView={6}
         spaceBetween={5}
@@ -43,10 +45,10 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
         className={styles.swiper}
         breakpoints={{
           0: { slidesPerView: 4 },
-          768: { slidesPerView: 6 },
-          1024: { slidesPerView: 8 },
-          1280: { slidesPerView: 10 },
-          1536: { slidesPerView: 12 },
+          768: { slidesPerView: 10 },
+          1024: { slidesPerView: 14},
+          1280: { slidesPerView: 16 },
+          1536: { slidesPerView: 20 },
         }}
       >
         
@@ -60,7 +62,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
       </Swiper>
       {selectedDate && (
         <div className={styles.datePickerContainer}>
-          <span className='mr-4 text-center'>Choose a time</span>
+          <span className={styles.timeText}>Choose a time</span>
           <ReactDatePicker
             selected={selectedTime}
             onChange={(date) => setSelectedTime(date)}
@@ -74,6 +76,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
         </div>
       )}
     </div>
+    </>
   );
 }
 

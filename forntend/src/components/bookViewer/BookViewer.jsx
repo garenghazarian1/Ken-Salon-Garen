@@ -1,4 +1,4 @@
-"use client" // This directive indicates client-only usage in Next.js
+"use client" 
 import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from './BookViewer.module.css';
@@ -6,18 +6,11 @@ import Image from 'next/image';
 import Head from 'next/head'
 
 const ImageBook = () => {
-  // Create an array of image URLs
   const images = Array.from({ length: 14 }, (_, i) => `/aboutMe/am${i + 1}.jpg`);
-
-  // State to track which image is clicked
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // Function to handle click on image
   const handleImageClick = (index) => {
     setSelectedImage(index);
   };
-
-  // Function to handle click on fullscreen image to close it
   const handleCloseFullscreen = () => {
     setSelectedImage(null);
   };

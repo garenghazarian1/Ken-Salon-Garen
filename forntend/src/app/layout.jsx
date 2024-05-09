@@ -10,8 +10,8 @@ import { StoreProvider } from '@/context/StoreContext';
 import { ServiceProvider } from '@/context/ServiceContext';
 import { EmployeeProvider } from "@/context/EmployeeContext";
 import { DateProvider } from "@/context/DateContext";
-import { AppointmentProvider } from "@/context/AppointmentContext"
-
+import { AppointmentProvider } from "@/context/AppointmentContext";
+import styles from './Layout.module.css';
 
 const inter = Inter({ subsets: ["latin"] });
 const arapeyStatic = Lora ({
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.className}, ${arapeyStatic.className} `}>
     
       <body >
-        <div className="flex flex-col min-h-screen">
+        <div className={styles.layoutContainer}>
           <AuthProvider>
               <UserProvider>
                <StoreProvider>
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
                   <AppointmentProvider>
                     <Navbar />
                     
-                      <div className="mt-20 flex-grow">
+                      <div className={styles.childrenContainer}>
                         {children}
                       </div>
                      
