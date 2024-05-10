@@ -5,30 +5,35 @@ import axios from 'axios';
 import {baseUrl} from "@/api/ports";
 import { useSession, signIn } from 'next-auth/react';
 import styles from './CreateStore.module.css';
+import { useRouter } from 'next/navigation';
 
 
 const CreateStore = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState({ name: '', street: '', city: '', state: '', zipCode: '', country: '', phone: '', mobile: '', mobileOne:'', email: '', image: null,});
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
-    const value = e.target.name === 'image' ? e.target.files[0] : e.target.value;
-   
-    setFormData({ ...formData, [e.target.name]: value });
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      const file = files[0];
+      if (file) {
+        setImagePreviewUrl(URL.createObjectURL(file));
+      }
+      setFormData({ ...formData, image: file });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (status === 'loading') {
-        return;
-      }
-  
-      if (status === 'unauthenticated') {
-        signIn();
-        return;
-      }
+    if (status === 'loading') {return;}
+    if (status === 'unauthenticated') {signIn();return;}
 
     const data = new FormData();
     data.append('name', formData.name);
@@ -51,8 +56,13 @@ const CreateStore = () => {
           },
         });
       console.log('Store created:', response.data);
+      router.push("/stores")
+
     } catch (error) {
       console.error(error.response?.data?.message || error.message, 'Error creating store:' );
+      const errorText = error.response?.data?.message || error.message;
+    setErrorMessage(`Error creating store: ${errorText}`);
+    console.error(errorText);
     }
   };
 
@@ -76,8 +86,12 @@ const CreateStore = () => {
       <input className={styles.inputStyle} type="text" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleChange} />
       <input className={styles.inputStyle} type="text" name="mobileOne" placeholder="mobileOne" value={formData.mobileOne} onChange={handleChange} />
       <input className={styles.inputStyle} type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required  />
-      <input  type="file" name="image" onChange={handleChange} className="file-input" />
-      <button type="submit" className="button">Create Store</button>
+      {/* Display Error Message */}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+      {/* Image Preview */}
+      {imagePreviewUrl && <img src={imagePreviewUrl} alt="Preview" className={styles.imagePreview} />}
+      <input  type="file" name="image" onChange={handleChange} className={styles.fileInput} />
+      <button type="submit" className={styles.button}>Create Store</button>
     </form>
     
     </>

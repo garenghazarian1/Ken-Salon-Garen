@@ -4,7 +4,7 @@ import { options } from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import CreateStore from "@/components/store/create-store/create-store"
-import UpdateStoreForm from "@/components/store/UpdateStoreForm";
+import UpdateStoreForm from "@/components/store/update-store/UpdateStoreForm";
 import CreateServicePage from "@/components/salonServices/create-service";
 import UpdateServicePage from "@/components/salonServices/update-service";
 import EmployeeList from "@/components/employee/EmployeeList";
@@ -24,7 +24,7 @@ export default async function Superuser() {
   }
 
   return (
-    <div className="m-20 text-white bg-gray-900 p-4 flex flex-col">
+    <div className=" text-white bg-gray-900 p-4 flex flex-col">
       <h1>Superuser Dashboard</h1> 
       <div >
       <CreateStore/>
