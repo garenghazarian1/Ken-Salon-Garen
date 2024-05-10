@@ -5,9 +5,7 @@ import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
 import { useStore } from "@/context/StoreContext"
 import Image from 'next/image';
-
-const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+import styles from './UpdateStore.module.css';
 
 const UpdateStoreForm = () => {
   const [storeData, setStoreData] = useState({  name: '',  street: '',  city: '',  state: '',  zipCode: '',  country: '',  phone: '',  mobile: '',mobileOne:'',  email: '',  imageStore: '', });
@@ -88,39 +86,38 @@ const handleSubmit = async (e) => {
 
   return (
     <div >
-      <h2 onClick={toggleFormVisibility} className={button}>Update Salon</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">Store updated successfully!</p>}
+      <h1 onClick={toggleFormVisibility} className={styles.toggleButton}>Update Salon</h1>
+      {error && <p className={styles.errorMessage}>{error}</p>}
+      {success && <p className={styles.success}>Store updated successfully!</p>}
       {isFormVisible && (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input  className={inputStyle}  type="text"  name="name"  placeholder="Store Name"  value={storeData.name}  onChange={handleChange} />
-        <input  className={inputStyle}  type="text"  name="street"  placeholder="Street"  value={storeData.street}  onChange={handleChange}  />
-        <input  className={inputStyle}  type="text"  name="city"  placeholder="City"  value={storeData.city}  onChange={handleChange}  require  />
-        <input  className={inputStyle}  type="text"  name="state"  placeholder="State"  value={storeData.state}  onChange={handleChange}  />
-        <input  className={inputStyle}  type="text"  name="zipCode"  placeholder="Zip Code"  value={storeData.zipCode}  onChange={handleChange} />
-        <input  className={inputStyle}  type="text"  name="country"  placeholder="Country"  value={storeData.country}  onChange={handleChange} />
-        <input  className={inputStyle}  type="text"  name="phone"  placeholder="Phone"  value={storeData.phone}  onChange={handleChange} />
-        <input  className={inputStyle}  type="text"  name="mobile"  placeholder="Mobile"  value={storeData.mobile}  onChange={handleChange} />
-        <input  className={inputStyle}  type="text"  name="mobileOne"  placeholder="mobileOne"  value={storeData.mobileOne}  onChange={handleChange} />
-        <input  className={inputStyle}  type="email"  name="email"  placeholder="Email"  value={storeData.email}  onChange={handleChange}  required/>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <input  className={styles.inputStyle}  type="text"  name="name"  placeholder="Store Name"  value={storeData.name}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="text"  name="street"  placeholder="Street"  value={storeData.street}  onChange={handleChange}  />
+        <input  className={styles.inputStyle}  type="text"  name="city"  placeholder="City"  value={storeData.city}  onChange={handleChange}  require  />
+        <input  className={styles.inputStyle}  type="text"  name="state"  placeholder="State"  value={storeData.state}  onChange={handleChange}  />
+        <input  className={styles.inputStyle}  type="text"  name="zipCode"  placeholder="Zip Code"  value={storeData.zipCode}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="text"  name="country"  placeholder="Country"  value={storeData.country}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="text"  name="phone"  placeholder="Phone"  value={storeData.phone}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="text"  name="mobile"  placeholder="Mobile"  value={storeData.mobile}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="text"  name="mobileOne"  placeholder="mobileOne"  value={storeData.mobileOne}  onChange={handleChange} />
+        <input  className={styles.inputStyle}  type="email"  name="email"  placeholder="Email"  value={storeData.email}  onChange={handleChange}  required/>
   
-        <div className="flex flex-col items-center justify-center">
-          <label className="block text-sm font-medium text-gray-700">
+        <div className={styles.imageContainer}>
+          <label className={styles.label}>
             Store Image
           </label>
           <input
-            className="file:px-4 file:py-2 file:border file:border-gray-300 file:rounded file:text-sm file:font-semibold file:bg-white file:text-gray-700 hover:file:bg-gray-100 mt-1"
+            className={styles.imageInput}
             type="file"
             name="imageStore"
             onChange={handleChange}
           />
-          <div className="mt-4 w-24">
+          <div className={styles.imagePreviewContainer}>
               {previewUrl && (
                 <Image
                 src={previewUrl}
                 alt="Store Preview"
                 width={50} height={50} style={{ width: 'auto', height: 'auto' }}
-               
               />
               )}
             </div>
@@ -128,7 +125,7 @@ const handleSubmit = async (e) => {
   
         <button
           type="submit"
-          className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600"
+          className={styles.button}
         >
           Update Store
         </button>

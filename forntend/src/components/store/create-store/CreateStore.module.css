@@ -1,4 +1,19 @@
 /* CreateStore.module.css */
+.toggleButton {
+  background: rgb(2, 63, 35);
+  color: rgb(255, 255, 255); 
+  border: none;
+  padding:0.5rem;
+  cursor: pointer;
+  transition: color 200ms ease-in-out;
+}
+
+.toggleButton:hover {
+ 
+  background: green;
+  color: white; 
+}
+
 .button {
     background-color: #6366f1; 
     color: white;
@@ -49,20 +64,6 @@
     border-radius: 6px;
     background-color: #f9fafb; 
     cursor: pointer;
-  }
-  
-  .toggleButton {
-    background: green;
-    color: rgb(255, 255, 255); 
-    border: none;
-    padding:0.5rem;
-    cursor: pointer;
-    transition: color 200ms ease-in-out;
-  }
-  
-  .toggleButton:hover {
-    background: rgb(2, 63, 35);
-    color: #03eb63; 
   }
   
   .errorMessage {
