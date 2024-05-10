@@ -3,12 +3,12 @@ import Store from '../models/Store.js';
 // CREATE A NEW STORE WITH IMAGE **************************************
 export const createStore = async (req, res) => {
   try {
-    const { name, street, city, state, zipCode, country, phone, mobile, email } = req.body;
+    const { name, street, city, state, zipCode, country, phone, mobile, mobileOne, email } = req.body;
 
     const imageUrl = req.file ? req.file.path : ''; // The URL to the uploaded image
     const imageId = req.file ? req.file.filename : ''; // The Cloudinary public ID for the image
 
-    const store = new Store({ name, street, city, state, zipCode, country, phone, mobile, email, imageStore: imageUrl, imageId: imageId
+    const store = new Store({ name, street, city, state, zipCode, country, phone, mobile, mobileOne, email, imageStore: imageUrl, imageId: imageId
     });
 
     await store.save(); 

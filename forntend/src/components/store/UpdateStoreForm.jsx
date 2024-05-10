@@ -10,7 +10,7 @@ const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus
 const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
 
 const UpdateStoreForm = () => {
-  const [storeData, setStoreData] = useState({  name: '',  street: '',  city: '',  state: '',  zipCode: '',  country: '',  phone: '',  mobile: '',  email: '',  imageStore: '', });
+  const [storeData, setStoreData] = useState({  name: '',  street: '',  city: '',  state: '',  zipCode: '',  country: '',  phone: '',  mobile: '',mobileOne:'',  email: '',  imageStore: '', });
   const [newImage, setNewImage] = useState(null);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -101,6 +101,7 @@ const handleSubmit = async (e) => {
         <input  className={inputStyle}  type="text"  name="country"  placeholder="Country"  value={storeData.country}  onChange={handleChange} />
         <input  className={inputStyle}  type="text"  name="phone"  placeholder="Phone"  value={storeData.phone}  onChange={handleChange} />
         <input  className={inputStyle}  type="text"  name="mobile"  placeholder="Mobile"  value={storeData.mobile}  onChange={handleChange} />
+        <input  className={inputStyle}  type="text"  name="mobileOne"  placeholder="mobileOne"  value={storeData.mobileOne}  onChange={handleChange} />
         <input  className={inputStyle}  type="email"  name="email"  placeholder="Email"  value={storeData.email}  onChange={handleChange}  required/>
   
         <div className="flex flex-col items-center justify-center">

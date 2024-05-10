@@ -9,7 +9,7 @@ import styles from './CreateStore.module.css';
 
 const CreateStore = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [formData, setFormData] = useState({ name: '', street: '', city: '', state: '', zipCode: '', country: '', phone: '', mobile: '', email: '', image: null,});
+  const [formData, setFormData] = useState({ name: '', street: '', city: '', state: '', zipCode: '', country: '', phone: '', mobile: '', mobileOne:'', email: '', image: null,});
   const { data: session, status } = useSession();
 
   const handleChange = (e) => {
@@ -39,6 +39,7 @@ const CreateStore = () => {
     data.append('country', formData.country);
     data.append('phone', formData.phone);
     data.append('mobile', formData.mobile);
+    data.append('mobileOne', formData.mobileOne);
     data.append('email', formData.email);
     if (formData.image) data.append('imageStore', formData.image);
    
@@ -73,6 +74,7 @@ const CreateStore = () => {
       <input className={styles.inputStyle} type="text" name="country" placeholder="Country" value={formData.country} onChange={handleChange}  />
       <input className={styles.inputStyle} type="text" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange}  />
       <input className={styles.inputStyle} type="text" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleChange} />
+      <input className={styles.inputStyle} type="text" name="mobileOne" placeholder="mobileOne" value={formData.mobileOne} onChange={handleChange} />
       <input className={styles.inputStyle} type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required  />
       <input  type="file" name="image" onChange={handleChange} className="file-input" />
       <button type="submit" className="button">Create Store</button>

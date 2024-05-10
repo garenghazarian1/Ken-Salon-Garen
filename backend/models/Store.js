@@ -9,6 +9,7 @@ const storeSchema = new mongoose.Schema({
   country: String,
   phone: String,
   mobile: String,
+  mobileOne:String,
   email: String,
   imageStore: { type: String, required: false },
 }, { timestamps: true });
