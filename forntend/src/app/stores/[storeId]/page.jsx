@@ -4,7 +4,7 @@ import { baseUrl } from '@/api/ports';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import {  useParams,useRouter } from 'next/navigation';
 import { useStore } from "@/context/StoreContext"
 import StoreHoursCalendar from "@/components/store/storeHoursCalendar/StoreHoursCalendar";
 import StoreClosureDisplay from '@/components/store/StoreClosureForm';
@@ -21,6 +21,7 @@ const StorePage = ({ params }) => {
   const { data: session} = useSession();
   const { setStoreId, currentStoreId } = useStore();
   const router = useRouter();
+  const routeParams = useParams();
   const [isVisible, setIsVisible] = useState(false);
   const {groupedServices, setActiveSection  } = useService();
   
@@ -55,7 +56,7 @@ const StorePage = ({ params }) => {
     }
   }, [storeId, currentStoreId, setStoreId]);
   
-  console.log('Effect run:', { setStoreId, storeId });
+  //console.log('Effect run:', { setStoreId, storeId });
 
   const isOwner = session?.user?.role === 'owner';
 

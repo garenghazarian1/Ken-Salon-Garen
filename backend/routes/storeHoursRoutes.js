@@ -12,7 +12,7 @@ router.delete('/:id', protect, owner, deleteStoreHours);
 // Routes for fetching store hours data can remain open or protected without the 'owner' check, depending on your app's requirements
 
 router.get('/by-store/:storeId', getAllStoreHours);
-router.get('/', getAllStoreHours);
+// router.get('/', getAllStoreHours);
 router.get('/:id', getStoreHoursById);
 
 export default router;

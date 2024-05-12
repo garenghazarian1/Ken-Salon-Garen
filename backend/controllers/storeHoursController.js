@@ -32,7 +32,8 @@ export const createStoreHours = async (req, res) => {
 
 // Get store hours by specific store ID, return error if 'store' query parameter is not provided ******************
 export const getAllStoreHours = async (req, res) => {
-  const storeId = req.params.storeId || req.query.store;
+  // const storeId = req.params.storeId || req.query.store;
+  const storeId = req.params.storeId;
   try {
     if (!storeId) {
       return res.status(400).json({ message: "Store ID is required as a parameter." });
