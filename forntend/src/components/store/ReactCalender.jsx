@@ -1,6 +1,6 @@
 // components/MyCalendar.jsx
 "use client";
-import "./calendar.css";
+
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
