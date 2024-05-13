@@ -11,7 +11,7 @@ import EmployeeList from "@/components/employee/EmployeeList";
 import CreateEmployee from "@/components/employee/CreateEmployee";
 import UpdateEmployee from "@/components/employee/UpdateEmployee";
 import CreateStoreHoursForm from "@/components/store/createStoreHoursForm/CreateStoreHoursForm";
-import UpdateStoreHour from "@/components/store/UpdateStoreHour";
+import UpdateStoreHour from "@/components/store/updateStoreHour/UpdateStoreHour";
 import CreateStoreClosureForm from "@/components/store/CreateStoreClosureForm";
 import UpdateStoreClosureForm from "@/components/store/UpdateStoreClosureForm";
 

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useStore } from '@/context/StoreContext'; 
 import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
+import styles from './UpdateStoreHours.module.css';
 
 const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
 const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
@@ -73,15 +74,15 @@ const UpdateStoreHour = () => {
 
   return (
     <>
-      <h2 onClick={toggleFormVisibility} className={buttonStyle}>Update Store Hours</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">{success}</p>}
+      <h2 onClick={toggleFormVisibility} className={styles.toggleButton}>Update Store Hours</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      {success && <p className={styles.success}>{success}</p>}
       {isFormVisible && (
-        <div className="update-store-hour-form">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className={styles.container}>
+          <form onSubmit={handleSubmit} >
             <div>
-              <label htmlFor="day" className="block text-sm font-medium text-gray-200">Day</label>
-              <select id="day" name="day" value={storeHour.day} onChange={handleChange} className={inputStyle}>
+              <label htmlFor="day" className={styles.label}>Day</label>
+              <select id="day" name="day" value={storeHour.day} onChange={handleChange} className={styles.inputStyle}>
                 <option value="">Select a day</option> 
                 <option value="Monday">Monday</option> 
                 <option value="Tuesday">Tuesday</option> 
@@ -93,14 +94,14 @@ const UpdateStoreHour = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="openTime" className="block text-sm font-medium text-gray-200">Open Time</label>
-              <input type="time" id="openTime" name="openTime" value={storeHour.openTime || ''} onChange={handleChange} className={inputStyle}/>
+              <label htmlFor="openTime" className={styles.label}>Open Time</label>
+              <input type="time" id="openTime" name="openTime" value={storeHour.openTime || ''} onChange={handleChange} className={styles.inputStyle}/>
             </div>
             <div>
-              <label htmlFor="closeTime" className="block text-sm font-medium text-gray-200">Close Time</label>
-              <input type="time" id="closeTime" name="closeTime" value={storeHour.closeTime || ''} onChange={handleChange} className={inputStyle}/>
+              <label htmlFor="closeTime" className={styles.label}>Close Time</label>
+              <input type="time" id="closeTime" name="closeTime" value={storeHour.closeTime || ''} onChange={handleChange} className={styles.inputStyle}/>
             </div>
-            <button type="submit" className={buttonStyle}>Update Store Hour</button>
+            <button type="submit" className={styles.button}>Update Store Hour</button>
           </form>
         </div>
       )}
