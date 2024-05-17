@@ -91,46 +91,22 @@ const StorePage = ({ params }) => {
     <div className={styles.container}>
       {store ? (
         <>
-          <div className={`${styles.storeHeader} ${styles.flexRow}`}>
-            <div className={styles.flexCenter}>
-              <h1 className={styles.title1}>{store.name}</h1>
-            </div>
+          <div className={styles.storeHeader} >
+              <h1 className={styles.title}>{store.name}</h1>
             <Image src={store.imageStore} alt={`${store.name} Store Image`} width={50} height={50}  className={styles.storeImage}/>
           </div>
-          <div className={styles.circle + ' ' + styles['circle-green']}></div>
-       {/* <div className={styles.circle + ' ' + styles['circle-blue']}></div>  */}
-      <div className={styles.circle + ' ' + styles['circle-gray']}></div>
-       {/* <div className={styles.circle + ' ' + styles['circle-yellow']}></div>  */}
-
           {isOwner && (
             <>
-              <button
-                onClick={() => router.push(`/superuser`)}
-                className={`${styles.actionButtons} ${styles.buttonUpdate}`}
-              >
-                Update Store
-              </button>
-              <button
-                onClick={handleDeleteStore}
-                className={`${styles.actionButtons} ${styles.buttonDelete} ml-4`}
-              >
-                Delete Store
-              </button>
-              <button
-                onClick={() => router.push(`/superuser`)}
-                className={`${styles.actionButtons} ${styles.buttonCreate} ml-4`}
-              >
-                Create Service
-              </button>
-              <h2 onClick={toggleVisibility} className={styles.toggleVisibility}>...</h2>
-              {isVisible && (
-                        <div className={`${styles.relative} ${styles.flexRow} mt-2`}>
-                          <StoreHoursCalendar />
-                          <StoreClosureDisplay />
-                        </div>
-                      )}
-            </>
-                      
+            <div className={styles.flexRow}>
+              <button onClick={() => router.push(`/superuser`)} className={styles.button}> Update Store </button>
+              <button onClick={handleDeleteStore} className={styles.button} >  Delete Store </button>
+              <button onClick={() => router.push(`/superuser`)} className={styles.button} > Create Service </button>
+            </div>  
+            {/* <div className={styles.flexRow}>
+              <StoreHoursCalendar />
+              <StoreClosureDisplay />
+            </div>          */}
+            </>        
           )}
         </>
       ) : (
@@ -139,17 +115,16 @@ const StorePage = ({ params }) => {
 
 
 <div className={styles.serviceSection}>
-
   <h2 className={styles.title}>Select the service section</h2>
   <div className={styles.serviceSectionLink}>
   {Object.entries(groupedServices).map(([section]) => (
-    <div className={styles.serviceLinkDiv} key={section}>
+    <div  key={section}>
     <Link 
-                href={`/stores/${currentStoreId}/salon-services/`}
-                className={styles.serviceLink}
-                onClick={() => handleSectionSelect(section)} 
-                prefetch={false} 
-              >
+      href={`/stores/${currentStoreId}/salon-services/`}
+      className={styles.button1}
+      onClick={() => handleSectionSelect(section)} 
+      prefetch={false} 
+    >
       {section}
     </Link>
     </div>
