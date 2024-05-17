@@ -1,56 +1,48 @@
 /* Container for the entire component */
 .container {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  border: 0.5px solid #e5e7eb; 
-  border-radius: 0.375rem;
-  background-color: rgb(208, 212, 212);
+  background-color: var(--custom-gray);
 }
 
-/* Title styling */
 .title {
-  font-size: 1.875rem; /* 30px */
-  font-weight: 700; /* bold */
-  margin-left: 2rem; /* 32px */
-  margin-top: 1rem; /* 16px */
+  font-size: 1.5rem;  
+  margin-left: 0.5rem; 
+  margin-top: 0.5rem; 
   color: rgb(7, 122, 36); 
 }
 
-/* Section containing categories and services */
 .section {
-  
   width: 100%;
-  margin-left: 1rem; 
-  margin-top: 1rem; 
+  margin-left: 0.5rem; 
+  margin-top: 0.5rem; 
 }
 
 /* Category title */
 .sectionTitle {
-  font-size: 1.5rem; /* 18px */
-  font-weight: 600; /* semi-bold */
-  margin-bottom: 1rem; /* 16px */
-  color: rgb(7, 122, 36);
+  font-size: 1.2rem; 
+  text-wrap: wrap; 
+  margin-bottom: 0.2rem; 
+  color: var(--dark-green);
 }
 
 /* Styling for each service card */
 .serviceCard {
-  background-color: #1f2937; /* Tailwind gray-900 */
-  transition: transform 0.3s ease-in-out;
+  background-color: var(--dark-gray); 
   padding: 0.5rem;
   border-radius: 0.5rem;
   position: relative;
-  min-width: 300px;
+  min-width: 200px;
   height: auto;
-  margin: 1rem;
+  
 }
 
 /* Hover effect for service card */
 .serviceCard:hover {
-  transform: scale(1.05);
+  background-color: var(--dark-green); 
 }
 
 /* Styling for the service title within each card */
@@ -63,28 +55,28 @@
 
 /* General styling for paragraphs in service cards */
 .serviceText {
-  font-size: 1rem; /* 16px */
-  color: #cbd1d8; /* lighter gray for readability on dark background */
-  margin-bottom: 0.25rem; /* small space between paragraphs */
+  font-size: 1rem; 
+  color: #cbd1d8;
+  margin-bottom: 0.25rem; 
 }
 
 /* Styling for specific service details like duration and price */
 .serviceDetail {
-  font-weight: 500; /* medium weight for slight emphasis */
-  color: #e2e8f0; /* even lighter gray to differentiate from general text */
+  font-weight: 500; 
+  color: #e2e8f0; 
 }
 
 
 /* Styling for buttons, including conditional coloring */
 .button {
   margin: 1rem;
-  padding: 0.5rem; /* 12px */
-  font-size: 0.875rem; /* 14px */
+  padding: 0.5rem;
+  font-size: 0.875rem; 
   font-weight: 400;
-  letter-spacing: 0.05em; /* wider */
+  letter-spacing: 0.05em; 
   text-transform: uppercase;
   transition: all 0.3s linear;
-  border-radius: 20px; /* fully rounded */
+  border-radius: 20px; 
   outline: 1px solid; 
   background: #15251c;
 }
@@ -96,10 +88,10 @@
   background: #376149;
 }
 .button1 {
-  padding: 0.5rem; /* 12px */
-  font-size: 0.875rem; /* 14px */
+  padding: 0.5rem; 
+  font-size: 0.875rem; 
   font-weight: 400;
-  letter-spacing: 0.05em; /* wider */
+  letter-spacing: 0.05em; 
   transition: all 0.3s linear;
 }
 
@@ -112,24 +104,24 @@
 
 /* Selected state for the button */
 .selected {
-  background-image: linear-gradient(to right, #ef4444, #dc2626); /* Tailwind red-500 to red-600 */
+  background-image: linear-gradient(to right, #ef4444, #dc2626);
 }
 
 .selected:hover {
-  background-image: linear-gradient(to right, #dc2626, #b91c1c); /* Tailwind red-600 to red-700 */
+  background-image: linear-gradient(to right, #dc2626, #b91c1c); 
 }
 
 .selected:focus {
-  outline-color: #fecaca; /* Tailwind red-200 */
+  outline-color: #fecaca; 
 }
 
 /* Not selected state for the button */
 .notSelected {
-  background-image: linear-gradient(to right, #22c55e, #16a34a); /* Tailwind green-500 to green-600 */
+  background-image: linear-gradient(to right, #22c55e, #16a34a); 
 }
 
 .notSelected:hover {
-  background-image: linear-gradient(to right, #16a34a, #15803d); /* Tailwind green-600 to green-700 */
+  background-image: linear-gradient(to right, #16a34a, #15803d); 
 }
 
 .notSelected:focus {
@@ -138,10 +130,10 @@
 
 /* Styling for the container div around the button */
 .linkDiv {
-  width: 100%;  /* Takes the full width of its parent */
+  width: 100%;  
   margin-top: 1rem;
   margin-bottom: 4rem;
-  padding: 0 2rem; /* Padding for overall alignment */
+  padding: 0 2rem; 
 }
 
 /* Styling for link buttons */

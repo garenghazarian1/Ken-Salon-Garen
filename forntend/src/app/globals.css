@@ -23,6 +23,8 @@ body{
 :root {
   --custom-green: #10b981;
   --dark-green: #15251c;
+  --custom-gray:#d0d4d4;
+  --dark-gray:#1f2937;
 }
 Image {
   width: auto;

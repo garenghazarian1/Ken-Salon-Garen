@@ -58,6 +58,7 @@ const handleNavigation = () => {
 };
 return (
   <div className={styles.container}>
+    {/* <p >swipe to left &#9756;</p> */}
     <h1 className={styles.title}>{activeSection}</h1>
     
     <div className={styles.section}>
@@ -65,10 +66,12 @@ return (
         <div key={category} className={styles.section}>
           <h2 className={styles.sectionTitle}>{category}</h2>
           <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} breakpoints={{
-                  320: { slidesPerView: 1, spaceBetween: 10 },
-                  660: { slidesPerView: 2, spaceBetween: 10 },
-                  1024: { slidesPerView: 3, spaceBetween: 10 },
-                  1440: { slidesPerView: 4, spaceBetween: 10 }
+                 320: { slidesPerView: 1, spaceBetween: 10 },
+                  480: { slidesPerView: 1, spaceBetween: 10 },
+                  520: { slidesPerView: 2, spaceBetween: 10 },
+                  800: { slidesPerView: 3, spaceBetween: 10 },
+                  1024: { slidesPerView: 4, spaceBetween: 10 },
+                  1440: { slidesPerView: 5, spaceBetween: 10 }
                 }}
                 >
             {services.map((service) => (
