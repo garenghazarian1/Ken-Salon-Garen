@@ -55,7 +55,7 @@ const StoreHoursDisplay = () => {
       {isVisible && (
         <>
          {isOwner && (
-          <button onClick={handleCreateStoreHour} className={`${styles.button} ${styles.buttonCreate}`}>
+          <button onClick={handleCreateStoreHour} className={styles.button}>
             Create
           </button>
           )}
@@ -67,11 +67,10 @@ const StoreHoursDisplay = () => {
                   <span>{hour.day}: {hour.openTime} - {hour.closeTime}</span>
                   {isOwner && (
                     <div>
-                      
-                      <button onClick={() => handleUpdateStoreHour(hour._id)} className={`${styles.button} ${styles.buttonUpdate}`}>
+                      <button onClick={() => handleUpdateStoreHour(hour._id)} className={styles.button} >
                         Update
                       </button>
-                      <button onClick={() => handleDeleteStoreHour(hour._id)} className={`${styles.button} ${styles.buttonDelete}`}>
+                      <button onClick={() => handleDeleteStoreHour(hour._id)} className={styles.button}>
                         Delete
                       </button>
                     </div>

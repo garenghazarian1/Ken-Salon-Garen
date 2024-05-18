@@ -97,7 +97,8 @@ export const ServiceProvider = ({ children }) => {
     console.log("Updated Selection:", Array.from(updatedSelection));
     // Added session check to safely log user ID and email
     if (session) {  
-      console.log("User ID:", session?.user?._id , "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
+      console.log("User ID:", session?.user?._id, "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
+      // console.log("User ID:", session?.user?._id , "User:", session.user.email, "Selected Services:", Array.from(updatedSelection));
     }
   };
 

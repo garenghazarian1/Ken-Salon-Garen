@@ -5,6 +5,7 @@ import { baseUrl } from '@/api/ports';
 import { useStore, } from '@/context/StoreContext';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import styles from "./StoreClosureForm.module.css"
 
 const StoreClosureDisplay = () => {
   const { setStoreClosureId, storeClosures } = useStore();
@@ -48,20 +49,20 @@ const StoreClosureDisplay = () => {
   const isOwner = session?.user?.role === 'owner';
 
   return (
-    <div className="p-4 bg-black rounded-lg shadow text-white">
-      <h2 onClick={toggleVisibility} className="text-lg font-bold mb-2 cursor-pointer">Store Closures:</h2>
+    <div className={styles.container}>
+      <h2 onClick={toggleVisibility} className={styles.header}>Store Closures:</h2>
       
       {isVisible && (
         <>
           {isOwner && (
-            <button onClick={handleCreateStoreClosure} className="px-2 py-1 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded">
+            <button onClick={handleCreateStoreClosure} className={styles.button}>
               Create
             </button>
           )}
-          <ul className="list-disc pl-5">
+          <ul className={styles.list}>
             {storeClosures.length > 0 ? (
               storeClosures.map((closure, index) => (
-                <li key={index} className="mb-1 text-white flex justify-between items-center">
+                <li key={index} className={styles.listItem}>
                   <span>
                       {new Date(closure.closureDate).toLocaleDateString('en-GB', {
                        day: '2-digit', month: '2-digit', year: 'numeric'
@@ -70,10 +71,10 @@ const StoreClosureDisplay = () => {
 
                   {isOwner && (
                     <div>
-                      <button onClick={() => handleUpdateStoreClosure(closure._id)} className="px-2 py-1 mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+                      <button onClick={() => handleUpdateStoreClosure(closure._id)} className={styles.button}>
                         Update
                       </button>
-                      <button onClick={() => handleDeleteStoreClosure(closure._id)} className="px-2 py-1 bg-red-500 hover:bg-red-700 text-white font-bold rounded">
+                      <button onClick={() => handleDeleteStoreClosure(closure._id)} className={styles.button}>
                         Delete
                       </button>
                     </div>

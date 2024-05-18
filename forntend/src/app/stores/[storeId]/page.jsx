@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import {  useParams,useRouter } from 'next/navigation';
 import { useStore } from "@/context/StoreContext"
 import StoreHoursCalendar from "@/components/store/storeHoursCalendar/StoreHoursCalendar";
-import StoreClosureDisplay from '@/components/store/StoreClosureForm';
+import StoreClosureDisplay from '@/components/store/storeClosureForm/StoreClosureForm';
 import styles from './StorePage.module.css';
 import { useService } from "@/context/ServiceContext";
 import Link from 'next/link';
@@ -61,22 +61,22 @@ const StorePage = ({ params }) => {
   const isOwner = session?.user?.role === 'owner';
 
 
-  const handleDeleteStore = async () => {
-    if (window.confirm("Are you sure you want to delete this store? This action cannot be undone.")) {
-      try {
-        await axios.delete(`${baseUrl}/api/stores/${storeId}`, {
-          headers: {
-            'Authorization': `Bearer ${session.accessToken}`,
-          },
-        });
-        alert('Store successfully deleted');
-        router.push('/stores');
-      } catch (error) {
-        console.error( error,'Failed to delete store:');
-        alert('Failed to delete store');
-      }
-    }
-  };
+  // const handleDeleteStore = async () => {
+  //   if (window.confirm("Are you sure you want to delete this store? This action cannot be undone.")) {
+  //     try {
+  //       await axios.delete(`${baseUrl}/api/stores/${storeId}`, {
+  //         headers: {
+  //           'Authorization': `Bearer ${session.accessToken}`,
+  //         },
+  //       });
+  //       alert('Store successfully deleted');
+  //       router.push('/stores');
+  //     } catch (error) {
+  //       console.error( error,'Failed to delete store:');
+  //       alert('Failed to delete store');
+  //     }
+  //   }
+  // };
 
   const handleSectionSelect = (section) => {
     console.log("🚀 ~ handleSectionSelect ~ section:", section)
@@ -99,13 +99,13 @@ const StorePage = ({ params }) => {
             <>
             <div className={styles.flexRow}>
               <button onClick={() => router.push(`/superuser`)} className={styles.button}> Update Store </button>
-              <button onClick={handleDeleteStore} className={styles.button} >  Delete Store </button>
+              {/* <button onClick={handleDeleteStore} className={styles.button} >  Delete Store </button> */}
               <button onClick={() => router.push(`/superuser`)} className={styles.button} > Create Service </button>
             </div>  
-            {/* <div className={styles.flexRow}>
+             <div className={styles.flexRow}>
               <StoreHoursCalendar />
               <StoreClosureDisplay />
-            </div>          */}
+            </div>          
             </>        
           )}
         </>
