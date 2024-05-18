@@ -66,7 +66,7 @@ return (
         <div key={category} className={styles.section}>
           <h2 className={styles.sectionTitle}>{category}</h2>
           <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} breakpoints={{
-                 320: { slidesPerView: 1, spaceBetween: 10 },
+                 0: { slidesPerView: 1, spaceBetween: 10 },
                   480: { slidesPerView: 1, spaceBetween: 10 },
                   520: { slidesPerView: 2, spaceBetween: 10 },
                   800: { slidesPerView: 3, spaceBetween: 10 },
@@ -80,8 +80,8 @@ return (
                   <div>
                   <h4 className={styles.serviceTitle}>{service.title}</h4>
                   <p className={styles.serviceText}>{service.description}</p>
-                  <p className={`${styles.serviceText} ${styles.serviceDetail}`}>Duration: {service.duration} minutes</p>
-                  <p className={`${styles.serviceText} ${styles.serviceDetail}`}>Price:  {service.price} AED</p>
+                  <p className={styles.serviceText}>Duration: {service.duration} minutes</p>
+                  <p className={styles.serviceText}>Price: {service.price} AED</p>
                     <button
                       className={`${styles.button} ${selectedServices.has(service._id) ? 'styles.selected' : 'styles.notSelected'}`}
                       onClick={() => handleServiceSelectionChange(service._id)}
@@ -89,7 +89,7 @@ return (
                       {selectedServices.has(service._id) ? 'Deselect' : 'Select'}
                     </button>
                   </div>
-                  <div className="mt-2">
+                  <div >
                             <Link className={styles.button1} href={`/stores/${currentStoreId}/salon-services/${service._id}`}>
                               Learn more
                             </Link>
@@ -100,9 +100,11 @@ return (
           </Swiper>
         </div>
       ))}
-      {!isServiceSelected && (
-          <p className="text-black ml-8">Please select at least one service to proceed.</p>
-        )}
+      {!isServiceSelected ? (
+        <p className={styles.selected}>Please select at least one service to proceed.</p>
+      ) : (
+        <p className={styles.notSelected}>Service selected, you can proceed.</p>
+      )}
         <div className={styles.linkDiv}>
         <button className={styles.linkButton} onClick={handleNavigation}>
             Next

@@ -25,6 +25,7 @@ body{
   --dark-green: #15251c;
   --custom-gray:#d0d4d4;
   --dark-gray:#1f2937;
+  --light-gray:#cbd1d8;
 }
 Image {
   width: auto;
