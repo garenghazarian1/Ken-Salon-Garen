@@ -49,7 +49,7 @@ export const options = {
           const response = await axios.post(`${baseUrl}/api/users/google/login`,{account, profile });
        //   return response.data;
           console.log("🚀 ~ SIGNIN ~ response:", response.data)
-          return true;
+          return response.data;
         } catch (e) {
           console.log(e);
           return false;
@@ -60,28 +60,26 @@ export const options = {
       return true
      // return token // Do different verification for other providers that don't have `email_verified`
     },
-    async jwt({ token, account, user,  }) {
-      //console.log("jwt callback { token, user }", { token, user,});
-      // If user object exists, it means it's a new sign-in
-      if (user?.token) {
-        token.provider = 'credentials'
-        token.user = user.user;
-        token.role = user.user.role;
-        token.accessToken = user.token;
-        token.userId = user._id;
+    async jwt({ token, account, user }) {
+      if (user) {
+        token.user = user.user || user;
+        token.accessToken = user.token || token.accessToken;
+        token.userId = user._id || token.userId;
+        token.id = user.user?._id || user._id;
       }
-       return token;
+      return token;
     },
     async session({ session, token }) {
-      if(token.provider === 'credentials'){
-        session.user = token.user;
-        session.accessToken = token.accessToken;
-        session.role = token.role;
-        session.id = token.userId;
-        return session;
-       }
-       return session;
-
+      if (token?.id) {
+        session.user.id = token.id;
+      }
+      session.user = token.user;
+      session.accessToken = token.accessToken;
+      session.id = token.userId;
+      return session;
+     
     },
+    
   },
+  
 };

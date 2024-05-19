@@ -20,6 +20,7 @@ export const ServiceProvider = ({ children }) => {
   const [activeSection, setActiveSection] = useState(null);
   const [selectedServices, setSelectedServices] = useState(new Set());
   const { data: session, status: sessionStatus  } = useSession();
+  // console.log("🚀 ~ ServiceProvider ~ session:", session)
   
 
   useEffect(() => {

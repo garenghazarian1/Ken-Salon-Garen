@@ -87,8 +87,7 @@ const RegisterPage = () => {
         </div>
 
         <div className={styles.field}>
-          <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} className={styles.inputField} required placeholder="Your email @ken.com" pattern=".+@ken\.com$"
-  title="Email must be a @ken.com address." />
+          <input type="email" id="email" name="email" onChange={handleChange} value={formData.email} className={styles.inputField} required placeholder="Your email" />
         </div>
          {/* Password field with toggle */}
          <div className={styles.field1}>
@@ -106,7 +105,7 @@ const RegisterPage = () => {
         </div>
 
         <div className={styles.field}>
-          <input type="tel" id="phoneNumber" name="phoneNumber" onChange={handleChange} value={formData.phoneNumber} className={styles.inputField} placeholder="Enter your phone number" pattern="^\+[1-9]\d{1,14}$" title="International phone number format, e.g., +1234567890" required />
+          <input type="tel" id="phoneNumber" name="phoneNumber" onChange={handleChange} value={formData.phoneNumber} className={styles.inputField} placeholder="Enter your phone number"  />
         </div>
         
         <div className={styles.field1}>

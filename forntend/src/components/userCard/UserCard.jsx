@@ -36,8 +36,8 @@ const UserCard = ({ session }) => {
     return (
         <div className={styles.card}>
             <Image 
-                src={session?.user?.image || '/default-profile.png'} 
-                alt={session?.user?.name || 'Default User'} 
+                src={session?.user?.image || '/logo01.png'} 
+                alt={session?.user?.name } 
                 width={50} 
                 height={50} 
                 style={{ borderRadius: "50%" }} 

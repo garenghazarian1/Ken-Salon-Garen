@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 
 
 const userSchema = new mongoose.Schema({
+  
   name: { type: String, required: true, trim: true },
   email: { 
     type: String, 
@@ -25,7 +26,8 @@ const userSchema = new mongoose.Schema({
     state: { type: String, required: false, trim: true },
     zipCode: { type: String, required: false, trim: true }
   },
-  phoneNumber: { type: String, required: true, trim: true }
+  phoneNumber: { type: String, required: true, trim: true },
+  authMethod: { type: String, enum: ['local', 'google'], default: 'local' }
 }, 
   {timestamps: true,}
 );

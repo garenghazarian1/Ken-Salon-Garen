@@ -49,9 +49,13 @@ const LoginPage = () => {
     }
   };
 
-   const handleGoogleSignIn = () => {
-     signIn('google');
-   };
+    // const handleGoogleSignIn = () => {
+    //   signIn('google');
+    // };
+
+  // const handleGoogleLogin = async () => {
+  //   signIn('google', { callbackUrl: '/' });
+  // };
 
   return (
     <div className={styles.container}>
@@ -90,10 +94,10 @@ const LoginPage = () => {
         {/* Submit Button */}
         <button type="submit" className={styles.linkButton}>Login</button>
       </form>
-       Google Sign-in Button 
-      <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
+       {/* Google Sign-in Button */}
+      {/* <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
-        </button>
+        </button>  */}
       <div className={styles.field}>
         <Link href="/" className={styles.loginLink}>Back to main page</Link>
       </div>

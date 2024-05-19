@@ -69,6 +69,7 @@ export const loginUser = async (req, res) => {
 export const googleLogin = async (req, res) => {
 
 const {account,profile } =  req.body
+console.log("🚀 ~ googleLogin ~ req:", req.body)
 
 const { email,name, picture } = profile
 
@@ -85,12 +86,9 @@ if(!user) {
 
   const expiresIn = '30d'
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn });
-  res.status(200).send({ token, user: user });
   
-}else{
-  const expiresIn = '30d'
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn });
   res.status(200).send({ token, user });
+  console.log("🚀 ~ googleLogin ~ token:", token)
 }
 
 }

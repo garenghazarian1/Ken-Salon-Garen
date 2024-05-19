@@ -56,7 +56,7 @@ export default function Links() {
         {session ? (
           <Link href="/user">
           <div className={styles.imageContainer} >       
-            <Image src={session?.user?.image} alt="Profile" width={50} height={50} className={styles.image}   />
+            <Image src={session?.user?.image || '/logo01.png'} alt="Profile" width={50} height={50} className={styles.image}   />
           <h2>Welcome {session?.user?.name}</h2>
           <button onClick={handleLogout} className={styles.button}>Logout</button>
           </div>
@@ -79,7 +79,7 @@ export default function Links() {
              {session ? (
               <>
               <Link href="/user" onClick={closeMenu}>
-              <Image src={session.user.image } alt="Profile" width={50} height={50} className={styles.image} />
+              <Image src={session?.user?.image || '/logo01.png'} alt="Profile" width={50} height={50} className={styles.image} />
               </Link>
               <button onClick={handleLogout} className={styles.button}>Logout</button>
               
