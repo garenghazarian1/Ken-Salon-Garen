@@ -6,7 +6,7 @@ import { baseUrl } from '@/api/ports';
 import { useStore } from '@/context/StoreContext';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation'; 
-import MyCalendar from '../ReactCalender';
+import MyCalendar from '../reactCalender/ReactCalender';
 import styles from './StoreHoursDisplay.module.css';
 
 const StoreHoursDisplay = () => {

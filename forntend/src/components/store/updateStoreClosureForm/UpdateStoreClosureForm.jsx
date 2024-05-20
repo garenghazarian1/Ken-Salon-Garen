@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useStore } from '@/context/StoreContext';
 import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
+import styles from "./UpdateStoreClosureForm.module.css"
 
-const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500";
-const buttonStyle = "flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg transition duration-300 ease-in-out hover:bg-gray-400";
 
 const UpdateStoreClosureForm = () => {
   const router = useRouter();
@@ -72,21 +71,21 @@ const UpdateStoreClosureForm = () => {
 
   return (
     <>
-      <h2 onClick={toggleFormVisibility} className={buttonStyle}>Update Store Closure</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">{success}</p>}
+      <h2 onClick={toggleFormVisibility} className={styles.toggleButton}>Update Store Closure</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      {success && <p className={styles.success}>{success}</p>}
       {isFormVisible && (
-        <div className="update-store-closure-form">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className={styles.container}>
+          <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="closureDate" className="block text-sm font-medium text-gray-200">Closure Date</label>
-              <input type="date" id="closureDate" name="closureDate" value={storeClosure.closureDate || ''} onChange={handleChange} className={inputStyle}/>
+              <label htmlFor="closureDate" className={styles.label}>Closure Date</label>
+              <input type="date" id="closureDate" name="closureDate" value={storeClosure.closureDate || ''} onChange={handleChange} className={styles.inputStyle}/>
             </div>
             <div>
-              <label htmlFor="reason" className="block text-sm font-medium text-gray-200">Reason</label>
-              <input type="text" id="reason" name="reason" value={storeClosure.reason || ''} onChange={handleChange} className={inputStyle}/>
+              <label htmlFor="reason" className={styles.label}>Reason</label>
+              <input type="text" id="reason" name="reason" value={storeClosure.reason || ''} onChange={handleChange} className={styles.inputStyle}/>
             </div>
-            <button type="submit" className={buttonStyle}>Update Closure</button>
+            <button type="submit" className={styles.button}>Update Closure</button>
           </form>
         </div>
       )}

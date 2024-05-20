@@ -6,6 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import { useSession } from 'next-auth/react'; 
 import { useStore } from '@/context/StoreContext';
+import styles from "./ReactCalender.module.css"
 
 const MyCalendar = () => {
   const { storeHours, storeClosures } = useStore();
@@ -70,8 +71,8 @@ const MyCalendar = () => {
         minDate={minDate}
         maxDate={maxDate}
         tileContent={tileContent}
-        tileDisabled={tileDisabled} // This prop was missing in the original code
-        className="mt-5 bg-white text-gray-900 border rounded-lg"
+        tileDisabled={tileDisabled} 
+        className={styles.calendarContainer}
       />
     </div>
   );

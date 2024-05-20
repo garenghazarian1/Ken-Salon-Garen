@@ -8,9 +8,7 @@ import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
 import styles from './UpdateStoreHours.module.css';
 
-const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
-const buttonStyle = "flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg transition duration-300 ease-in-out hover:bg-gray-400";
+
 
 const UpdateStoreHour = () => {
   const router = useRouter();

@@ -32,3 +32,41 @@ Image {
   height: auto;
 }
 
+/* globals.css */
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top:50% !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  margin-top: -2rem !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: rgb(133, 132, 132) !important;
+  border-radius: 50% !important;
+  transition: background-color 0.3s !important;
+  cursor: pointer !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.swiper-button-next {
+  right: 5% !important;
+}
+
+.swiper-button-prev {
+  display: hidden !important;
+  left: -10% !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1rem !important;
+}

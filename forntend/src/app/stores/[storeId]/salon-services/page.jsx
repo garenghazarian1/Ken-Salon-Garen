@@ -65,7 +65,7 @@ return (
       {Object.entries(groupedServices).map(([category, services]) => (
         <div key={category} className={styles.section}>
           <h2 className={styles.sectionTitle}>{category}</h2>
-          <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} breakpoints={{
+          <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} navigation breakpoints={{
                  0: { slidesPerView: 1, spaceBetween: 10 },
                   480: { slidesPerView: 1, spaceBetween: 10 },
                   520: { slidesPerView: 2, spaceBetween: 10 },

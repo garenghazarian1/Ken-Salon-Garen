@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useStore } from '@/context/StoreContext';
 import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
+import styles from "./CreateStoreClosureForm.module.css"
 
 const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500";
 const buttonStyle = "flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg transition duration-300 ease-in-out hover:bg-gray-400";
@@ -80,22 +81,28 @@ const CreateStoreClosureForm = () => {
 
   return (
     <>
-      <h2 onClick={toggleFormVisibility} className={buttonStyle}>Create Store Closure</h2>
+      <h2 onClick={toggleFormVisibility} className={styles.toggleButton}>Create Store Closure</h2>
       {isFormVisible && (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {error && <p className="text-red-500">{error}</p>}
-          {success && <p className="text-green-500">{success}</p>}
+        <form onSubmit={handleSubmit} className={styles.container}>
+          {error && <p className={styles.error}>{error}</p>}
+          {success && <p className={styles.success}>{success}</p>}
           <div>
-            <label htmlFor="closureDate" className="block text-sm font-medium text-gray-200">Closure Date</label>
-            <input type="date" id="closureDate" value={closureDate} onChange={(e) => setClosureDate(e.target.value)} className={inputStyle}/>
+            <label htmlFor="closureDate" className={styles.label}>Closure Date</label>
+            <input type="date" id="closureDate" value={closureDate} onChange={(e) => setClosureDate(e.target.value)} className={styles.inputStyle}/>
           </div>
           <div>
-            <label htmlFor="reason" className="block text-sm font-medium text-gray-200">Reason</label>
-            <input type="text" id="reason" value={reason} onChange={(e) => setReason(e.target.value)} className={inputStyle}/>
+            <label htmlFor="reason" className={styles.label}>Reason</label>
+            <input type="text" id="reason" value={reason} onChange={(e) => setReason(e.target.value)} className={styles.inputStyle}/>
           </div>
-          <button type="submit" disabled={isLoading} className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}>
-            {isLoading ? 'Adding...' : 'Add Closure'}
-          </button>
+          <button
+      type="submit"
+      disabled={isLoading}
+      className={`${styles.button} ${isLoading ? styles.disabled : ''}`}
+      onFocus={(e) => e.currentTarget.classList.add(styles.focus)}
+      onBlur={(e) => e.currentTarget.classList.remove(styles.focus)}
+    >
+      {isLoading ? 'Adding...' : 'Add Closure'}
+    </button>
         </form>
       )}
     </>
