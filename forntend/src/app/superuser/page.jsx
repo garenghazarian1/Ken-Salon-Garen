@@ -7,7 +7,7 @@ import CreateStore from "@/components/store/create-store/create-store"
 import UpdateStoreForm from "@/components/store/update-store/UpdateStoreForm";
 import CreateServicePage from "@/components/salonServices/createServices/CreateServices";
 import UpdateServicePage from "@/components/salonServices/updateServices/UpdateServices";
-import EmployeeList from "@/components/employee/EmployeeList";
+import EmployeeList from "@/components/employee/employeeList/EmployeeList";
 import CreateEmployee from "@/components/employee/CreateEmployee";
 import UpdateEmployee from "@/components/employee/UpdateEmployee";
 import CreateStoreHoursForm from "@/components/store/createStoreHoursForm/CreateStoreHoursForm";

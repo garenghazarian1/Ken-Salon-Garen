@@ -8,8 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useEmployee } from '@/context/EmployeeContext';
 import AvailabilityManager from '@/components/employee/AvailabilityManager';
 import UnavailabilityManager from '@/components/employee/UnavailabilityManager';
-
-const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+import styles from "./EmployeeList.module.css"
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -21,18 +20,15 @@ const EmployeeList = () => {
   const [selectedEmployeeForAvailability, setSelectedEmployeeForAvailability] = useState(null);
   const [selectedEmployeeForUnavailability, setSelectedEmployeeForUnavailability] = useState(null);
   
-
   useEffect(() => {
     const getEmployees = async () => {
       if (!session) {
         console.log("No session found. User might not be logged in.");
         return;
       }
-
       try {
         const response = await axios.get(`${baseUrl}/api/employees`, {
-          headers: {
-            
+          headers: { 
             'Authorization': `Bearer ${session.accessToken}`,
           },
         });
@@ -43,12 +39,10 @@ const EmployeeList = () => {
         console.error(err);
       }
     };
-
     if (session) {
       getEmployees();
     }
   }, [session]);
-
 
   const handleDeleteEmployee = async (employeeId) => {
     const confirmDelete = confirm('Are you sure you want to delete this employee? This action will revert their role back to user.');
@@ -75,12 +69,12 @@ const EmployeeList = () => {
 
   const handleManageAvailabilities = (employeeId) => {
     setSelectedEmployeeId(employeeId); // Update selected employee ID in the context
-    setSelectedEmployeeForAvailability(employeeId); // Update local state for UI control
+    setSelectedEmployeeForAvailability(prev => prev === employeeId ? null : employeeId); // Toggle selection
   };
 
   const handleManageUnavailabilities = (employeeId) => {
     setSelectedEmployeeId(employeeId); // Update selected employee ID in the context for unavailabilities
-    setSelectedEmployeeForUnavailability(employeeId); // Update local state for UI control
+    setSelectedEmployeeForUnavailability(prev => prev === employeeId ? null : employeeId); // Toggle selection
   };
 
 
@@ -94,49 +88,52 @@ const EmployeeList = () => {
   return (
     <div>
      
-      <h2 onClick={toggleListVisibility} className={button}>Employee List</h2>
+      <h2 onClick={toggleListVisibility} className={styles.toggleButton}>Employee List</h2>
       {isListVisible && (
         <ul>
           {employees.map((employee) => (
-            <li key={employee._id} className="mb-4">
-              <div className="flex justify-between items-center">
+            <li key={employee._id} className={styles.li}>
+              <div className={styles.container}>
                 <div>
                   {employee.userInfo ? (
                     <>
-                      <span className="font-bold">{employee.userInfo.name}</span> - 
-                      <span className="font-bold">{employee.store.name}</span> -
-                      <span> {employee.sections?.join(', ') || 'No sections assigned'}</span>
+                      <span className={styles.span} > {employee.userInfo.name}: </span>  
+                      <span className={styles.span}> {employee.store.name}: </span>
+                      <span className={styles.span}> {employee.sections?.join(', ') || 'No sections assigned'}.</span>
                     </>
                   ) : 'User info not available'}
                 </div>
                 <div>
                   <button 
                     onClick={(e) => { e.stopPropagation(); handleUpdateEmployee(employee._id); }} 
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-                  >
+                    className={styles.button}>
                     Update
                   </button>
                   <button 
                     onClick={(e) => { e.stopPropagation(); handleDeleteEmployee(employee._id); }} 
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  >
+                    className={styles.button}>
                     Delete
                   </button>
                 </div>
               </div>
+              <div  className={styles.container1}>
+                <div>
               <button
                 onClick={() => handleManageAvailabilities(employee._id)}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
-              >
+                className={styles.button}>
                 Manage Availabilities
               </button>
+              
               {selectedEmployeeForAvailability === employee._id && <AvailabilityManager />}
+              </div>
+              <div>
               <button
                 onClick={() => handleManageUnavailabilities(employee._id)}
-                className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2"
-              >
+                className={styles.button}>
                 Manage Unavailabilities
               </button>
+              </div>
+              </div>
               {/* Render UnavailabilityManager for the selected employee */}
               {selectedEmployeeForUnavailability === employee._id && <UnavailabilityManager />}
              
