@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import {baseUrl} from "@/api/ports";
 import { useSession, signIn } from 'next-auth/react';
 import { useStore } from "@/context/StoreContext"
+import styles from "./CreateServices.module.css"
 
 const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
 const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
@@ -68,36 +69,36 @@ const CreateServicePage = () => {
 
   return (
     <>
-      <h1 className={button} onClick={toggleFormVisibility}>
+      <h1 className={styles.toggleButton} onClick={toggleFormVisibility}>
         Create a New Service for Store
         </h1>
-      {isFormVisible && (<form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 max-w-md mx-auto">
+      {isFormVisible && (<form onSubmit={handleSubmit} className={styles.formContainer}>
 
-          <label htmlFor="section">Section</label>
-          <input className={inputStyle} id="section" name="section" type="text" value={serviceData.section} onChange={handleChange} required />
+          <label htmlFor="section" className={styles.label}>Section</label>
+          <input className={styles.inputStyle} id="section" name="section" type="text" value={serviceData.section} onChange={handleChange} required />
 
-          <label htmlFor="title">Title</label>
-          <input className={inputStyle} id="title" name="title" type="text" value={serviceData.title} onChange={handleChange} required/>
+          <label htmlFor="title" className={styles.label}>Title</label>
+          <input className={styles.inputStyle} id="title" name="title" type="text" value={serviceData.title} onChange={handleChange} required/>
 
-          <label htmlFor="description">Description</label>
-          <textarea className={inputStyle} id="description" name="description" value={serviceData.description} onChange={handleChange} />
+          <label htmlFor="description" className={styles.label}>Description</label>
+          <textarea className={styles.inputStyle} id="description" name="description" value={serviceData.description} onChange={handleChange} />
 
-          <label htmlFor="duration">Duration (in minutes)</label>
-          <input className={inputStyle} id="duration" name="duration" type="number" value={serviceData.duration} onChange={handleChange} required />
+          <label htmlFor="duration" className={styles.label}>Duration (in minutes)</label>
+          <input className={styles.inputStyle} id="duration" name="duration" type="number" value={serviceData.duration} onChange={handleChange} required />
 
-          <label htmlFor="price">Price</label>
-          <input className={inputStyle} id="price" name="price" type="number" value={serviceData.price} onChange={handleChange} required />
+          <label htmlFor="price" className={styles.label}>Price</label>
+          <input className={styles.inputStyle} id="price" name="price" type="number" value={serviceData.price} onChange={handleChange} required />
 
-          <label htmlFor="category">Category</label>
-          <input className={inputStyle} id="category" name="category" type="text" value={serviceData.category} onChange={handleChange} required  />
+          <label htmlFor="category" className={styles.label}>Category</label>
+          <input className={styles.inputStyle} id="category" name="category" type="text" value={serviceData.category} onChange={handleChange} required  />
 
-          <label htmlFor="isActive">Active</label>
-          <input className={inputStyle} id="isActive" name="isActive" type="checkbox" checked={serviceData.isActive} onChange={handleChange}  />
+          <label htmlFor="isActive" className={styles.label}>Active</label>
+          <input className={styles.inputStyle} id="isActive" name="isActive" type="checkbox" checked={serviceData.isActive} onChange={handleChange}  />
 
-        <button type="submit" disabled={isLoading} className={button}>
+        <button type="submit" disabled={isLoading} className={styles.button}>
           {isLoading ? 'Creating...' : 'Create Service'}
         </button>
-        {error && <p className="error">{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
       </form>
 )}
     </>

@@ -5,8 +5,8 @@ import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import CreateStore from "@/components/store/create-store/create-store"
 import UpdateStoreForm from "@/components/store/update-store/UpdateStoreForm";
-import CreateServicePage from "@/components/salonServices/create-service";
-import UpdateServicePage from "@/components/salonServices/update-service";
+import CreateServicePage from "@/components/salonServices/createServices/CreateServices";
+import UpdateServicePage from "@/components/salonServices/updateServices/UpdateServices";
 import EmployeeList from "@/components/employee/EmployeeList";
 import CreateEmployee from "@/components/employee/CreateEmployee";
 import UpdateEmployee from "@/components/employee/UpdateEmployee";
