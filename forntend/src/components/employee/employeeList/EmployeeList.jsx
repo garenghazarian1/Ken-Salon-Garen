@@ -6,7 +6,7 @@ import { baseUrl } from '@/api/ports';
 import { useSession} from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEmployee } from '@/context/EmployeeContext';
-import AvailabilityManager from '@/components/employee/AvailabilityManager';
+import AvailabilityManager from '@/components/employee/availabilityManager/AvailabilityManager';
 import UnavailabilityManager from '@/components/employee/UnavailabilityManager';
 import styles from "./EmployeeList.module.css"
 

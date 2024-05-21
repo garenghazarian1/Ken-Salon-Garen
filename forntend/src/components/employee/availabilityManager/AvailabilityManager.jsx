@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useEmployee } from '@/context/EmployeeContext';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import styles from "./AvailabilityManager.module.css"
 
 const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500";
 const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
@@ -50,35 +51,34 @@ const AvailabilityManager = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
-            <h3 className="text-xl font-semibold mb-4">Availabilities</h3>
-            <ul className="list-disc pl-5">
+        <div className={styles.container}>
+            <h3 className={styles.heading}>Availabilities</h3>
+            <ul className={styles.list}>
                 {filteredAvailabilities.map((availability) => (
-                    <li key={availability._id} className="mb-3">
-                        <p className="mb-1">
-                            <span className="font-medium">Days:</span> {availability.day}
+                    <li key={availability._id} className={styles.listItem}>
+                        <p className={styles.itemText}>
+                            <span >Days:</span> {availability.day}
                         </p>
-                        <p className="mb-2">
-                            <span className="font-medium">Time:</span> {availability.startTime} - {availability.endTime}
+                        <p className={styles.itemText}>
+                            <span >Time:</span> {availability.startTime} - {availability.endTime}
                         </p>
 
-                        <div className="flex gap-2">
-                            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" onClick={() => handleEditClick(availability)}>Edit</button>
-                            <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-300" onClick={() => handleDeleteClick(availability._id)}>Delete</button>
+                        <div className={styles.buttonContainer}>
+                            <button className={styles.button} onClick={() => handleEditClick(availability)}>Edit</button>
+                            <button className={styles.button} onClick={() => handleDeleteClick(availability._id)}>Delete</button>
                         </div>
                     </li>
                 ))}
             </ul>
-            <h4 className="text-lg font-semibold mt-6">{editingAvailabilityId ? 'Edit Availability' : 'Add Availability'}</h4>
-            <form onSubmit={editingAvailabilityId ? handleUpdateAvailabilitySubmit : handleAddAvailabilitySubmit} className="mt-4">
-                <div className="flex flex-col space-y-4 max-w-xs mx-auto my-8">
-                <div>
-                    
+            <h4 className={styles.formHeading}>{editingAvailabilityId ? 'Edit Availability' : 'Add Availability'}</h4>
+            <form onSubmit={editingAvailabilityId ? handleUpdateAvailabilitySubmit : handleAddAvailabilitySubmit} className={styles.form}>
+                <div className={styles.formControl}>
+                <div>    
                     <select
                         id="day"
                         value={selectedDay}
                         onChange={(e) => setSelectedDay(e.target.value)}
-                        className={inputStyle}
+                        className={styles.select}
                     >
                         <option value="">Select a day</option>
                         <option value="Monday">Monday</option>
@@ -88,10 +88,11 @@ const AvailabilityManager = () => {
                         <option value="Friday">Friday</option>
                         <option value="Saturday">Saturday</option>
                         <option value="Sunday">Sunday</option>
+                        
                     </select>
                 </div>
 
-                <div className="time-picker-wrapper">
+                <div >
                     <ReactDatePicker
                         placeholderText="Start Time"
                         selected={newAvailability.startTime ? new Date(new Date().toDateString() + ' ' + newAvailability.startTime) : null}
@@ -101,8 +102,7 @@ const AvailabilityManager = () => {
                         timeIntervals={15}
                         timeCaption="Start Time"
                         dateFormat="HH:mm"
-                        wrapperClassName="date-picker"
-                        className={`${inputStyle} text-center`}
+                        className={styles.datePicker}
                     />
                 </div>
 
@@ -116,15 +116,15 @@ const AvailabilityManager = () => {
                         timeIntervals={15}
                         timeCaption="End Time"
                         dateFormat="HH:mm"
-                        wrapperClassName="date-picker"
-                        className={`${inputStyle} text-center`}
+                        className={styles.datePicker}
                     />
                 </div>
 
             </div>
 
-                <button type="submit" className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-300 mr-2">{editingAvailabilityId ? 'Update' : 'Add'}</button>
-                {editingAvailabilityId && <button type="button" className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-300" onClick={() => setEditingAvailabilityId(null)}>Cancel Edit</button>}
+                <button type="submit"  className={` ${styles.submitButton}`}>{editingAvailabilityId ? 'Update' : 'Add'}</button>
+
+                {editingAvailabilityId && <button type="button" className={`${styles.cancelButton}`} onClick={() => setEditingAvailabilityId(null)}>Cancel Edit</button>}
             </form>
         </div>
     );
