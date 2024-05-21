@@ -10,26 +10,25 @@ const client = twilio(accountSid, authToken);
 export const sendWhatsAppTemplateMessage = async (to, templateName, templateParams) => {
   try {
     const message = await client.messages.create({
-      from: process.env.TWILIO_WHATSAPP_NUMBER,
       to: `whatsapp:${to}`,
-      body: '',
-      template: {
-        namespace: 'HX3f0b44a6a536dc2bb32c597deb411631', // Replace with your actual template namespace
+      from: process.env.TWILIO_WHATSAPP_NUMBER, // Optional if using Messaging Service SID
+      messagingServiceSid: 'MG2fa8df6abe118aa8c74b7043f6877b67', // Correct Messaging Service SID
+       body: 'text',
+       messagingServiceSid: 'MG2fa8df6abe118aa8c74b7043f6877b67', 
+       template: {
         name: templateName,
         language: {
-          code: 'en', // Replace with the appropriate language code
-          policy: 'deterministic'
+          code: 'en', // Use 'en' for English
         },
-        components: [
-          {
-            type: 'body',
-            parameters: templateParams.map(param => ({ type: 'text', text: param }))
-          }
-        ]
+        components: [{
+          type: 'body', // Component type should match what's required in the template
+          parameters: templateParams.map(param => ({ type: 'text', text: param })) // Ensure the parameters match the template requirements
+        }]
       }
     });
     return { success: true, message: 'Message sent successfully', sid: message.sid };
   } catch (error) {
+    console.error("Failed to send message: ", error);
     return { success: false, message: error.message };
   }
 };

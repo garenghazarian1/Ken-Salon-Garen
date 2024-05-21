@@ -4,10 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { baseUrl } from '@/api/ports';
-
-const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500";
-const buttonStyle = "bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700";
-const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+import styles from "./CreateEmployee.module.css"
 
 
 const CreateEmployee = () => {
@@ -79,34 +76,36 @@ const CreateEmployee = () => {
 
         return (
             <>
-                {/* Clickable header to toggle form visibility */}
-                <h2 onClick={toggleFormVisibility} className={button}>Create Employee</h2>
-                {isFormVisible && (
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 max-w-md mx-auto">
-                        <select className={inputStyle} name="storeId" value={formData.storeId} onChange={handleChange} required>
-                            <option value="">Select a Store</option>
-                            {stores.map(store => (
-                                <option key={store._id} value={store._id}>{store.name}</option>
-                            ))}
-                        </select>
-    
-                        <input className={inputStyle} type="text" placeholder="Search Users by Name" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-    
-                        <select className={inputStyle} name="userId" value={formData.userId} onChange={handleChange} required>
-                            <option value="">Select a User</option>
-                            {users.map(user => (
-                                <option key={user._id} value={user._id}>{user.name}</option>
-                            ))}
-                        </select>
-    
-                        <input className={inputStyle} type="text" name="sections" placeholder="Sections (comma-separated)" value={formData.sections} onChange={handleChange} required />
-    
-                        {error && <div>{error}</div>}
-                        <button type="submit" className={buttonStyle}>Create Employee</button>
-                    </form>
-                )}
+              <h2 onClick={toggleFormVisibility} className={styles.button}>Create Employee</h2>
+              <div className={styles.container}>
+              {isFormVisible && (
+                <form onSubmit={handleSubmit} className={styles.visibleForm}>
+                  <select className={styles.input} name="storeId" value={formData.storeId} onChange={handleChange} required>
+                    <option value="">Select a Store</option>
+                    {stores.map(store => (
+                      <option key={store._id} value={store._id}>{store.name}</option>
+                    ))}
+                  </select>
+        
+                  <input className={styles.input} type="text" placeholder="Search Users by Name" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        
+                  <select className={styles.input} name="userId" value={formData.userId} onChange={handleChange} required>
+                    <option value="">Select a User</option>
+                    {users.map(user => (
+                      <option key={user._id} value={user._id}>{user.name}</option>
+                    ))}
+                  </select>
+        
+                  <input className={styles.input} type="text" name="sections" placeholder="Sections (comma-separated)" value={formData.sections} onChange={handleChange} required />
+        
+                  {error && <div className={styles.error}>{error}</div>}
+                  <button type="submit" className={styles.button}>Create Employee</button>
+                </form>
+                
+              )}
+              </div>
             </>
-        );
-    };
-    
-    export default CreateEmployee;
+          );
+        };
+        
+        export default CreateEmployee;
