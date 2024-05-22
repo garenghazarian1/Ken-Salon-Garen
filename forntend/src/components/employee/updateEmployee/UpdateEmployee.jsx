@@ -6,10 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { baseUrl } from '@/api/ports';
 import { useEmployee } from '@/context/EmployeeContext';
-
-const inputStyle = "text-black px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500";
-const buttonStyle = "bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700";
-const button = " flex justify-center text-sm cursor-pointer text-gray-100 p-4 rounded-lg  transition duration-300 ease-in-out   hover:bg-gray-400"
+import styles from "./UpdateEmployee.module.css"
 
 const UpdateEmployee = () => {
   const [formData, setFormData] = useState({
@@ -82,13 +79,13 @@ const UpdateEmployee = () => {
 
   return (
     <>
-      <h2 onClick={toggleFormVisibility} className={button}>Update Employee</h2>
+      <h2 onClick={toggleFormVisibility} className={styles.toggleButton}>Update Employee</h2>
       {isFormVisible && (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input  type="text"  name="sections"  placeholder="Sections (comma-separated)"  value={formData.sections}  onChange={handleChange}  required  className={inputStyle}
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
+          <input  type="text"  name="sections"  placeholder="Sections (comma-separated)"  value={formData.sections}  onChange={handleChange}  required  className={styles.fileInput}
           />
           {error && <div>{error}</div>}
-          <button className={buttonStyle} type="submit">Update Employee</button>
+          <button className={styles.button} type="submit">Update Employee</button>
         </form>
       )}
     </>
