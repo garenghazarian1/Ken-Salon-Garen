@@ -4,11 +4,6 @@ import Link from 'next/link';
 import { useStore } from "@/context/StoreContext";
 import { useService } from "@/context/ServiceContext";
 import { useSession } from 'next-auth/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import styles from './ServicesPage.module.css';
 import { useRouter } from "next/navigation"
 
@@ -87,7 +82,7 @@ return (
          
             {services.map((service) => (
              
-                <div className={styles.serviceCard}>
+                <div key={service._id} className={styles.serviceCard}>
                   <div className={styles.flex}>
                   <h4 className={styles.serviceTitle}>{service.title}</h4>
                   <p className={styles.serviceText}>Duration: {service.duration} min</p>

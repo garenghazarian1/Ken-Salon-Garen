@@ -6,6 +6,7 @@ import {baseUrl} from "@/api/ports";
 import { useSession, signIn } from 'next-auth/react';
 import styles from './CreateStore.module.css';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 
 const CreateStore = () => {
@@ -89,7 +90,7 @@ const CreateStore = () => {
       {/* Display Error Message */}
       {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       {/* Image Preview */}
-      {imagePreviewUrl && <img src={imagePreviewUrl} alt="Preview" className={styles.imagePreview} />}
+      {imagePreviewUrl && <Image  src={imagePreviewUrl} alt="Preview" width={250} height={250} className={styles.imagePreview} />}
       <input  type="file" name="image" onChange={handleChange} className={styles.fileInput} />
       <button type="submit" className={styles.button}>Create Store</button>
     </form>

@@ -49,7 +49,7 @@ function EmployeeAppointments() {
       setIsLoading(false);
       setError("Session not active. Please log in.");
     }
-  }, [status, session]);
+  }, [status, session, groupingType]);
 
   // Function to group appointments
   const groupAppointments = (appointments, type) => {
