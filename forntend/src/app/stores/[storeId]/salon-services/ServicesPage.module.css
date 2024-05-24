@@ -8,10 +8,41 @@
   background-color: var(--custom-gray);
 }
 
+/* ServicesPage.module.css */
+
+.categoryNavigation {
+  position: fixed; 
+  top: 15%; 
+  left: 0%; 
+  width: 100%; 
+  background-color: rgba(255, 255, 255, 0.87); 
+  z-index: 1000; 
+  padding: 0.3rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  display: flex; 
+  justify-content: flex-start;
+  flex-wrap: wrap; 
+  font-size: 0.6rem;
+}
+
+/* Additional styling for navigation links */
+.categoryNavigationA {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Text color */
+  padding: 5px 10px; /* Padding around text */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.categoryNavigationA:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+
 .title {
-  font-size: 1.5rem;  
+  font-size: 1rem;  
   margin-left: 0.5rem; 
-  margin-top: 0.5rem; 
+  margin-top: 7rem; 
   color: rgb(7, 122, 36); 
 }
 
@@ -23,7 +54,7 @@
 
 /* Category title */
 .sectionTitle {
-  font-size: 1.2rem; 
+  font-size: 0.9rem; 
   text-wrap: wrap; 
   margin-bottom: 0.2rem; 
   color: var(--dark-green);
@@ -31,10 +62,18 @@
 
 .serviceCard {
   background-color: var(--dark-gray); 
-  padding: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   min-width: 200px;
+  width: 80%;
   height: auto; 
+  display: flex;
+ justify-content: space-between;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .serviceCard:hover {
@@ -42,13 +81,13 @@
 }
 
 .serviceTitle {
-  font-size: 1rem; 
+  font-size: 0.9rem; 
   color: #ffffff; 
-  margin-bottom: 0.5rem; 
 }
 
 .serviceText {
-  font-size: 0.9rem; 
+  font-size: 0.8rem; 
+  padding-left: 0.5rem;
   color: var(--light-gray);
 }
 
@@ -56,13 +95,15 @@
   cursor: pointer;
   text-align: center;
   display: inline-block;
+  width: 30px;
+  height: 30px;
   margin: 0.3rem;
   background-color: var(--custom-green);
   color: #ffffff;
   opacity: 0.75;
   font-weight: bold;
-  border-radius: 9999px;
-  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -72,14 +113,14 @@
 }
 .button1 {
   cursor: pointer;
-  color: var(--light-gray);
-  opacity: 0.75;
+  color: var(--custom-green);
+ 
   transition: transform 0.3s ease-in-out;
 }
 
 .button1:hover {
   transform: scale(1.1);
-  color: #ffffff;
+  color: var(--dark-green);
 }
 
 
@@ -162,6 +203,10 @@
 
 .linkButton:hover {
   color: #FFF;
+}
+
+.error{
+  color:red
 }
 
 

@@ -92,8 +92,12 @@ export const ServiceProvider = ({ children }) => {
     if (updatedSelection.has(serviceId)) {
       updatedSelection.delete(serviceId);
     } else {
+      if (updatedSelection.size >= 6) {
+        // Alert the user if they try to select more than six services
+        alert('You can only select up to 6 services.');
+      }else {
       updatedSelection.add(serviceId);
-    }
+    }}
     setSelectedServices(updatedSelection);
     console.log("Updated Selection:", Array.from(updatedSelection));
     // Added session check to safely log user ID and email

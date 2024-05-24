@@ -50,6 +50,8 @@ const ServiceDetailPage = () => {
     <div className={styles.container}>
     <h1 className={styles.title}>{currentService.title}</h1>
     <h3 className={styles.description}>{currentService.description}</h3>
+    <p className={styles.serviceText}>Duration: {currentService.duration} min</p>
+                  <p className={styles.serviceText}>Price: {currentService.price} AED</p>
     {isOwner && (
       <>
         <button

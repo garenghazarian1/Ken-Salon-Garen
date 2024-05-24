@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import styles from './ServicesPage.module.css';
+import styles from './Swiper.module.css';
 import { useRouter } from "next/navigation"
 
 const ServicesPage = () => {
@@ -68,48 +68,46 @@ const handleNavigation = () => {
 // };
 return (
   <div className={styles.container}>
-          {/* Navigation Links for Categories */}
-          <div className={styles.categoryNavigation}>
-        {Object.keys(groupedServices).map(category => (
-          <a href={`#${category.replace(/\s+/g, '-')}`} key={category} className={styles.categoryNavigationA}>{category}</a>
-        ))}
-                
-        <button className={styles.button1} onClick={handleNavigation}>
-            Next
-        </button>
-        
-      </div>
-      <h1 className={styles.title}>{activeSection}</h1>
+    {/* <p >swipe to left &#9756;</p> */}
+    <h1 className={styles.title}>{activeSection}</h1>
+    
     <div className={styles.section}>
       {Object.entries(groupedServices).map(([category, services]) => (
-        <div key={category} className={styles.section} id={category.replace(/\s+/g, '-')}>
+        <div key={category} className={styles.section}>
           <h2 className={styles.sectionTitle}>{category}</h2>
-         
+          <Swiper spaceBetween={10} slidesPerView={5}  pagination={{ clickable: true }} navigation breakpoints={{
+                 0: { slidesPerView: 1, spaceBetween: 10 },
+                  480: { slidesPerView: 1, spaceBetween: 10 },
+                  520: { slidesPerView: 2, spaceBetween: 10 },
+                  800: { slidesPerView: 3, spaceBetween: 10 },
+                  1024: { slidesPerView: 4, spaceBetween: 10 },
+                  1440: { slidesPerView: 5, spaceBetween: 10 }
+                }}
+                >
             {services.map((service) => (
-             
+              <SwiperSlide key={service._id}>
                 <div className={styles.serviceCard}>
-                  <div className={styles.flex}>
+                  <div>
                   <h4 className={styles.serviceTitle}>{service.title}</h4>
-                  <p className={styles.serviceText}>Duration: {service.duration} min</p>
+                  <p className={styles.serviceText}>{service.description}</p>
+                  <p className={styles.serviceText}>Duration: {service.duration} minutes</p>
                   <p className={styles.serviceText}>Price: {service.price} AED</p>
-                  </div>
-                  <div className={styles.flex}>
                     <button
                       className={`${styles.button} ${selectedServices.has(service._id) ? 'styles.selected' : 'styles.notSelected'}`}
                       onClick={() => handleServiceSelectionChange(service._id)}
                     >
-                      {selectedServices.has(service._id) ? '-' : '+'}
+                      {selectedServices.has(service._id) ? 'Deselect' : 'Select'}
                     </button>
-                 
-                  
-                         <button className={styles.button}>  <Link  href={`/stores/${currentStoreId}/salon-services/${service._id}`}>
-                              ...
-                            </Link></button> 
+                  </div>
+                  <div >
+                            <Link className={styles.button1} href={`/stores/${currentStoreId}/salon-services/${service._id}`}>
+                              Learn more
+                            </Link>
                           </div>
                 </div>
-             
+              </SwiperSlide>
             ))}
-          
+          </Swiper>
         </div>
       ))}
       {!selectedServices ? (
