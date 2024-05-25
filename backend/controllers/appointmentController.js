@@ -118,13 +118,29 @@ export const bookAppointment = async (req, res) => {
 // GET ALL APPOINTMENTS ***********************
 export const getAllAppointments = async (req, res) => {
     try {
-        const allAppointments = await Appointment.find().populate('user', 'name').sort('date').lean();
+        const allAppointments = await Appointment.find()
+            .populate('user', 'name') // Populates user information
+            .populate({
+                path: 'employee',
+                populate: {
+                    path: 'userInfo',
+                    select: 'name email phoneNumber' // Populates employee's user information
+                }
+            })
+            .populate({
+                path: 'services', // Populates service details
+                select: 'title description price duration category section isActive' // Selecting fields to populate
+            })
+            .sort('date')
+            .lean();
+        
         res.status(200).json({ success: true, allAppointments });
     } catch (error) {
         console.error('Failed to fetch all appointments: ', error);
         res.status(500).json({ success: false, message: "Failed to fetch all appointments backend", error: error.message });
     }
 };
+
 
 // GET USER APPOINTMENTS ***********************
 export const getUserAppointments = async (req, res) => {

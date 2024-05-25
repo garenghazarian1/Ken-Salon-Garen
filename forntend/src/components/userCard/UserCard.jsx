@@ -50,6 +50,11 @@ const UserCard = ({ session }) => {
                         Employee Dashboard
                     </Link>
                 )}
+                {session?.user?.role === 'owner' && (
+                    <Link href="/generalAppointmentControl" className={styles.ownerLink}>
+                        General Appointment Control
+                    </Link>
+                )}
                 <ul className={styles.appointmentList}>
                     <h2>Your Appointments</h2>
                     {appointments.length > 0 ? (
