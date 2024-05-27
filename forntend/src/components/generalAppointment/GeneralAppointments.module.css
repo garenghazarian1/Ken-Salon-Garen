@@ -1,0 +1,61 @@
+.container {
+    background-color: var(--dark-gray);
+    margin: 1rem;
+    padding: 0.4rem;
+    color: white;
+}
+
+.dateList, .employeeList {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    border: 1px solid white;
+    margin-bottom: 1rem;
+}
+
+.dateItem, .employeeItem {
+    padding: 0.3rem;
+    border: 1px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dateItem:hover, .employeeItem:hover {
+    background-color: #555;
+}
+
+.selectedDate, .selectedEmployee {
+    background-color: #777;
+}
+
+.header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+}
+
+.appointmentList {
+    list-style-type: none;
+    background-color: var(--custom-green);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.appointmentItem {
+    margin-bottom: 1rem;
+    padding: 0.4rem;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: #bdcccc;
+    color: #333;
+}
+
+.serviceList {
+    margin-left: 1rem;
+    list-style-type: disc;
+}
+
+.serviceDetails {
+    margin: 0.5rem 0;
+}

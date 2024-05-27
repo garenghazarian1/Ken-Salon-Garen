@@ -18,10 +18,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (session && session.user.role === 'owner') {
-      // If the session exists and the user is an owner, redirect to the Superuser page
       redirect("/superuser");
     } else if (session) {
-      // For any other authenticated user, redirect to the callback URL or homepage
       redirect(callbackUrl);
     }
   }, [session, status, callbackUrl]);
@@ -30,7 +28,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {e.preventDefault();
     try {
-     // await signIn(email, password, rememberMe);
+      //await signIn(email, password, rememberMe);
      const res= await signIn("credentials", {
         redirect: false,
         email,
@@ -49,9 +47,9 @@ const LoginPage = () => {
     }
   };
 
-    // const handleGoogleSignIn = () => {
-    //   signIn('google');
-    // };
+  //  const handleGoogleSignIn = () => {
+  //    signIn('google');
+  //  };
 
   // const handleGoogleLogin = async () => {
   //   signIn('google', { callbackUrl: '/' });
@@ -95,9 +93,9 @@ const LoginPage = () => {
         <button type="submit" className={styles.linkButton}>Login</button>
       </form>
        {/* Google Sign-in Button */}
-      {/* <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
+       {/* <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
-        </button>  */}
+        </button>   */}
       <div className={styles.field}>
         <Link href="/" className={styles.loginLink}>Back to main page</Link>
       </div>
