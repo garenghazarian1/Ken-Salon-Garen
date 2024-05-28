@@ -119,7 +119,10 @@ export const bookAppointment = async (req, res) => {
 export const getAllAppointments = async (req, res) => {
     try {
         const allAppointments = await Appointment.find()
-            .populate('user', 'name') // Populates user information
+        .populate({
+            path: 'user',
+            select: 'name phoneNumber' // Correctly populating user name and phoneNumber
+        })
             .populate({
                 path: 'employee',
                 populate: {

@@ -29,6 +29,7 @@ export default function GeneralAppointments() {
                         const appointments = response.data.allAppointments;
                         setAppointments(appointments);
                         groupAppointmentsByDateAndEmployee(appointments);
+                        //console.log(response.data)
                     } catch (err) {
                         setError(err.response ? err.response.data.message : err.message);
                     }
@@ -67,6 +68,14 @@ export default function GeneralAppointments() {
         return <div>Error: {error}</div>;
     }
 
+    const calculateTotalPrice = (services) => {
+        return services.reduce((total, service) => total + service.price, 0);
+    };
+
+    const calculatePriceWithVAT = (price) => {
+        return price * 1.05;
+    };
+
     return (
         <div className={styles.container}>
             <h1 className={styles.header}>Appointments</h1>
@@ -99,26 +108,33 @@ export default function GeneralAppointments() {
             )}
             {selectedDate && selectedEmployee && (
                 <ul className={styles.appointmentList}>
-                    {groupedAppointments[selectedDate][selectedEmployee]?.map((appointment) => (
-                        <li key={appointment._id} className={styles.appointmentItem}>
-                            <p><strong>Employee:</strong> {appointment.employee.userInfo.name}</p>
-                            <p><strong>User:</strong> {appointment.user.name}</p>
-                            <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
-                            <p><strong>Start Time:</strong> {appointment.startTime}</p>
-                            <p><strong>End Time:</strong> {appointment.endTime}</p>
-                            <p><strong>Services:</strong></p>
-                            <ul className={styles.serviceList}>
-                                {appointment.services.map(service => (
-                                    <li key={service._id}>
-                                        <p className={styles.serviceDetails}><strong>Section:</strong> {service.section}</p>
-                                        <p className={styles.serviceDetails}><strong>Category:</strong> {service.category}</p>
-                                        <p className={styles.serviceDetails}><strong>Title:</strong> {service.title}</p>
-                                        <p className={styles.serviceDetails}><strong>Price:</strong> {service.price} AED</p>   
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                    ))}
+                   {groupedAppointments[selectedDate][selectedEmployee]?.map((appointment) => {
+                        const totalPrice = calculateTotalPrice(appointment.services);
+                        const totalPriceWithVAT = calculatePriceWithVAT(totalPrice);
+                        return (
+                            <li key={appointment._id} className={styles.appointmentItem}>
+                                <p><strong>Employee:</strong> {appointment.employee.userInfo.name}</p>
+                                <p><strong>User:</strong> {appointment.user.name}</p>
+                                <p><strong>Phone:</strong> {appointment.user.phoneNumber}</p>
+                                <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
+                                <p><strong>Start Time:</strong> {appointment.startTime}</p>
+                                <p><strong>End Time:</strong> {appointment.endTime}</p>
+                                <p><strong>Total Price:</strong> {totalPrice} AED</p>
+                                <p><strong>Total Price (with VAT):</strong> {totalPriceWithVAT.toFixed(2)} AED</p>
+                                <p><strong>Services:</strong></p>
+                                <ul className={styles.serviceList}>
+                                    {appointment.services.map(service => (
+                                        <li key={service._id}>
+                                            <p className={styles.serviceDetails}><strong>Section:</strong> {service.section}</p>
+                                            <p className={styles.serviceDetails}><strong>Category:</strong> {service.category}</p>
+                                            <p className={styles.serviceDetails}><strong>Title:</strong> {service.title}</p>
+                                            <p className={styles.serviceDetails}><strong>Price:</strong> {service.price} AED</p>   
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        );
+                    })}
                 </ul>
             )}
         </div>
@@ -127,45 +143,3 @@ export default function GeneralAppointments() {
 
 
 
-// return (
-//     <div className={styles.container}>
-//     <h1 className={styles.header}>Appointments</h1>
-//     <div className={styles.dateList}>
-//             {Object.keys(groupedAppointments).map(date => (
-//                 <div
-//                     key={date}
-//                     className={`${styles.dateItem} ${selectedDate === date ? styles.selectedDate : ''}`}
-//                     onClick={() => setSelectedDate(date)}
-//                 >
-//                     {date}
-//                 </div>
-//             ))}
-//         </div>
-//         <ul className={styles.appointmentList}>
-//             {groupedAppointments[selectedDate]?.map((appointment) => (
-//                 <li key={appointment._id} className={styles.appointmentItem}>
-//                 <p><strong>Employee:</strong> {appointment.employee.userInfo.name}</p>
-//                 <p><strong>User:</strong> {appointment.user.name}</p>
-//                 <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
-//                 <p><strong>Start Time:</strong> {appointment.startTime}</p>
-//                 <p><strong>End Time:</strong> {appointment.endTime}</p>
-//                 {/* <p><strong>Status:</strong> {appointment.status}</p> */}
-//                 <p><strong>Services:</strong></p>
-//                 <ul className={styles.serviceList}>
-//                     {appointment.services.map(service => (
-//                         <li key={service._id}>
-//                             <p className={styles.serviceDetails}><strong>Section:</strong> {service.section}</p>
-//                             <p className={styles.serviceDetails}><strong>Category:</strong> {service.category}</p>
-//                             <p className={styles.serviceDetails}><strong>Title:</strong> {service.title}</p>
-//                             {/* <p className={styles.serviceDetails}><strong>Description:</strong> {service.description}</p> */}
-//                             {/* <p className={styles.serviceDetails}><strong>Duration:</strong> {service.duration} minutes</p> */}
-//                             <p className={styles.serviceDetails}><strong>Price:</strong> {service.price} AED</p>   
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </li>
-//         ))}
-//     </ul>
-// </div>
-// );
-// }
