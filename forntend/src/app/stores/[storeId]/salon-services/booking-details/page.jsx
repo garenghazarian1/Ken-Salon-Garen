@@ -26,6 +26,8 @@ const BookingPage = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [formErrors, setFormErrors] = useState('');
     const confirmButtonRef = useRef(null);
+    const [phoneNumber, setPhoneNumber] = useState(''); // New state for phone number
+    const [comment, setComment] = useState(''); // New state for comment
     
     
 
@@ -66,7 +68,9 @@ const BookingPage = () => {
             selectedServices: Array.from(selectedServices),
             selectedEmployee,
             selectedDate,
-            selectedTime
+            selectedTime,
+            phoneNumber, // Include phoneNumber in booking data
+            comment // Include comment in booking data
         });
     };
 
@@ -100,6 +104,26 @@ const BookingPage = () => {
             ))}
             </div>
             <Basket selectedServices={selectedServices} services={services} onRemoveService={removeServiceFromBasket} />
+            <div className={styles.formGroup}>
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <input 
+                    type="text" 
+                    id="phoneNumber" 
+                    value={phoneNumber} 
+                    onChange={(e) => setPhoneNumber(e.target.value)} 
+                    required 
+                    className={styles.inputField}
+                />
+            </div>
+            <div className={styles.formGroup}>
+                <label htmlFor="comment">Comment</label>
+                <textarea 
+                    id="comment" 
+                    value={comment} 
+                    onChange={(e) => setComment(e.target.value)} 
+                    className={styles.textareaField}
+                />
+            </div>
             <button ref={confirmButtonRef} onClick={handleBooking} className={styles.linkButton}>
                 Confirm Booking
             </button>

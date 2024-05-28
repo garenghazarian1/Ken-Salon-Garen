@@ -119,6 +119,8 @@ export default function GeneralAppointments() {
                                 <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
                                 <p><strong>Start Time:</strong> {appointment.startTime}</p>
                                 <p><strong>End Time:</strong> {appointment.endTime}</p>
+                                <p><strong>Phone:</strong> {appointment.phoneNumber}</p>
+                                <p><strong>comment:</strong> {appointment.comment}</p>
                                 <p><strong>Total Price:</strong> {totalPrice} AED</p>
                                 <p><strong>Total Price (with VAT):</strong> {totalPriceWithVAT.toFixed(2)} AED</p>
                                 <p><strong>Services:</strong></p>

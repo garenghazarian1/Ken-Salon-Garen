@@ -41,7 +41,7 @@ function calculateEndTime(startTime, duration) {
 }
 
 export const bookAppointment = async (req, res) => {
-    const { date, startTime, user, employee, services, storeId } = req.body;
+    const { date, startTime, user, employee, services, storeId, phoneNumber, comment } = req.body;
 
     try {
         const dayOfWeek = new Date(date).getDay(); // Define dayOfWeek here for availability checks
@@ -92,7 +92,7 @@ export const bookAppointment = async (req, res) => {
         }
 
         const newAppointment = new Appointment({
-            user, employee, services, date, startTime, endTime, status: 'pending'
+            user, employee, services, date, startTime, endTime, status: 'pending', phoneNumber, comment
         });
 
         await newAppointment.save();

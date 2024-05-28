@@ -41,7 +41,7 @@ export const AppointmentProvider = ({ children }) => {
         }
     }, [session]);
 
-    const bookAppointment = useCallback(async ({ currentStoreId, selectedServices, selectedEmployee, selectedDate, selectedTime }) => {
+    const bookAppointment = useCallback(async ({ currentStoreId, selectedServices, selectedEmployee, selectedDate, selectedTime, phoneNumber, comment  }) => {
         const userId = session?.user?._id;
         const serviceIds = Array.from(selectedServices);
         if (!selectedEmployee || serviceIds.length === 0 || !selectedDate || !selectedTime) {
@@ -70,7 +70,9 @@ export const AppointmentProvider = ({ children }) => {
                 employee: selectedEmployee,
                 services: serviceIds,
                 date: formattedDate,
-                startTime: formattedStartTime
+                startTime: formattedStartTime,
+                phoneNumber,  // Include phoneNumber in the request body
+                comment      // Include comment in the request body
             });
 
             if (response.data.success) {
@@ -102,12 +104,12 @@ export const AppointmentProvider = ({ children }) => {
             const response = await axios.get(`${baseUrl}/api/appointments/myAppointments`, {
                 headers: {
                     
-                    Authorization: `Bearer ${session.accessToken}` // Assuming JWT for authentication
+                    Authorization: `Bearer ${session.accessToken}` 
                 }
             });
             console.log("🚀 ~ fetchUserAppointments ~ response:", response.data)
             if (response.data.success) {
-                setAppointments(response.data.appointments); // Update your state with the fetched appointments
+                setAppointments(response.data.appointments); 
             } else {
                 throw new Error(response.data.message);
             }
