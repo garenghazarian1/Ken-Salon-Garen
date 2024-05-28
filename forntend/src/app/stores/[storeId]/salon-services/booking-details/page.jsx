@@ -111,7 +111,7 @@ const BookingPage = () => {
                     id="phoneNumber" 
                     value={phoneNumber} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
-                    required 
+                    placeholder='Add your phone number to get latest information about your services'
                     className={styles.inputField}
                 />
             </div>

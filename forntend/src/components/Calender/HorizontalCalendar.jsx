@@ -33,6 +33,13 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
     return selectedDate && date.toDateString() === selectedDate.toDateString();
   };
 
+
+  const minTime = new Date();
+  minTime.setHours(10, 0, 0);
+
+  const maxTime = new Date();
+  maxTime.setHours(22, 0, 0);
+
   return (
     <>
     <h2 className={styles.headOne}>Select day and time</h2>
@@ -72,6 +79,9 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
             timeCaption="Time"
             dateFormat="HH:mm"
             className={styles.input}
+            minTime={minTime}
+            maxTime={maxTime}
+            
           />
         </div>
       )}
