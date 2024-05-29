@@ -138,11 +138,11 @@ export const AppointmentProvider = ({ children }) => {
         }
     }, [session]);
       
-    
+
     
 
     return (
-        <AppointmentContext.Provider value={{ bookAppointment, fetchAppointments, fetchUserAppointments, bookingStatus, appointments, setAppointments, deleteAppointment  }}>
+        <AppointmentContext.Provider value={{ bookAppointment, fetchAppointments, fetchUserAppointments, bookingStatus, appointments, setAppointments, deleteAppointment,   }}>
             {children}
         </AppointmentContext.Provider>
     );

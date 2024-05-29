@@ -12,22 +12,20 @@ import styles from './BookingPage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
-
-
 const BookingPage = () => {
     const { currentStoreId } = useStore();
     const { services, selectedServices, setSelectedServices, activeSection } = useService();
     const { employees } = useEmployee();
     const { selectedDate, selectedTime } = useDate();
-    const { bookAppointment, bookingStatus } = useAppointment();
+    const { bookAppointment, bookingStatus, fetchEmployeeAvailability } = useAppointment(); // Import fetchEmployeeAvailability
     const { data: session, status: sessionStatus } = useSession();
     const [sectionEmployees, setSectionEmployees] = useState({});
     const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [employeeAvailability, setEmployeeAvailability] = useState({});
     const [formErrors, setFormErrors] = useState('');
     const confirmButtonRef = useRef(null);
-    const [phoneNumber, setPhoneNumber] = useState(''); // New state for phone number
-    const [comment, setComment] = useState(''); // New state for comment
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [comment, setComment] = useState(''); 
     
     
 
@@ -42,10 +40,14 @@ const BookingPage = () => {
         }
     }, [employees, activeSection]);
 
+
+
     const handleEmployeeSelection = (employeeId) => {
         setSelectedEmployee(employeeId);
         confirmButtonRef.current?.focus();
     };
+
+    
 
     const handleBooking = () => {
         let errors = [];
@@ -90,13 +92,14 @@ const BookingPage = () => {
             <p className={styles.text}>Select Employee</p>
             {Object.entries(sectionEmployees).map(([section, sectionEmps]) => (
                 <div key={section} className={styles.section}>
-                    <div className="flex flex-row flex-wrap justify-start items-start">
+                    <div className={styles.flexContainer}>
                         {sectionEmps.map(employee => (
                             <div key={employee._id}
                                  className={`${styles.employee} ${selectedEmployee === employee._id ? styles.selected : ''}`}
                                  onClick={() => handleEmployeeSelection(employee._id)}>
                                 <Image src={employee.userInfo.image} alt={employee.userInfo.name} width={100} height={100} style={{ width: 'auto', height: 'auto' }} className={styles.image} />
                                 <p >{employee.userInfo.name}</p>
+                                
                             </div>
                         ))}
                     </div>

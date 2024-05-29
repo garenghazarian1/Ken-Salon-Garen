@@ -1,6 +1,7 @@
 // controllers/availabilityController.js
 import mongoose from 'mongoose';
 import Availability from '../models/EmployeeAvailability.js';
+import Appointment from '../models/Appointment.js';
 
 // ADD A NEW AVAILABILITY ****************************
 export const addAvailability = async (req, res) => {
@@ -76,3 +77,5 @@ export const getAvailabilityById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
