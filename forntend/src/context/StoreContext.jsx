@@ -25,7 +25,7 @@ export const StoreProvider = ({ children }) => {
       try {
         const response = await axios.get(`${baseUrl}/api/stores`);
         setStores(response.data);
-        console.log("TEST",response.data);
+        //console.log("TEST",response.data);
       } catch (error) {
         setError('Failed to load stores. Please try again later.');
         console.error('Error fetching stores:', error);

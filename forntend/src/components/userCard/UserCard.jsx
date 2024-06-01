@@ -2,9 +2,12 @@ import { useEffect } from 'react';
 import styles from './UserCard.module.css';
 import { useAppointment } from '@/context/AppointmentContext'; 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';  // Corrected from 'next/navigation'
+import { useRouter } from 'next/navigation';  
 import LoadingSkeleton from '../loading/LoadingSkeleton';
 import Link from 'next/link';
+import UpdateUserForm from '../updateUserForm/UpdateUserForm';
+
+
 
 const UserCard = ({ session }) => {
     const { appointments, fetchUserAppointments, deleteAppointment, isLoading } = useAppointment();
@@ -36,12 +39,13 @@ const UserCard = ({ session }) => {
     return (
         <div className={styles.card}>
             <Image 
-                src={session?.user?.image || '/logo01.png'} 
+                src={session?.user?.image || '/logo02.png'} 
                 alt={session?.user?.name } 
                 width={50} 
                 height={50} 
                 style={{ borderRadius: "50%" }} 
-                layout="fixed"
+                
+                className={styles.userImage}
             />
             <div className={styles.userInfo}>
                 <h3 className={styles.userName}>Welcome, {session?.user?.name}</h3>
@@ -73,6 +77,7 @@ const UserCard = ({ session }) => {
                         <li>No appointments available.</li>
                     )}
                 </ul>
+                <UpdateUserForm session={session} />
             </div>
         </div>
     );

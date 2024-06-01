@@ -10,6 +10,8 @@ export default function Logo() {
           alt="logo"
           width={50}
           height={50}
+          priority={false}
+          preload="auto"
           className={styles.image}
         />
       </div>

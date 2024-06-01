@@ -5,7 +5,7 @@ export default function LoadingSkeleton() {
   return (
     <div className={styles.container}>
       
-      <Image src="/logo01.png" alt="loading" width={100} height={100} className={styles.logo} />
+      <Image src="/logo01.png" alt="loading" width={100} height={100} priority={false} preload="auto" className={styles.logo} />
     </div>
   );
 }

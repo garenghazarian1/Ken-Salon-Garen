@@ -63,6 +63,7 @@ export default function Hero() {
           className={styles.logo}
           width={300}
           height={300}
+          
         />
       </div>
     </>

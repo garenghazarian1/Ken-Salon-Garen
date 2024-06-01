@@ -11,12 +11,14 @@
 }
 
 .userImage {
-    width: 100px;
-    height: 100px;
+     width: 100px;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
 }
-
+.image {
+    border-radius: 50%;
+}
 .userInfo {
     text-align: start;
     width: 100%;

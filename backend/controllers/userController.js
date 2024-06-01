@@ -141,3 +141,87 @@ export const getUsers = async (req, res) => {
 
 
 
+
+
+
+
+
+
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      email,
+      phoneNumber,
+      password,
+      role,
+      dateOfBirth,
+      street,
+      city,
+      state,
+      zipCode,
+      authMethod
+    } = req.body;
+
+    // Find user by ID
+    let user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Check if the logged-in user is the owner, admin, or the user themselves
+    if (req.user.role !== 'admin' && req.user.role !== 'owner' && req.user !== user._id.toString()) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    // Update user fields
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.phoneNumber = phoneNumber || user.phoneNumber;
+    user.role = role || user.role;
+    user.dateOfBirth = dateOfBirth || user.dateOfBirth;
+    user.street = street || user.street;
+    user.city = city || user.city;
+    user.state = state || user.state;
+    user.zipCode = zipCode || user.zipCode;
+    user.authMethod = authMethod || user.authMethod;
+
+    // Handle password update
+    if (password) {
+      if (password.length < 6) {
+        return res.status(400).json({ message: 'Password must be at least 6 characters long.' });
+      }
+      const hashedPassword = await bcrypt.hash(password, 12);
+      user.password = hashedPassword;
+    }
+
+    // Handle image update
+    if (req.file) {
+      user.image = req.file.path;
+    }
+
+    // Save the updated user
+    await user.save();
+
+    res.status(200).json({
+      message: 'User updated successfully',
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        role: user.role,
+        dateOfBirth: user.dateOfBirth,
+        street: user.street,
+        city: user.city,
+        state: user.state,
+        zipCode: user.zipCode,
+        image: user.image,
+        authMethod: user.authMethod,
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message, message: 'Something went wrong' });
+  }
+};

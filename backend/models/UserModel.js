@@ -10,12 +10,12 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ["user","employee", "admin", "owner"], default: "user" },
   dateOfBirth: { type: Date, required: false }, 
   image: { type: String, required: false }, 
-  address: {
+  
     street: { type: String, required: false, trim: true },
     city: { type: String, required: false, trim: true },
     state: { type: String, required: false, trim: true },
-    zipCode: { type: String, required: false, trim: true }
-  },
+    zipCode: { type: String, required: false, trim: true },
+  
   phoneNumber: { type: String, required: true, trim: true },
   authMethod: { type: String, enum: ['local', 'google'], default: 'local' },
   otp: { type: String, required: false },

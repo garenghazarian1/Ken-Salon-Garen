@@ -107,7 +107,7 @@ export const AppointmentProvider = ({ children }) => {
                     Authorization: `Bearer ${session.accessToken}` 
                 }
             });
-            console.log("🚀 ~ fetchUserAppointments ~ response:", response.data)
+            //console.log("🚀 ~ fetchUserAppointments ~ response:", response.data)
             if (response.data.success) {
                 setAppointments(response.data.appointments); 
             } else {
