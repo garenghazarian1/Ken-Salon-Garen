@@ -1,25 +1,28 @@
 /* components/updateUserForm/UpdateUserForm.module.css */
 
 .updateForm {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 0.4rem;
+    border-radius: 0.2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: auto;
-    color: black;
+    margin-top: 1rem;
+    color: rgba(0, 0, 0, 0.664);
+    display: flex;
+    flex-direction: column;
 }
 
-.updateForm h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: gold;
+.updateFormH2 {
+    font-size: 0.7rem;
+    color: rgb(129, 129, 129);
+}
+.formFlex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
 }
 
-.updateForm label {
+.updateFormLabel {
     display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-size: 0.7rem;  
 }
 
 .updateForm input[type="text"],
@@ -27,12 +30,13 @@
 .updateForm input[type="date"],
 .updateForm input[type="file"] {
     width: 100%;
-    padding: 10px;
+    padding: 0.3rem;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
     color: black;
+    font-size: 0.8rem;
 }
 
 .updateForm input[type="text"]:focus,
@@ -43,18 +47,21 @@
     border-color: gold;
 }
 
-.updateForm button {
-    background-color: black;
-    color: gold;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+.button {
     cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: var(--custom-green);
+    color: #ffffff;
+    opacity: 0.75;
     font-weight: bold;
-    width: 100%;
-}
-
-.updateForm button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+  }

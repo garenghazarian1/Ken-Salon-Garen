@@ -65,44 +65,46 @@ const UpdateUserForm = ({ session }) => {
 
     return (
         <form onSubmit={handleFormSubmit} className={styles.updateForm}>
-            <h2>Update Profile</h2>
-            <label>
-                Name:
+            <h2 className={styles.updateFormH2}>Update Profile</h2>
+            <div className={styles.formFlex}> 
+            <div>
+            <label className={styles.updateFormLabel}>Name:</label>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
-            </label>
-            <label>
-                Email:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Email:</label>
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
-            </label>
-            <label>
-                Phone Number:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Phone Number:</label>
                 <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
-            </label>
-            <label>
-                Date of Birth:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Date of Birth:</label>
                 <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} />
-            </label>
-            <label>
-                Street:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Street:</label>
                 <input type="text" name="street" value={formData.street} onChange={handleInputChange} />
-            </label>
-            <label>
-                City:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>City:</label>
                 <input type="text" name="city" value={formData.city} onChange={handleInputChange} />
-            </label>
-            <label>
-                State:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>State:</label>
                 <input type="text" name="state" value={formData.state} onChange={handleInputChange} />
-            </label>
-            <label>
-                Zip Code:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Zip Code:</label>
                 <input type="text" name="zipCode" value={formData.zipCode} onChange={handleInputChange} />
-            </label>
-            <label>
-                Profile Image:
+                </div>
+                <div>
+            <label className={styles.updateFormLabel}>Profile Image:</label>
                 <input type="file" name="image" onChange={handleFileChange} />
-            </label>
-            <button type="submit" disabled={isUpdating}>
+                </div>
+                </div>
+            <button type="submit" disabled={isUpdating} className={styles.button}>
                 {isUpdating ? 'Updating...' : 'Update Profile'}
             </button>
         </form>

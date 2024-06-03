@@ -21,7 +21,6 @@ const UserCard = ({ session }) => {
     }, [session, fetchUserAppointments]);
 
     useEffect(() => {
-        // Redirect if not logged in
         if (!session) {
           router.push('/');
         }
@@ -30,46 +29,70 @@ const UserCard = ({ session }) => {
     if (isLoading) return <LoadingSkeleton />;
 
     const handleDelete = (appointmentId) => {
-        // Confirm before deleting an appointment
         if (window.confirm('Are you sure you want to delete this appointment?')) {
             deleteAppointment(appointmentId);
         }
     };
 
+        // Function to sort appointments from latest to earliest
+        const sortAppointmentsByDate = (appointments) => {
+            return appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
+        };
+    
+        const sortedAppointments = sortAppointmentsByDate(appointments);
+
     return (
         <div className={styles.card}>
-            <Image 
-                src={session?.user?.image || '/logo02.png'} 
-                alt={session?.user?.name } 
-                width={50} 
-                height={50} 
-                style={{ borderRadius: "50%" }} 
-                
-                className={styles.userImage}
-            />
-            <div className={styles.userInfo}>
+            <div className={styles.userInfoFlex}>
+                <Image 
+                    src={session?.user?.image || '/logo02.png'} 
+                    alt={session?.user?.name || "userName" } 
+                    width={100} 
+                    height={100} 
+                    className={styles.userImage}
+                />
+            <div >
                 <h3 className={styles.userName}>Welcome, {session?.user?.name}</h3>
+                <p className={styles.userP}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium voluptate velit ullam veritatis adipisci amet ratione, quam explicabo incidunt iusto est nisi, iure voluptatem eveniet magnam! Aliquid ad eos iste.</p>
+                <div className={styles.goldLine}></div>
                 {session?.user?.role === 'employee' && (
                     <Link href="/employee" className={styles.employeeLink}>
                         Employee Dashboard
                     </Link>
                 )}
                 {session?.user?.role === 'owner' && (
-                    <Link href="/generalAppointmentControl" className={styles.ownerLink}>
+                    <Link href="/generalAppointmentControl" className={styles.employeeLink}>
                         General Appointment Control
                     </Link>
                 )}
-                <ul className={styles.appointmentList}>
-                    <h2>Your Appointments</h2>
-                    {appointments.length > 0 ? (
-                        appointments.map((appt, index) => (
+            </div>
+           
+                </div>
+                <UpdateUserForm session={session} />
+                <h2 className={styles.userName}>Your Appointments</h2>
+                <ul className={styles.appointmentList}>  
+                    {sortedAppointments.length > 0 ? (
+                        sortedAppointments.map((appt, index) => (
                             <li key={index} className={styles.appointmentItem}>
-                                Date: {appt.date} <br />
-                                Time: {appt.startTime} - {appt.endTime} <br />
-                                Employee: {appt.employee ? appt?.employee?.userInfo?.name : 'No Employee Assigned'} <br />
-                                Services: {appt.services.map(service => `${service.title}: ${service.description} ${service.price} AED, ${service.category}`).join(', ')} <br />
+                                <div className={styles.dateFlex}>
+                               <p className={styles.date}> Date: {appt.date}</p> 
+                               <p className={styles.date}> Time: {appt.startTime} - {appt.endTime} </p>
+                               </div>
+                               <div className={styles.goldLine1}></div>
+                               <p> Employee: {appt.employee ? appt?.employee?.userInfo?.name : 'No Employee Assigned'} </p>
+                               <div className={styles.goldLine1}></div>
+                               <p>
+                                    Services:
+                                    <br />
+                                        {appt.services.map((service, index) => (
+                                    <span key={index}>
+                                        {service.title}: {service.price} AED.
+                                    <br />
+                                    </span>
+                                    ))}
+                                </p>
                                 <button onClick={() => handleDelete(appt._id)} className={styles.deleteButton}>
-                                    Delete Appointment
+                                    Delete
                                 </button>
                             </li>
                         ))
@@ -77,8 +100,8 @@ const UserCard = ({ session }) => {
                         <li>No appointments available.</li>
                     )}
                 </ul>
-                <UpdateUserForm session={session} />
-            </div>
+                
+            
         </div>
     );
 };
