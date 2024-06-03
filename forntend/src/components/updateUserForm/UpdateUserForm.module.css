@@ -28,7 +28,8 @@
 .updateForm input[type="text"],
 .updateForm input[type="email"],
 .updateForm input[type="date"],
-.updateForm input[type="file"] {
+.updateForm input[type="file"],
+.updateForm input[type="password"] {
     width: 100%;
     padding: 0.3rem;
     margin-bottom: 15px;
@@ -42,7 +43,8 @@
 .updateForm input[type="text"]:focus,
 .updateForm input[type="email"]:focus,
 .updateForm input[type="date"]:focus,
-.updateForm input[type="file"]:focus {
+.updateForm input[type="file"]:focus,
+.updateForm input[type="password"]:focus {
     outline: none;
     border-color: gold;
 }

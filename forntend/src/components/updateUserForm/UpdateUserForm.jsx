@@ -16,6 +16,7 @@ const UpdateUserForm = ({ session }) => {
         city: session?.user?.city || '',
         state: session?.user?.state || '',
         zipCode: session?.user?.zipCode || '',
+        password: '',
         image: null,
     });
     const [isUpdating, setIsUpdating] = useState(false);
@@ -31,6 +32,10 @@ const UpdateUserForm = ({ session }) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        if (formData.password && formData.password.length < 6) {
+            alert('Password must be at least 6 characters long.');
+            return;
+        }
         setIsUpdating(true);
 
         const formDataToSend = new FormData();
@@ -72,9 +77,9 @@ const UpdateUserForm = ({ session }) => {
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
                 </div>
                 <div>
-            <label className={styles.updateFormLabel}>Email:</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
-                </div>
+                    <label className={styles.updateFormLabel}>Email:</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required disabled />
+                    </div>
                 <div>
             <label className={styles.updateFormLabel}>Phone Number:</label>
                 <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
@@ -98,6 +103,10 @@ const UpdateUserForm = ({ session }) => {
                 <div>
             <label className={styles.updateFormLabel}>Zip Code:</label>
                 <input type="text" name="zipCode" value={formData.zipCode} onChange={handleInputChange} />
+                </div>
+                <div>
+                    <label className={styles.updateFormLabel}>Password (New or Update):</label>
+                    <input type="password" name="password" value={formData.password} onChange={handleInputChange} />
                 </div>
                 <div>
             <label className={styles.updateFormLabel}>Profile Image:</label>
