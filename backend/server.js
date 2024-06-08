@@ -13,6 +13,7 @@ import storeClosureRoutes from './routes/storeClosureRoutes.js';
 import availabilityRoutes from './routes/availabilityRoutes.js';
 import employeeUnavailabilityRoutes from './routes/employeeUnavailabilityRoutes.js';
 import otpRoutes from './routes/otpRoutes.js';
+import transactionRoutes from './routes/transactionRoutes.js';
 
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.use('/api/storeclosures', storeClosureRoutes);
 app.use('/api/availabilities', availabilityRoutes);
 app.use('/api/employee-unavailabilities', employeeUnavailabilityRoutes);
 app.use('/api/otp', otpRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // ERROR HANDLING MIDDLEWARE ***************************
 app.use((err, req, res, next) => {

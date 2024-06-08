@@ -37,6 +37,9 @@ export default function Hero() {
     
     <div className={styles.flexContainer}>
         <div className={styles.flexContainer1}>
+          
+        <div className={styles.smallSlideShow} />
+       <div>
           <h1 className={styles.mainTitle}>
             Elegance <span className={styles.white}>Redefined:</span> <br />{" "}
             <span className={styles.subTitle}>
@@ -57,14 +60,7 @@ export default function Hero() {
             </p>
           </div>
           </div>
-        <Image
-          src="/ken.jpg"
-          alt="logo"
-          className={styles.logo}
-          width={300}
-          height={300}
-          
-        />
+          </div>
       </div>
     </>
   );
