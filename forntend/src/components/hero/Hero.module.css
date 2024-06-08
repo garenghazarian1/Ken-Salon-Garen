@@ -138,8 +138,8 @@
     25% { background-image: url('/hero02.jpg'); }
     50% { background-image: url('/hero03.jpg'); }
     /* 75% { background-image: url('/hero04.jpg'); } */
-    75% { background-image: url('/hero01.jpg');}
-      100% { background-image: url('/hero02.jpg'); }
+    75% { background-image: url('/hero04.jpg');}
+    100% { background-image: url('/hero02.jpg'); }
   }
 
  
