@@ -45,7 +45,7 @@ const UserCard = ({ session }) => {
         <div className={styles.card}>
             <div className={styles.userInfoFlex}>
                 <Image 
-                    src={session?.user?.image || '/logo02.png'} 
+                    src={session?.user?.image } 
                     alt={session?.user?.name || "userName" } 
                     width={100} 
                     height={100} 

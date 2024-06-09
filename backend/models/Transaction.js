@@ -23,7 +23,7 @@ const transactionSchema = new mongoose.Schema({
   status: { type: String, required: false, default: 'pending' },
   totalAmount: { type: Number, required: false },
   transactionDate: { type: Date, default: Date.now },
-  invoiceNumber: { type: String, required: false, unique: true },
+  // invoiceNumber: { type: String, required: false  },
   location: { type: String, required: false },
   notes: { type: String, required: false },
 }, { timestamps: true });

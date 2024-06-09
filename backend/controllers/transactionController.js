@@ -59,7 +59,7 @@ export const createTransaction = async (req, res) => {
     status,
     totalAmount,
     transactionDate,
-    invoiceNumber,
+    // invoiceNumber,
     location,
     notes,
   } = req.body;
@@ -88,7 +88,7 @@ export const createTransaction = async (req, res) => {
       status,
       totalAmount,
       transactionDate,
-      invoiceNumber,
+      // invoiceNumber,
       location,
       notes,
     });
