@@ -1,9 +1,9 @@
 .navbar {
-    background-color: #000;
+    background-color:var(--navbar-background);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #ffffff;
+    color: var(--text-color);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     height: 5rem;

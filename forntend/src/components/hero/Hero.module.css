@@ -38,19 +38,19 @@
     margin-top: 2rem;
     font-size: 3rem;
     font-weight: bold;
-    color: #ffffff;
-    opacity: 0.75;
+    color: var(--text-color);
+    
     text-align: center;
   }
   
   .green {
     background-clip: text;
-    color: var(--custom-green); 
+    color: var(--navbar-background); 
   }
   
   .subtitle {
     font-size: 0.75rem;
-    color: #ffffff;
+    color: var(--text-color);
     opacity: 0.75;
     text-align: center;
 }
@@ -65,8 +65,8 @@
     text-align: center;
     display: inline-block;
     margin: 0 auto;
-    background-color: var(--custom-green);
-    color: #ffffff;
+    background-color: var(--navbar-background);
+    color: var(--teal-950);
     opacity: 0.75;
     font-weight: bold;
     border-radius: 9999px;
@@ -106,13 +106,13 @@
   .mainTitle, .subTitle {
     font-size: 2rem; 
     margin: 0.8rem;
+    color: var(--teal-950);
 }
 
 
 
 .white, .subTitle, .paragraph {
-    color: #ffffff;
-    opacity: 0.75;
+  color: var(--header-2); 
 }
   
   .paragraph {

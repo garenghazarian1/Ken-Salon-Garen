@@ -75,7 +75,7 @@ export default function Links() {
           <HamburgerButton isOpen={open} toggle={() => setOpen((prevOpen) => !prevOpen)} />
         </div>
         {open && (
-          <div ref={menuRef} className="absolute top-6 right-2 flex flex-col gap-4 lg:hidden bg-black shadow-md p-4 rounded-lg w-36 z-100">
+          <div ref={menuRef} className={styles.menuContainer}>
              {session ? (
               <>
               <Link href="/user" onClick={closeMenu}>

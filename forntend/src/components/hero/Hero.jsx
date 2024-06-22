@@ -43,7 +43,7 @@ export default function Hero() {
           <h1 className={styles.mainTitle}>
             Elegance <span className={styles.white}>Redefined:</span> <br />{" "}
             <span className={styles.subTitle}>
-              Your Beauty <span className={styles.green}>Haven</span>
+              Your Beauty <span className={styles.mainTitle}>Haven</span>
             </span>
           </h1>
           <div className={styles.paragraph}>
