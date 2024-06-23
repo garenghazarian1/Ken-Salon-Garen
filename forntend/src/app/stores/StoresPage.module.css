@@ -12,7 +12,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--dark-green); 
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
   }
 
 .header {
@@ -20,10 +22,10 @@
     font-weight: bold;
     margin-bottom: 1rem;
     margin-top: 1rem;
-    color: #f3f4f6;
+    color: var(--header-1);
 }
 .span {
-    color:var(--custom-green);
+    color:var(--teal-950);
 }
 
 .storeList {
@@ -47,13 +49,15 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12); 
     border-radius: 8px; 
-    background-color: #15251c; 
+    background-color: var(--navbar-background);
+    color: var(--text-color);
 }
 
 .storeCard:hover {
     transform: translateY(-5px) scale(1.03); 
     box-shadow: 0 8px 16px rgba(0,0,0,0.18);
-    background-color: #15251c; 
+    background-color: var(--teal-950); 
+    color: var(--text-hover);
 }
 
 
@@ -67,19 +71,20 @@
 
 .storeDetails,
 .storeContacts {
-    color: #f3f4f6;
+    color: var(--text-color);
     font-size: 0.875rem;
 }
 
 .contactLink,
 .emailLink {
-    color: #059669;
-    text-decoration: none;
+    color: var(--text-color);
+    /* text-decoration: none; */
 }
 
 .contactLink:hover,
 .emailLink:hover {
     text-decoration: underline;
+    color: var(--text-hover);
 }
 
 @media (min-width: 800px) {

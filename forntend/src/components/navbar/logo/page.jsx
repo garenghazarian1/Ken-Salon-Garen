@@ -6,7 +6,7 @@ export default function Logo() {
     <div className={styles.flexCenter}>
       <div className={styles.paddedRelative}>
         <Image
-          src="/logo01.png"
+          src="/logo03.png"
           alt="logo"
           width={50}
           height={50}

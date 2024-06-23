@@ -84,10 +84,15 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    margin-top: 2.5rem; 
-    justify-content: center; 
-    overflow:hidden;
+    margin-top: 2.5rem;
+    justify-content: center;
+    overflow: hidden;
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    
   }
+  
 
   .flexContainer1 {
     display: flex;
