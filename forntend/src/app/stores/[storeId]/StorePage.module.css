@@ -8,7 +8,9 @@
     align-items: center;
     width: 100vw;
     height: 100%;
-    background-color:var(--dark-green);
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
 }
 
 .storeHeader {
@@ -21,11 +23,10 @@
 }
 
 .title{
-    color: var(--custom-green);
+    color: var(--header-1);
     align-self: center;
     justify-self: center;
-    font-size: 1.2rem;
-          
+    font-size: 1.2rem;      
     cursor: pointer;
     transition: color 300ms ease-in-out, transform 300ms ease-in-out; 
     }
@@ -83,7 +84,7 @@
     display: flex; 
     justify-content: center;
     align-items: center; 
-    background-color: var(--custom-green);
+    background-color: var(--teal-950);
     color: #ffffff;
     opacity: 0.75;
     font-size: 3rem;

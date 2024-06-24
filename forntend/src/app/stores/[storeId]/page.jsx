@@ -37,7 +37,7 @@ const StorePage = ({ params }) => {
       try {
         const response = await axios.get(`${baseUrl}/api/stores/${storeId}`);
         setStore(response.data);
-        console.log("🚀 FETCHSTORE", response.data);
+        //console.log("🚀 FETCHSTORE", response.data);
       } catch (error) {
         console.error(error, 'Failed to fetch store:');
         setError(error);
