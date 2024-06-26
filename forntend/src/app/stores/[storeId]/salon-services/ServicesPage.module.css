@@ -1,4 +1,12 @@
 /* Container for the entire component */
+.headerOverAll{
+  width: 100vw;
+  height: 50px;
+  background-color: var(--header-2);
+  position: fixed;
+  z-index: 30;
+
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -27,7 +35,7 @@
   flex-wrap: wrap; 
   font-size: 0.6rem;
   gap: 0.3rem;
-  z-index: 20;
+  z-index: 40;
 }
 
 /* Additional styling for navigation links */
@@ -48,17 +56,23 @@
   font-size: 1rem;  
   margin-left: 0.5rem; 
   margin-top: 3rem; 
-  color: rgb(7, 122, 36); 
+  color: var(--teal-950); 
 }
 
-@media (max-width: 800px) { /* This targets screens with a maximum width of 600px */
+@media (max-width: 900px) { 
   .title {
-    margin-top: 5rem; /* Smaller top margin on smaller screens */
+    margin-top: 7rem; 
   }
 }
-@media (max-width: 450px) { /* This targets screens with a maximum width of 600px */
+
+@media (max-width: 800px) { 
   .title {
-    margin-top: 7rem; /* Smaller top margin on smaller screens */
+    margin-top: 6rem;
+  }
+}
+@media (max-width: 450px) { 
+  .title {
+    margin-top: 8rem; 
   }
 }
 

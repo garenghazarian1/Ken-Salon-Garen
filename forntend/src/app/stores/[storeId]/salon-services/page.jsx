@@ -62,6 +62,8 @@ const handleNavigation = () => {
 //   }
 // };
 return (
+  <>
+  <div className={styles.headerOverAll}></div>
   <div className={styles.container}>
           {/* Navigation Links for Categories */}
           <div className={styles.categoryNavigation}>
@@ -119,6 +121,7 @@ return (
         </div>
     </div>
   </div>
+  </>
 );
   
 
