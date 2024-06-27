@@ -64,7 +64,6 @@ export const loginUser = async (req, res) => {
   res.status(200).send({ token, user });
 }
 
-
 // Google LOGIN USER*********************************************** */
 export const googleLogin = async (req, res) => {
 
@@ -138,13 +137,6 @@ export const getUsers = async (req, res) => {
     res.status(500).json({ message: "Error fetching users", error: error.message });
   }
 };
-
-
-
-
-
-
-
 
 
 export const updateUser = async (req, res) => {
