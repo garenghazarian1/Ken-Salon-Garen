@@ -1,31 +1,66 @@
-.container {
+/* PAGE01 ********************************************/
+
+.containerA {
     display: flex;
-    height: 100vh;
-    overflow: hidden;
     flex-direction: row;
+    height: 800px;
+    width: 100vw;
+    overflow: hidden;
     background-color: black; 
   }
-  
-  .leftPane, .rightPane {
-    flex: 1;
-    position: relative;
-    transition: transform 0.5s ease;
-  }
-  
-  .leftPane {
+
+  .leftPaneA  {
+    width: 50%;
+    height: 100%;
     background-color: black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:flex-start;
     align-items: center;
     transform: scale(1);
+    transition: transform 0.5s ease;
+    position: relative;
+
   }
-  
-  .leftPane:hover, .leftPane:active { 
+
+  .rightPaneA{
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+    background-color: black;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+
+  .leftPaneA:hover, .leftPaneA:active { 
     transform: scale(1.05);
   }
   
-  .portfolioText {
+  .leftPaneA:hover, .leftPaneA:active { 
+    transform: scale(1.05);
+  }
+
+  .rightPaneA {
+    transition: transform 0.5s ease;
+  }
+  
+  .rightPaneA:hover, .rightPaneA:active {
+    transform: scale(1.05);
+  }
+
+  .imageA {
+    margin-top: 2rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .imageA:hover, .imageA:active {
+    transform: scale(1.1);
+  }
+  
+  .portfolioTextA {
     margin-top: 1rem;
     color: var(--teal-800);
     font-size: 4rem;
@@ -34,6 +69,8 @@
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
     animation-delay: 0.3s;
+    position: absolute;
+    top: 25rem;
   }
 
   
@@ -49,118 +86,101 @@
     }
   }
   
-  .rightPane {
-    transition: transform 0.5s ease;
-  }
+
   
-  .rightPane:hover, .rightPane:active {
-    transform: scale(1.05);
-  }
+
   
-  .image {
-    transition: transform 0.5s ease;
-  }
   
-  .image:hover, .image:active {
-    transform: scale(1.1);
-  }
-  
-  /* Media Queries for Responsive Adjustments */
 
 
   
 
-  /* SECONDPAGE */
+  /* PAGE02 ****************************************/
 
-  .tableOfContents {
-    font-family: Arial, sans-serif;
-    color: #008080;
+  .containerB {
+    color: var(--teal-800);
     background-image: url('/background.jpg'); 
     background-size: cover; 
     background-position: center; 
     overflow:hidden; 
   }
-  .tocHeaderContainer{
+  .containerBHeader{
     display: flex;
-    
     margin-left: 1rem;
   }
-  .tocHeader {
+  .headerB {
     font-size: 4rem;
     font-weight: 200;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--teal-950);
   }
-  .tocHeaderUnderline{
+  .headerBUnderline{
     border-bottom: 2px solid;
   }
   
-  .tocItems {
+  .itemsB {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* justify-content: space-around; */
   }
   
-  /* Keyframes for animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes scaleIn {
-    from {
-      transform: scale(0.95);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  .tocItem {
+  .itemB {
     width: 16rem;
-    padding: 0.5rem;  /* Corrected padding syntax */
-    /* box-sizing: border-box;
-    text-align: center; */
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    cursor: pointer;  /* Moved cursor to item level for better UX */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions for interaction */
-    animation: fadeIn 0.5s ease-out, scaleIn 0.5s ease-out; /* Ensure animations play concurrently */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+    animation: fadeIn 0.5s ease-out, scaleIn 0.5s ease-out;
   }
   
-  .tocItem:hover, .tocItem:focus {
+  .itemB:hover, .itemB:focus {
     transform: scale(1.10);  /* Slight scale up on hover/focus */
    
   }
   
-  .tocItem:active {
+  .itemB:active {
     transform: scale(0.95);  /* Mimic button press effect on active/click */
     
   }
   
-  .tocNum {
+  .numB {
     font-size: 2rem;
     font-weight: bolder;
     text-align: center;
     animation-delay: 0.3s; /* Delayed animation for dramatic effect */
   }
   
-  .tocText {
+  .textB {
     color: var(--teal-950);
     text-align: center;
   }
 
+    /* Keyframes for animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
   /* PAGE03 */
 
-  .containerA {
+  .containerC {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -168,14 +188,14 @@
     background-color: black;
   }
   
-  .leftPaneA, .rightPaneA {
+  .leftPaneC, .rightPaneC {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .leftPaneA {
+  .leftPaneC {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -183,7 +203,7 @@
     padding: 20px;
   }
   
-  .textA, .textB {
+  .textCA, .textCB {
   
     font-size: 2rem; 
     margin: 1rem;
@@ -193,23 +213,23 @@
     animation-fill-mode: forwards; 
   }
   
-  .textA {
+  .textCA {
     font-size: 2rem; 
     font-weight: lighter;
     color: var(--text-color);
   }
   
-  .textB {
+  .textCB {
     font-size: 2.5rem;
     color: var(--teal-800);
     font-weight: bolder;
   }
   
-  .textAnimationA {
+  .textAnimationCA {
     animation-name: fadeInUp;
   }
   
-  .textAnimationB {
+  .textAnimationCB {
     animation-name: fadeInUp;
     animation-delay: 0.5s; 
   }
@@ -230,20 +250,20 @@
     transition: text-shadow 0.3s ease-in-out;
   }
   
-  .rightPaneA {
+  .rightPaneC {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .videoA {
+  .videoC {
     width: 100%;
     height: 100vh;
     background-color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
   
-  .leftPaneA::before {
+  .leftPaneC::before {
     content: '';
     position: absolute;
     top: 0;
@@ -255,10 +275,10 @@
   }
   
 
-  /* PAGE04 */
+   /* PAGE04  */
 
   
-  .containerB {
+  .containerD {
     background-color: gray;
     width: 100vw;
     height: 50vh; 
@@ -267,18 +287,19 @@
     align-items: center;
   }
   
-  .leftPaneB, .rightPaneB{
+  .leftPaneD, .rightPaneD{
     width: 50%;
     display: flex;
 
   }
-  .leftPaneB{
+  .leftPaneD{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-left: 2rem;
   }
 
-  .rightPaneB{
+  .rightPaneD{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,98 +307,235 @@
     position: relative;
   }
   
-  .textNumA{
+  .textNumDA{
     color: var(--teal-800);
     font-weight: bolder;
     font-size: 2rem;
   }
-  .textNumB{
+  .textNumDB{
     font-weight:lighter;
     font-size: 4rem;
   }
 
-  .textNumC{
+  .textNumDC{
     position: absolute;
     top: 5rem;
     font-size: 4rem;
     color: var(--teal-800);
   }
   
+
+   /* PAGE05  */
+
+  .containerE{
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+   
+  }
+
+  .subContainerE {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    gap: 1rem; 
+    padding: 2rem;
+    
+    
+    background-color: var(--teal-950); 
+    transition: transform 0.3s; 
+  }
+
+  .subContainerE:hover {
+    transform: scale(1.02);
+  }
+
+
   
+  .leftPaneE, .rightPaneE {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
+ 
+  
+  .rightLeftImagesPageE {
+    max-width: 300px;
+    height: auto;
+    object-fit:cover;
+    border-radius: 8px; 
+    transition: transform 0.3s; 
+  }
+  
+  .rightLeftImagesPageE:hover {
+    transform: scale(1.05); 
+  }
+
+.textE {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 2rem;
+  color: var(--text-color);
+  line-height: 1.5; 
+  transition: color 0.3s; 
+}
+
+.textE:hover {
+    color: var(--hover-text-color); 
+  }
 
 
-
-
-
-
-
-
-
-
-/* MEDIA */
-  @media (max-width: 800px) {
-    .leftPane, .rightPane {transition: transform 0.5s ease; }
-    .leftPane, .rightPane {transform: scale(1);}
-    .portfolioText {
-      font-size: 2rem; 
-      margin-top: 0.5rem; 
-    }
-    .image {
-      transform: scale(1.05); 
-    }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiperSlide {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
 
 
-  @media (max-width: 600px) {
-    .container {
-      flex-direction: column; 
+  
+  
+
+
+
+
+
+
+
+
+
+
+/* MEDIA ***********************************************/
+
+
+  @media (max-width: 800px) {
+
+    /* PAGE01 */
+    .leftPaneA, .rightPaneA {
+        
+        transition: transform 0.5s ease; 
+    }
+    .leftPaneA, .rightPaneA {
+        transform: scale(1);
+    }
+    .portfolioTextA {
+        top: 28rem;
+      font-size: 2rem; 
+      margin-top: 0.5rem; 
+    }
+    .imageA {
+      transform: scale(1.05); 
+    }
+    /* PAGE05 */
+    .swiperSlide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .rightLeftImagesPageE {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+      }
+  }
+
+ 
+@media (min-width: 768px) {
+    /* PAGE05 */
+    .subContainerE {
+      flex-direction: row;
+      height: 50vh;
     }
   
-    .leftPane, .rightPane {
+    .leftPaneE, .rightPaneE {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    /* PAGE01 */
+    .containerA {
+      flex-direction: column;
+      height: 1000px; 
+    }
+  
+    .leftPaneA, .rightPaneA {
       flex: none;
       width: 100%; 
-      height: 50vh; 
+      height: 500px; 
     }
   
-    .portfolioText {
+    .portfolioTextA {
       font-size: 1rem; 
     }
-    .tocHeaderContainer{
+
+    /* PAGE02 */
+    .containerBHeader{
         justify-content: center;
     }
     
-    .tocItem {
+    .itemB {
       width: 10rem;
       padding: 1rem; 
       animation: scaleIn 0.5s ease-out; 
     }
-    .containerA {
+
+
+    /* PAGE03 */
+    .containerC {
         flex-direction: column;
       }
       
-      .leftPaneA  {
+      .leftPaneC  {
         width: 100%;
         height: 20vh;
       }
-      .rightPaneA{
+      .rightPaneC{
         width: 100%;
         height: 80vh;
       }
-    .textA,.textB{
+    .textCA,.textCB{
         font-size: 1rem;
     }
-      .videoA {
+      .videoC {
         height: 100%;
         width: 100%;
       }
-      .rightPaneB{
+
+      /* PAGE04 */
+
+
+      .rightPaneD{
         width: 100vw;
       }
-      .leftPaneB{
+      .leftPaneD{
         display:none;
       }
+
+      /* PAGE05 */
+
+   
+   .subContainerE {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .leftPaneE, .rightPaneE {
+    width: 100%;
+  }
   }
   
  
