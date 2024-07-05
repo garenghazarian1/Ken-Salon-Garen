@@ -24,7 +24,7 @@ export default function Portfolio() {
         <div className={styles.portfolioTextA}>PORTFOLIO</div> 
       </div>
       <div className={styles.rightPaneA}>
-        <Image src="/ken.jpg" alt="Ken Salon Portfolio" width={300} height={300}  />
+        <Image src="/ken.jpg" alt="Ken Salon Portfolio" width={500} height={500}  />
       </div>
     </div>
 

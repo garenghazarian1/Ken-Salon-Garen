@@ -10,7 +10,7 @@
   }
 
   .leftPaneA  {
-    width: 50%;
+    width: 50vw;
     height: 100%;
     background-color: black;
     display: flex;
@@ -24,7 +24,7 @@
   }
 
   .rightPaneA{
-    width: 50%;
+    width: 50vw;
     height: 100%;
     flex-direction: column;
     justify-content: center;
