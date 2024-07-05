@@ -1,7 +1,7 @@
 
 .relative, .absolute, .gradient, .gradientA, .title, .subtitle, .buttonContainer,
 .button, .flexContainer, .flexContainer1, .mainTitle, .subTitle, .paragraph, .smallSlideShow {
-  transition: all 0.3s ease-in-out; /* Smooth transitions for all changes */
+  transition: all 0.3s ease-in-out; 
 }
 
 .relative {
@@ -250,13 +250,7 @@ flex-direction: column;
           width:100vw; 
           height:100vh;}
 
-  .mainTitle{
-    position: absolute;
-    top:0%;
-    left: 0;
-    right: 0;
-    bottom:170%;
-  }
+
 }
 
 /* min-width: 1200px */
