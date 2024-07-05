@@ -11,6 +11,7 @@ const ServiceDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const { currentService, error, loading, setServiceId } = useService(); 
+  console.log("🚀 ~ ServiceDetailPage ~ currentService:", currentService)
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -48,7 +49,9 @@ const ServiceDetailPage = () => {
 
   return (
     <div className={styles.container}>
-    <h1 className={styles.title}>{currentService.title}</h1>
+    <h2 className={styles.title}>{currentService.section}</h2>
+    <h2 className={styles.title}>{currentService.category}</h2>
+    <h2 className={styles.title}>{currentService.title}</h2>
     <h3 className={styles.description}>{currentService.description}</h3>
     <p className={styles.serviceText}>Duration: {currentService.duration} min</p>
                   <p className={styles.serviceText}>Price: {currentService.price} AED</p>
