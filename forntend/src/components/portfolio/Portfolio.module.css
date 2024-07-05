@@ -1,0 +1,387 @@
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: row;
+    background-color: black; 
+  }
+  
+  .leftPane, .rightPane {
+    flex: 1;
+    position: relative;
+    transition: transform 0.5s ease;
+  }
+  
+  .leftPane {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+  }
+  
+  .leftPane:hover, .leftPane:active { 
+    transform: scale(1.05);
+  }
+  
+  .portfolioText {
+    margin-top: 1rem;
+    color: var(--teal-800);
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .rightPane {
+    transition: transform 0.5s ease;
+  }
+  
+  .rightPane:hover, .rightPane:active {
+    transform: scale(1.05);
+  }
+  
+  .image {
+    transition: transform 0.5s ease;
+  }
+  
+  .image:hover, .image:active {
+    transform: scale(1.1);
+  }
+  
+  /* Media Queries for Responsive Adjustments */
+
+
+  
+
+  /* SECONDPAGE */
+
+  .tableOfContents {
+    font-family: Arial, sans-serif;
+    color: #008080;
+    background-image: url('/background.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    overflow:hidden; 
+  }
+  .tocHeaderContainer{
+    display: flex;
+    
+    margin-left: 1rem;
+  }
+  .tocHeader {
+    font-size: 4rem;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--teal-950);
+  }
+  .tocHeaderUnderline{
+    border-bottom: 2px solid;
+  }
+  
+  .tocItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-around; */
+  }
+  
+  /* Keyframes for animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .tocItem {
+    width: 16rem;
+    padding: 0.5rem;  /* Corrected padding syntax */
+    /* box-sizing: border-box;
+    text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;  /* Moved cursor to item level for better UX */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions for interaction */
+    animation: fadeIn 0.5s ease-out, scaleIn 0.5s ease-out; /* Ensure animations play concurrently */
+  }
+  
+  .tocItem:hover, .tocItem:focus {
+    transform: scale(1.10);  /* Slight scale up on hover/focus */
+   
+  }
+  
+  .tocItem:active {
+    transform: scale(0.95);  /* Mimic button press effect on active/click */
+    
+  }
+  
+  .tocNum {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+    animation-delay: 0.3s; /* Delayed animation for dramatic effect */
+  }
+  
+  .tocText {
+    color: var(--teal-950);
+    text-align: center;
+  }
+
+  /* PAGE03 */
+
+  .containerA {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+  }
+  
+  .leftPaneA, .rightPaneA {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .leftPaneA {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .textA, .textB {
+  
+    font-size: 2rem; 
+    margin: 1rem;
+    text-align: center;
+    opacity: 0; 
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+  }
+  
+  .textA {
+    font-size: 2rem; 
+    font-weight: lighter;
+    color: var(--text-color);
+  }
+  
+  .textB {
+    font-size: 2.5rem;
+    color: var(--teal-800);
+    font-weight: bolder;
+  }
+  
+  .textAnimationA {
+    animation-name: fadeInUp;
+  }
+  
+  .textAnimationB {
+    animation-name: fadeInUp;
+    animation-delay: 0.5s; 
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .textA:hover, .textB:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: text-shadow 0.3s ease-in-out;
+  }
+  
+  .rightPaneA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .videoA {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .leftPaneA::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+    z-index: -1;
+  }
+  
+
+  /* PAGE04 */
+
+  
+  .containerB {
+    background-color: gray;
+    width: 100vw;
+    height: 50vh; 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  .leftPaneB, .rightPaneB{
+    width: 50%;
+    display: flex;
+
+  }
+  .leftPaneB{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .rightPaneB{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .textNumA{
+    color: var(--teal-800);
+    font-weight: bolder;
+    font-size: 2rem;
+  }
+  .textNumB{
+    font-weight:lighter;
+    font-size: 4rem;
+  }
+
+  .textNumC{
+    position: absolute;
+    top: 5rem;
+    font-size: 4rem;
+    color: var(--teal-800);
+  }
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+/* MEDIA */
+  @media (max-width: 800px) {
+    .leftPane, .rightPane {transition: transform 0.5s ease; }
+    .leftPane, .rightPane {transform: scale(1);}
+    .portfolioText {
+      font-size: 2rem; 
+      margin-top: 0.5rem; 
+    }
+    .image {
+      transform: scale(1.05); 
+    }
+  }
+
+
+
+  @media (max-width: 600px) {
+    .container {
+      flex-direction: column; 
+    }
+  
+    .leftPane, .rightPane {
+      flex: none;
+      width: 100%; 
+      height: 50vh; 
+    }
+  
+    .portfolioText {
+      font-size: 1rem; 
+    }
+    .tocHeaderContainer{
+        justify-content: center;
+    }
+    
+    .tocItem {
+      width: 10rem;
+      padding: 1rem; 
+      animation: scaleIn 0.5s ease-out; 
+    }
+    .containerA {
+        flex-direction: column;
+      }
+      
+      .leftPaneA  {
+        width: 100%;
+        height: 20vh;
+      }
+      .rightPaneA{
+        width: 100%;
+        height: 80vh;
+      }
+    .textA,.textB{
+        font-size: 1rem;
+    }
+      .videoA {
+        height: 100%;
+        width: 100%;
+      }
+      .rightPaneB{
+        width: 100vw;
+      }
+      .leftPaneB{
+        display:none;
+      }
+  }
+  
+ 
+  
+  
+  
+  

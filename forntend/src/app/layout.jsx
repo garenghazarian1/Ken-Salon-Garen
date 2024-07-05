@@ -1,5 +1,6 @@
 
-import { Inter, Lora} from "next/font/google";
+// import { Inter, Lora} from "next/font/google";
+import {lora, inter} from "@/app/ui/fonts"
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -13,12 +14,12 @@ import { DateProvider } from "@/context/DateContext";
 import { AppointmentProvider } from "@/context/AppointmentContext";
 import styles from './Layout.module.css';
 
-const inter = Inter({ subsets: ["latin"] });
-const arapeyStatic = Lora ({
-  weight: '400',  
-  display: 'swap',
-  subsets: ['latin']
-});
+// const inter = Inter({ subsets: ["latin"] });
+// const arapeyStatic = Lora ({
+//   weight: '400',  
+//   display: 'swap',
+//   subsets: ['latin']
+// });
 
 export const metadata = {
   title: "KEN BEAUTY CENTER",
@@ -27,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.className}, ${arapeyStatic.className} `}>
+    <html lang="en" className={`${inter.className}, ${lora.className} `}>
     
       <body >
         <div className={styles.layoutContainer}>
