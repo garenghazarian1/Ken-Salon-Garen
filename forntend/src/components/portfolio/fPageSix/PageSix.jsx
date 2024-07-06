@@ -15,12 +15,12 @@ export default function PageSix() {
             className={styles.imageFA}
           />
           <p className={`${styles.paragraphFA} ${bad.className}`}>
-            Here, the art of hair styling, cutting, coloring, and skincare transcends mere services, becoming a sacred ritual that unveils the beauty within. Each visit is a journey of self-discovery guided by a team of artisans whose skills are matched only by their unwavering dedication to your satisfaction.
+          Here, the art of hair styling, cutting, coloring, and skincare transcends mere services, becoming a sacred ritual that unveils the beauty within. Each visit is a journey of self-discovery guided by a team of artisans whose skills are matched only by their unwavering dedication to your satisfaction.
           </p>
         </div>
         <div className={styles.subContainerFB}>
           <p className={`${styles.paragraphFB} ${bad.className}`}>
-            At Ken Salon, beauty is not merely a pursuit, it is a celebration of life's most exquisite moments. Every strand of hair, every brushstroke of color, and every delicate touch is a testament to the salon's unwavering commitment to highlighting the inherent beauty in every individual. Step into this sanctuary of magnificence, where dreams of confidence and allure take flight, and allow Ken Salon to unveil the most beautiful version of yourself.
+          At Ken Salon, beauty is not merely a pursuit, it is a celebration of life&apos;s most exquisite moments. Every strand of hair, every brushstroke of color, and every delicate touch is a testament to the salon&apos;s unwavering commitment to highlighting the inherent beauty in every individual. Step into this sanctuary of magnificence, where dreams of confidence and allure take flight, and allow Ken Salon to unveil the most beautiful version of yourself.
           </p>
           <Image 
             src="/portfolio/portfolioE003.jpg" 

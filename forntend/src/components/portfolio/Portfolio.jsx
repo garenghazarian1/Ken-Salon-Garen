@@ -7,6 +7,7 @@ import PageThree from "./cPageThree/PageThree";
 import PageFour from "./dPageFour/PageFour";
 import PageFive from "./ePageFive/PageFive"
 import PageSix from "./fPageSix/PageSix";
+import PageSeven from "./gPageSeven/PageSeven";
 
 export default function Portfolio() {
 
@@ -18,6 +19,7 @@ export default function Portfolio() {
     <PageFour/>
     <PageFive/>
     <PageSix/>
+    <PageSeven/>
     </>
   );
 }
