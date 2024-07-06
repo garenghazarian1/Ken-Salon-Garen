@@ -38,7 +38,7 @@ export default function PageTwo() {
             <p className={styles.numB}>03</p>
         <p className={styles.textB}>Social Media</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>04</p>
+            <p className={styles.numB} onClick={() => handleScroll("TheDesigner")}>04</p>
         <p className={styles.textB}>The Designer Behind Ken Salon</p> </div>
         <div className={styles.itemB}>
             <p className={styles.numB}>05</p>

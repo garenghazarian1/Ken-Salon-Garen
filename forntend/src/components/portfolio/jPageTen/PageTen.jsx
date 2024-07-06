@@ -8,7 +8,7 @@ export default function PageTen() {
    <div className={styles.container}>
       <div className={styles.profiles}>
         <div className={styles.profile}>
-            <Link href="https://www.instagram.com/ken_barbershop.ad/"  target="_blank">
+        <Link href="https://www.instagram.com/ken_barbershop.ad/"  target="_blank">
           <Image src="/portfolio/barberShop.jpg" alt="KenInstagram" className={styles.profileImage} width={500} height={500} />
           <p className={styles.username}>@ken_barbershop_ad</p>
           </Link>
