@@ -9,6 +9,8 @@ import PageFive from "./ePageFive/PageFive"
 import PageSix from "./fPageSix/PageSix";
 import PageSeven from "./gPageSeven/PageSeven";
 import PageEight from "./hPageEight/PageEight";
+import PageNine from "./iPageNine/PageNine";
+import PageTen from "./jPageTen/PageTen";
 
 export default function Portfolio() {
 
@@ -22,6 +24,8 @@ export default function Portfolio() {
     <PageSix/>
     <PageSeven/>
     <PageEight/>
+    <PageNine/>
+    <PageTen/>
     </>
   );
 }
