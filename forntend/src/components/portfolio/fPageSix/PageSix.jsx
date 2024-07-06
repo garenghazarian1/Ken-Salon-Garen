@@ -11,7 +11,7 @@ export default function PageSix() {
             src="/portfolio/portfolioE001.jpg" 
             alt="Portfolio Image 1" 
             width={500} 
-            height={300} 
+            height={500} 
             className={styles.imageFA}
           />
           <p className={`${styles.paragraphFA} ${bad.className}`}>
@@ -26,7 +26,7 @@ export default function PageSix() {
             src="/portfolio/portfolioE003.jpg" 
             alt="Portfolio Image 2" 
             width={500} 
-            height={300} 
+            height={500} 
             className={styles.imageFB}
           />
         </div>
