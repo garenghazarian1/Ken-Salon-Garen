@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./PageFour.module.css";
 import {inter, bad} from "@/app/ui/fonts"
 
-export default function Portfolio() {
+export default function PageFour() {
 
   return (
     <>

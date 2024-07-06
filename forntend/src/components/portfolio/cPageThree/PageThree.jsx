@@ -2,7 +2,7 @@
 
 import styles from "./PageThree.module.css";
 
-export default function Portfolio() {
+export default function PageThree() {
 
   return (
     <>

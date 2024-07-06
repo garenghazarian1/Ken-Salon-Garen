@@ -3,7 +3,7 @@
 import styles from "./PageTwo.module.css";
 import {gv, inter} from "@/app/ui/fonts"
 
-export default function Portfolio() {
+export default function PageTwo() {
 
     const handleScroll = (sectionId) => {
         const section = document.getElementById(sectionId);
