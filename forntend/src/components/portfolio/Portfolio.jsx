@@ -1,4 +1,5 @@
 "use client"
+import { useEffect } from 'react';
 import styles from "./Portfolio.module.css";
 
 import PageOne from "./aPageOne/PageOne";
@@ -16,6 +17,27 @@ import PageTwelve from "./lPageTwelve/PageTwelve";
 
 export default function Portfolio() {
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const button = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        button.style.display = 'block';
+      } else {
+        button.style.display = 'none';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
     <PageOne/>
@@ -30,6 +52,9 @@ export default function Portfolio() {
     <PageTen/>
     <PageEleven/>
     <PageTwelve/>
+    <button onClick={scrollToTop} id="backToTop" className={styles.backToTop}>
+        ↑ Top
+      </button>
     </>
   );
 }
