@@ -4,15 +4,9 @@ import { bad} from "@/app/ui/fonts"
 export default function PageNineteen() {
   return (
     <>
-  
-
- 
-
- 
-
     <div className={styles.container}>
         <div className={styles.sectionA}>
-        <video src="/portfolio/description03.mp4" alt="Salon Video" autoPlay muted loop playsInline preload="auto" className={styles.video}/>
+        <video src="/portfolio/description04.mp4" alt="Salon Video" autoPlay muted loop playsInline preload="auto" className={styles.video}/>
         </div>
         <div className={styles.sectionB}>
         <div className={styles.content}>
@@ -30,9 +24,6 @@ export default function PageNineteen() {
             <h3 className={`${styles.header} ${bad.className}`}>Hair Treatments:</h3>
             <p className={styles.text}>Treat yourself to indulgent hair treatments designed to replenish and rejuvenate your locks. From lavish deep conditioning sessions to smoothing keratin treatments, our offerings cater to your every need. Nourish your scalp with our specialized treatments, beloved by celebrities for their ability to promote healthy hair growth and elevate overall hair vitality.</p>
         </div>
-
-
-
 
         <div className={styles.content}>
             <h2 className={styles.num}>04</h2>

@@ -21,6 +21,9 @@ import PageSixteen from './pPageSixteen/PageSixteen';
 import PageSeventeen from './qPageSeventeen/PageSeventeen';
 import PageEighteen from './rPageEighteen/PageEighteen';
 import PageNineteen from './sPageNineteen/PageNineteen';
+import PageTwenty from './tPageTwenty/PageTwenty';
+import PageTwentyOne from './tPageTwentyOne/PageTwentyOne';
+
 
 export default function Portfolio() {
 
@@ -66,6 +69,8 @@ export default function Portfolio() {
     <PageSeventeen/>
     <PageEighteen/>
     <PageNineteen/>
+    <PageTwenty/>
+    <PageTwentyOne/>
     <button onClick={scrollToTop} id="backToTop" className={styles.backToTop}>
         ↑ Top
       </button>
