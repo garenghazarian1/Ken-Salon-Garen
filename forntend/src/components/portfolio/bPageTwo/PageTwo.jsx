@@ -36,7 +36,10 @@ export default function PageTwo() {
         <p className={styles.textB}>Our Locations</p> </div>
         <div className={styles.itemB}  onClick={() => handleScroll("SocialMedia")}>
             <p className={styles.numB}>03</p>
-        <p className={styles.textB}>Social Media</p> </div>
+        <p className={styles.textB}>Social Media</p> 
+        <br  className={styles.br}/>
+        <br className={styles.br}/>
+        </div>
         <div className={styles.itemB}>
             <p className={styles.numB} onClick={() => handleScroll("TheDesigner")}>04</p>
         <p className={styles.textB}>The Designer Behind Ken Salon</p> </div>
@@ -50,11 +53,13 @@ export default function PageTwo() {
             <p className={styles.numB} onClick={() => handleScroll("OurPhilosophy")}>07</p>
         <p className={styles.textB}>Philosophy</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>08</p>
+            <p className={styles.numB} onClick={() => handleScroll("CoreValues")}>08</p>
         <p className={styles.textB}>Core Values</p> </div>
         <div className={styles.itemB}>
             <p className={styles.numB} onClick={() => handleScroll("OurVision")}>09</p>
-        <p className={styles.textB}> Services</p></div>
+        <p className={styles.textB}> Services</p>
+        <br className={styles.br}/>
+        </div>
         <div className={styles.itemB}>
             <p className={styles.numB} onClick={() => handleScroll("OurVision")}>10</p>
         <p className={styles.textB}>Clients We Work With</p> </div>

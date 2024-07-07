@@ -64,6 +64,10 @@
     text-align: center;
   }
 
+  .br{
+    display:none;
+  }
+
     /* Keyframes for animations */
     @keyframes fadeIn {
         from { opacity: 0; }
@@ -99,4 +103,10 @@
       animation: scaleIn 0.5s ease-out; 
     }
 
+  }
+
+  @media (max-width: 480px){
+    .br{
+      display:block;
+    }
   }
