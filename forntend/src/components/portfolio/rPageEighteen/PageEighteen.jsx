@@ -13,7 +13,7 @@ export default function PageEighteen() {
         </div>
 
         
-        <div id="CoreValues" className={styles.rightPaneD}>
+        <div id="Services" className={styles.rightPaneD}>
             <p className={`${inter.className} ${styles.textNumDA}`}>09</p>
             <p className={`${inter.className} ${styles.textNumDB}`}>Services</p>
             <p className={`${styles.textNumDC} ${bad.className}`}>For Her</p>
