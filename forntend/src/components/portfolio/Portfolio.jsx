@@ -23,6 +23,8 @@ import PageEighteen from './rPageEighteen/PageEighteen';
 import PageNineteen from './sPageNineteen/PageNineteen';
 import PageTwenty from './tPageTwenty/PageTwenty';
 import PageTwentyOne from './tPageTwentyOne/PageTwentyOne';
+import PageTwentyTwo from './uPageTwntyTwo/PageTwentyTwo';
+import PageTwentyThree from './vTwentyThree/PageTwentyThree';
 
 
 export default function Portfolio() {
@@ -71,6 +73,8 @@ export default function Portfolio() {
     <PageNineteen/>
     <PageTwenty/>
     <PageTwentyOne/>
+    <PageTwentyTwo/>
+    <PageTwentyThree/>
     <button onClick={scrollToTop} id="backToTop" className={styles.backToTop}>
         ↑ Top
       </button>

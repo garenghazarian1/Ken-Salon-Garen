@@ -1,5 +1,4 @@
 import styles from "./PageTwenty.module.css"
-
 import {inter, bad} from "@/app/ui/fonts"
 import Image from "next/image"
 
