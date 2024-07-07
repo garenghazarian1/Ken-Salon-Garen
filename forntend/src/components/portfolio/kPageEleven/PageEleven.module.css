@@ -60,4 +60,20 @@
       display:none;
     }
 
+    .textNumDA{
+     
+      font-size: 1rem;
+    }
+    .textNumDB{
+  
+      font-size: 2rem;
+    }
+  
+    .textNumDC{
+      
+      top: 3rem;
+      font-size: 3rem;
+      
+    }
+
 }
