@@ -16,6 +16,7 @@ import PageEleven from "./kPageEleven/PageEleven";
 import PageTwelve from "./lPageTwelve/PageTwelve";
 import PageThirteen from './mPageThirteen/PageThirteen';
 import PageFourteen from './nPageFourteen/PageFourteen';
+import PageFifteen from './oPageFifteen/PageFifteen';
 
 export default function Portfolio() {
 
@@ -56,6 +57,7 @@ export default function Portfolio() {
     <PageTwelve/>
     <PageThirteen/>
     <PageFourteen/>
+    <PageFifteen/>
     <button onClick={scrollToTop} id="backToTop" className={styles.backToTop}>
         ↑ Top
       </button>

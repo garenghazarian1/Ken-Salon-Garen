@@ -13,10 +13,11 @@ export default function PageThree() {
           <p className={`${styles.textCB} ${styles.textAnimationCB}`}>and Confidence Reigns</p>
         </div>
         <div className={styles.rightPaneC}>
-          <video className={styles.videoC} controls muted autoPlay loop>
+        <video src="/PortfolioVideo01.mp4" alt="Salon Video" autoPlay muted loop playsInline preload="auto" className={styles.videoC}/>
+          {/* <video className={styles.videoC} controls muted autoPlay loop>
               <source src="/PortfolioVideo01.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
-            </video>
+            </video> */}
         </div>
       </div>
       </>
