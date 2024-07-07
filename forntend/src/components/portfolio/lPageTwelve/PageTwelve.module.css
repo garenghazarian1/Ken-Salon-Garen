@@ -11,7 +11,7 @@
   .headerH {
     font-size: 6rem;
     color: var(--teal-950);
-    margin: 1rem 0;
+    padding: 2rem;
   }
   
   .headerP {

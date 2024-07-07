@@ -30,6 +30,11 @@ export default function PageTwelve() {
         </p>
         
         </div>
+        <div className={styles.content}>
+        <p className={styles.headerP}>Every detail, from impeccable service to cutting-edge techniques and premium products, echoes Vicken&apos;s dedication and vision.
+
+        Under Vicken&apos;s passionate guidance, Ken Salon has become a beacon of excellence in the UAE&apos;s beauty industry. Each visit is more than an appointment; it&apos;s a transformation journey where personalized service and unparalleled artistry reveal the extraordinary within. Step into this realm where his vision comes alive and experience the transformation power of true artistry.</p>
+        </div>
      
     </div>
     </>
