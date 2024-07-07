@@ -1,5 +1,5 @@
 import styles from "./PageSeventeen.module.css"
-import {inter, bad} from "@/app/ui/fonts"
+import { bad} from "@/app/ui/fonts"
 
 export default function PageSeventeen() {
   return (
