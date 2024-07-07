@@ -18,7 +18,7 @@ export default function PageNineteen() {
         <div className={styles.content}>
             <h2 className={styles.num}>01</h2>
             <h3 className={`${styles.header} ${bad.className}`}>Hair Styling:</h3>
-            <p className={styles.text}>Let our expert stylists work their magic, crafting timeless blowouts and intricate updos perfect for any occasion, whether it's a star-studded event or a cherished celebration. Trust in our signature haircuts, tailored to your unique style and personality, with precision cuts that have adorned the locks of celebrities, ensuring you leave with a head-turning, glamorous look</p>
+            <p className={styles.text}>Let our expert stylists work their magic, crafting timeless blowouts and intricate updos perfect for any occasion, whether it&apos;s a star-studded event or a cherished celebration. Trust in our signature haircuts, tailored to your unique style and personality, with precision cuts that have adorned the locks of celebrities, ensuring you leave with a head-turning, glamorous look</p>
         </div>
         <div className={styles.content}>
             <h2 className={styles.num}>02</h2>
@@ -57,7 +57,7 @@ export default function PageNineteen() {
         <div className={styles.content}>
             <h2 className={styles.num}>08</h2>
             <h3 className={`${styles.header} ${bad.className}`}>Nail Care:</h3>
-            <p className={styles.text}>Indulge in luxurious nail care, pampering your hands and feet with impeccable finishes and meticulous attention. Whether it's a classic manicure or trendy nail art, our expert technicians will leave you feeling polished and glamorous.</p>
+            <p className={styles.text}>Indulge in luxurious nail care, pampering your hands and feet with impeccable finishes and meticulous attention. Whether it&apos;s a classic manicure or trendy nail art, our expert technicians will leave you feeling polished and glamorous.</p>
         </div>
         <div className={styles.content}>
             <h2 className={styles.num}>09</h2>
