@@ -44,25 +44,25 @@ export default function PageTwo() {
             <p className={styles.numB} onClick={() => handleScroll("OurVision")}>05</p>
         <p className={styles.textB}>Vision</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>06</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurMission")}>06</p>
         <p className={styles.textB}>Mission</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>07</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>07</p>
         <p className={styles.textB}>Philosophy</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>08</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>08</p>
         <p className={styles.textB}>Core Values</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>09</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>09</p>
         <p className={styles.textB}> Services</p></div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>10</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>10</p>
         <p className={styles.textB}>Clients We Work With</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>11</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>11</p>
         <p className={styles.textB}>Community Engagement</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB}>12</p>
+            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>12</p>
         <p className={styles.textB}>Press & Media Features</p> </div>
       </div>
     </div>

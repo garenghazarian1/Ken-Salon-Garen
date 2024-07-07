@@ -15,13 +15,13 @@ export default function PageTen() {
         </div>
         <div className={styles.profile}>
         <Link href="https://www.instagram.com/ken_beauty_ad/"  target="_blank">
-          <Image src="/ken.jpg" alt="KenInstagram01" className={styles.profileImage} width={500} height={500} />
+          <Image src="/portfolio/insta02.jpg" alt="KenInstagram01" className={styles.profileImage} width={500} height={500} />
           <p className={styles.username}>@ken_beauty_ad</p>
           </Link>
         </div>
         <div className={styles.profile}>
         <Link href="https://www.instagram.com/ken_ghazarian/"  target="_blank">
-          <Image src="/hero02.jpg" alt="KenInstagram01" className={styles.profileImage} width={500} height={500} />
+          <Image src="/portfolio/insta01.jpg" alt="KenInstagram01" className={styles.profileImage} width={500} height={500} />
           <p className={styles.username}>@ken_ghazarian</p>
           </Link>
         </div>
