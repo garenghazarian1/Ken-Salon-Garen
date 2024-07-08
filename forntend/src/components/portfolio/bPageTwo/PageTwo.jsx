@@ -61,7 +61,7 @@ export default function PageTwo() {
         <br className={styles.br}/>
         </div>
         <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>10</p>
+            <p className={styles.numB} onClick={() => handleScroll("Celebrities")}>10</p>
         <p className={styles.textB}>Clients We Work With</p> </div>
         <div className={styles.itemB}>
             <p className={styles.numB} onClick={() => handleScroll("OurVision")}>11</p>

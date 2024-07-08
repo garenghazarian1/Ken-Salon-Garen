@@ -11,7 +11,7 @@ export default function PageTwentyTwo() {
     </div>
 
     
-    <div id="Services" className={styles.rightPaneD}>
+    <div id="Celebrities" className={styles.rightPaneD}>
         <p className={`${inter.className} ${styles.textNumDA}`}>10</p>
         <p className={`${inter.className} ${styles.textNumDB}`}>Celebrities</p>
         <p className={`${styles.textNumDC} ${bad.className}`}>We work with</p>
