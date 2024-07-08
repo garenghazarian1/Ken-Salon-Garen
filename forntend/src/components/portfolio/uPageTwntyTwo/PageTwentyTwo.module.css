@@ -38,13 +38,13 @@
   }
   .textNumDB{
     font-weight:lighter;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .textNumDC{
     position: absolute;
     top: 6rem;
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--teal-800);
   }
   
