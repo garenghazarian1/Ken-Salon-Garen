@@ -40,8 +40,11 @@ export const UserProvider = ({ children }) => {
       router.push('/login');
       return response.data;
     } catch (error) {
-      const errorMessage = error.response && error.response.data.message ? error.response.data.message : 'Something went wrong frontend';
-      console.error(error.message, 'Registration error:', errorMessage);
+      const errorMessage = error.response && error.response.data.message ? error.response.data.message : 'Something went wrong in the front ';
+      setError(errorMessage);
+      console.error('Registration error:', errorMessage); 
+      return { error: errorMessage }; 
+      // console.error(error.message, 'Registration error:', errorMessage);
     }
   };
 

@@ -19,6 +19,46 @@
     width: 80%;
 }
 
+/* Existing styles ... */
+
+/* Error message styles */
+.error {
+    background-color: #115e59(255, 0, 0, 0.1); 
+    color: rgb(150, 20, 20); 
+    border: 1px solid #042f2e; 
+    padding: 1rem;
+    margin-bottom: 1rem; 
+    border-radius: 5px;
+    text-align: center; 
+    font-weight: bold; 
+    animation: fadeIn 0.5s ease-in-out; 
+    position: relative; 
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Close button for the error message */
+  .closeButton {
+    position: absolute;
+    top: -1.2rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 4rem;
+    cursor: pointer;
+    color: rgb(150, 20, 20);
+  }
+  
 
 
 .heading {
@@ -295,6 +335,8 @@
   .linkButton:hover {
     color: #FFF; 
   }
+
+  
 
 @media (min-width: 640px) {
     .videoContainer {

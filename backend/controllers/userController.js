@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 dotenv.config();
 
@@ -23,6 +24,12 @@ export const registerUser = async (req, res) => {
        if (password.length < 6) {
         return res.status(400).json({ message: 'Password must be at least 6 characters long.' });
       }
+
+      // Validate phone number
+    const phoneNumberObj = parsePhoneNumberFromString(phoneNumber, 'AE'); // Assuming 'AE' (United Arab Emirates) as the default country
+    if (!phoneNumberObj || !phoneNumberObj.isValid()) {
+      return res.status(400).json({ message: 'Invalid phone number' });
+    }
 
      const existingUser = await User.findOne({ email });
      if (existingUser) {
