@@ -10,6 +10,13 @@ export default function Navbar() {
       <div>
         <Link href="/"> <Logo/></Link>
       </div>
+      <div>
+      <Link href="/stores">
+                    <span className={styles.button}>
+                      Book Now
+                    </span>
+                  </Link>
+      </div>
       <div > 
         <Links/> 
       </div>
