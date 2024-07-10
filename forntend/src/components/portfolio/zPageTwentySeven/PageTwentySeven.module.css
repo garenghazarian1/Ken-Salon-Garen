@@ -25,7 +25,8 @@
   .sectionAHeader {
     font-size: 1.5rem;
     color: var(--header-1);
-    margin-bottom: 0.625rem; 
+    margin-bottom: 0.625rem;
+    text-align: center; 
   }
   
   .sectionAText {
@@ -40,7 +41,9 @@
   }
   
   .sectionB {
+    background-color: var(--olive-silvery-green);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
