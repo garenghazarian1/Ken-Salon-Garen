@@ -12,7 +12,7 @@ export default function PageTwentySix() {
     
         
         <div id="Press" className={styles.rightPaneD}>
-            <p className={`${inter.className} ${styles.textNumDA}`}>11</p>
+            <p className={`${inter.className} ${styles.textNumDA}`}>12</p>
             <p className={`${inter.className} ${styles.textNumDB}`}>Press &</p>
             <p className={`${styles.textNumDC} ${bad.className}`}>Media Features</p>
         </div>
