@@ -11,7 +11,7 @@ export default function PageTwentyFour() {
         </div>
     
         
-        <div id="Celebrities" className={styles.rightPaneD}>
+        <div id="CommunityEngagement" className={styles.rightPaneD}>
             <p className={`${inter.className} ${styles.textNumDA}`}>11</p>
             <p className={`${inter.className} ${styles.textNumDB}`}>Community</p>
             <p className={`${styles.textNumDC} ${bad.className}`}>Engagement</p>

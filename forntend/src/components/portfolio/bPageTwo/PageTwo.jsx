@@ -64,10 +64,10 @@ export default function PageTwo() {
             <p className={styles.numB} onClick={() => handleScroll("Celebrities")}>10</p>
         <p className={styles.textB}>Clients We Work With</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>11</p>
+            <p className={styles.numB} onClick={() => handleScroll("CommunityEngagement")}>11</p>
         <p className={styles.textB}>Community Engagement</p> </div>
         <div className={styles.itemB}>
-            <p className={styles.numB} onClick={() => handleScroll("OurVision")}>12</p>
+            <p className={styles.numB} onClick={() => handleScroll("Press")}>12</p>
         <p className={styles.textB}>Press & Media Features</p> </div>
       </div>
     </div>

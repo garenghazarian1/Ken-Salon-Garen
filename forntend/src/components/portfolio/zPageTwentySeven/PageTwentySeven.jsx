@@ -1,9 +1,25 @@
-import React from 'react'
+import styles from "./PageTwentySeven.module.css"
 
 export default function PageTwentySeven() {
   return (
     <>
-    <p>https://magazine-lb.com/380151/</p>
+    <div className={styles.container}>
+        <div className={styles.sectionA}>
+            <div className={styles.sectionAContent}>
+                <h2 className={styles.sectionAHeader}>
+                    PRESS
+                </h2>
+                <p className={styles.sectionAText}>
+                Discover how Ken has reshaped the landscape of hair fashion and trends in these engaging articles. Explore the groundbreaking approaches and visionary insights that have propelled Ken to the forefront of the beauty industry. Dive deeper to witness the impact of Ken's creative vision on the world of hairstyling.
+                </p>
+            </div>
+            
+        </div>
+        <div className={styles.sectionB}>
+             <video src="/portfolio/press.mp4" alt="Salon Video" autoPlay muted loop playsInline preload="auto" className={styles.video}/>
+        </div>
+
+    </div>
     </>
   )
 }
