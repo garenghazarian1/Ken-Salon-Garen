@@ -4,28 +4,21 @@
   .container {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.25rem; 
-    background-color: var(--light-gray);
+    background-color: var(--teal-950);
     color: var(--text-color);
+    padding: 0 3rem 0rem 3rem;
   }
   
   .sectionA {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-  }
-  
-  .sectionAContent {
-    background-color: var(--olive-silvery-green);
-    padding: 1.25rem; 
-    border-radius: 0.5rem; 
+    gap: 1rem;
   }
   
   .sectionAHeader {
     font-size: 1.5rem;
-    color: var(--header-1);
-    margin-bottom: 0.625rem;
+    color: var(--text-color);
+    
     text-align: center; 
   }
   
@@ -33,6 +26,8 @@
     font-size: 1rem; 
     line-height: 1.5;
     color: var(--text-color);
+    padding-bottom: 1rem;
+    text-align: center; 
   }
   
   .sectionAHeader:hover,
@@ -43,40 +38,22 @@
   .sectionB {
     background-color: var(--olive-silvery-green);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
   }
   
   .video {
-    width: 100%;
-    max-width: 37.5rem; 
-    border-radius: 0.5rem; 
+    width: 50%;
   }
-  
-  /* Responsive styling */
-  @media (min-width: 768px) { 
-    .container {
-      flex-direction: row;
-    }
-  
-    .sectionA {
-      flex: 1;
-    }
-  
-    .sectionB {
-      flex: 1;
-      padding: 1.25rem; 
-    }
+
+  @media (max-width: 768px) { 
+    .container{
+      padding: 0 2rem 0rem 2rem;
+
   }
+}
+
   
-  @media (min-width: 1024px) { 
-    .sectionAHeader {
-      font-size: 1.75rem; 
-    }
-  
-    .sectionAText {
-      font-size: 1.125rem; 
-    }
-  }
+
   
