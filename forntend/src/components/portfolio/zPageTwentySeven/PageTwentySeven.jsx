@@ -10,7 +10,7 @@ export default function PageTwentySeven() {
                     PRESS
                 </h2>
                 <p className={styles.sectionAText}>
-                Discover how Ken has reshaped the landscape of hair fashion and trends in these engaging articles. Explore the groundbreaking approaches and visionary insights that have propelled Ken to the forefront of the beauty industry. Dive deeper to witness the impact of Ken's creative vision on the world of hairstyling.
+                Discover how Ken has reshaped the landscape of hair fashion and trends in these engaging articles. Explore the groundbreaking approaches and visionary insights that have propelled Ken to the forefront of the beauty industry. Dive deeper to witness the impact of Ken&apos;s creative vision on the world of hairstyling.
                 </p>
             </div>
             
