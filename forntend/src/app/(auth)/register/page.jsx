@@ -34,11 +34,14 @@ const RegisterPage = () => {
     }));
   };
 
-  const handlePhoneChange = (value) => {
+  const handlePhoneChange = (value, data) => {
+    // value should already contain the full international phone number with country code
     setFormData(prevState => ({
       ...prevState,
-      phoneNumber: value
+      phoneNumber: value,
+      country: data.countryCode // store the country code separately if needed
     }));
+     
   };
 
   const handleImageSelect = (e) => {
