@@ -30,8 +30,10 @@ const Contact = () => {
               <p className={styles.p} >{store.country}</p>
             </div>
             <div style={{ marginTop: '32px' }}>
-              <p className={styles.p}>Phone: {store.phone}</p>
+              
+              <p className={styles.p}>Phone: <a className={styles.a} href={`tel:${store.mobile}`}>{store.phone}</a></p>
               <p className={styles.p}>Mobile: <a className={styles.a} href={`tel:${store.mobile}`}>{store.mobile}</a></p>
+              <p className={styles.p}>Barber Mobile:: <a className={styles.a} href={`tel:${store.mobile}`}>{store.mobileOne}</a></p>
               <p className={styles.p}>Email: <a className={styles.a} href={`mailto:${store.email}`}>{store.email}</a></p>
             </div>
             <div className={styles.mapContainer}>
