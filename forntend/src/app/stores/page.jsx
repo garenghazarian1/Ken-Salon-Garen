@@ -39,16 +39,16 @@ const StoresPage = () => {
             {/* Displaying contact info fields */}
             {store && (
               <div className={styles.storeContacts}>
-                <p >Phone: {store.phone}</p>
-                <p>
-                  Mobile: <a href={`https://wa.me/${store.mobile}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobile}</a>
-                </p>
-                <p>
-                  Barber Mobile: <a href={`https://wa.me/${store.mobileOne}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobileOne}</a>
-                </p>
-                <p>Email: <a href={`mailto:${store.email}`} className={styles.contactLink}>{store.email}</a></p>
-                
-              </div>
+              <p>Phone: <a href={`tel:${store.phone}`} className={styles.contactLink}>{store.phone}</a></p>
+              <p>
+                Mobile: <a href={`https://wa.me/${store.mobile}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobile}</a>
+              </p>
+              <p>
+                Barber Mobile: <a href={`https://wa.me/${store.mobileOne}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobileOne}</a>
+              </p>
+              <p>Email: <a href={`mailto:${store.email}`} className={styles.contactLink}>{store.email}</a></p>
+            </div>
+            
               
             )}
 
