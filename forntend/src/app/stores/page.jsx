@@ -41,13 +41,14 @@ const StoresPage = () => {
               <div className={styles.storeContacts}>
               <p>Phone: <a href={`tel:${store.phone}`} className={styles.contactLink}>{store.phone}</a></p>
               <p>
-                Mobile: <a href={`https://wa.me/${store.mobile}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobile}</a>
+                Mobile: <a href={`tel:${store.mobile}`} className={styles.contactLink} >{store.mobile}</a>
               </p>
               <p>
-                Barber Mobile: <a href={`https://wa.me/${store.mobileOne}?text=Hello, I'm interested in your services.`} className={styles.contactLink} target="_blank" rel="noopener noreferrer">{store.mobileOne}</a>
+                Barber Mobile: <a href={`tel:${store.mobileOne}`} className={styles.contactLink} >{store.mobileOne}</a>
               </p>
               <p>Email: <a href={`mailto:${store.email}`} className={styles.contactLink}>{store.email}</a></p>
             </div>
+            
             
               
             )}
