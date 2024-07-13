@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "react-phone-input-2": "^2.15.1",
     "twilio": "^5.0.4"
   }

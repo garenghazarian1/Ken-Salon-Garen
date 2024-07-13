@@ -12,6 +12,7 @@ import styles from './BookingPage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
+
 const BookingPage = () => {
     const { currentStoreId } = useStore();
     const { services, selectedServices, setSelectedServices, activeSection } = useService();
@@ -23,9 +24,12 @@ const BookingPage = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [employeeAvailability, setEmployeeAvailability] = useState({});
     const [formErrors, setFormErrors] = useState('');
+    const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const confirmButtonRef = useRef(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [comment, setComment] = useState(''); 
+    
     
     
 
@@ -61,10 +65,13 @@ const BookingPage = () => {
         
         if (errors.length > 0) {
             setFormErrors(errors.join(" ")); // Joins all error messages into a single string
+            setModalMessage(errors.join(" "));
+            setModalType('alertDanger');
             return;
         }
     
-        setFormErrors(''); // Clear previous errors
+        setFormErrors('');
+        setModalMessage(''); // Clear previous errors
         bookAppointment({
             currentStoreId,
             selectedServices: Array.from(selectedServices),
@@ -79,6 +86,22 @@ const BookingPage = () => {
     const removeServiceFromBasket = (serviceId) => {
         setSelectedServices(prev => new Set([...prev].filter(id => id !== serviceId)));
     };
+
+
+    const closeModal = () => {
+        setModalMessage('');
+        setModalType('');
+    };
+
+    useEffect(() => {
+        if (bookingStatus.error) {
+            setModalMessage(bookingStatus.error);
+            setModalType('alertDanger');
+        } else if (bookingStatus.success) {
+            setModalMessage(bookingStatus.success);
+            setModalType('alertSuccess');
+        }
+    }, [bookingStatus]);
 
     if (sessionStatus === "loading") return <p>Loading session...</p>;
     if (!session) return <p className={styles.titleError}>
@@ -132,9 +155,14 @@ const BookingPage = () => {
             <button ref={confirmButtonRef} onClick={handleBooking} className={styles.linkButton}>
                 Confirm Booking
             </button>
-            {formErrors && <div className={`${styles.alert} ${styles.alertDanger}`}>{formErrors}</div>}
-            {bookingStatus.error && <div className={`${styles.alert} ${styles.alertDanger}`}>{bookingStatus.error}</div>}
-            {bookingStatus.success && <div className={`${styles.alert} ${styles.alertSuccess}`}>{bookingStatus.success} </div>}
+            {modalMessage && (
+                <div className={styles.overlay}>
+                    <div className={`${styles.modal} ${styles[modalType]}`}>
+                        <p>{modalMessage}</p>
+                        <button onClick={closeModal} className={styles.closeButton}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
