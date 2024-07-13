@@ -81,7 +81,9 @@ const BookingPage = () => {
     };
 
     if (sessionStatus === "loading") return <p>Loading session...</p>;
-    if (!session) return <p className={styles.title}>Please log in to continue. <Link className={styles.linkButton} href="/login">Log in</Link></p>;
+    if (!session) return <p className={styles.titleError}>
+    Please log in to continue. <Link className={styles.linkButton} href="/login">Log in</Link> or <Link className={styles.linkButton} href="/register">register</Link>.
+  </p>;
     if (!currentStoreId) return <p>Please select a store first.</p>;
 
     return (

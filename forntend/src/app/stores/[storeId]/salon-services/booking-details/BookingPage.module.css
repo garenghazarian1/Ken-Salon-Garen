@@ -29,12 +29,20 @@
     color: var(--teal-950);
     align-self: center;
   }
+
+  .titleError{
+    font-size: 1.2rem;
+    font-weight: 400; 
+    margin: 1rem;
+    color: var(--teal-950);
+    text-align: center;
+  }
   
   .section {
     width: 100%;
-    display: flex; /* Enable flex layout */
-    flex-wrap: wrap; /* Allow multiple rows */
-    margin: 0 1rem; /* Adjust margin for section */
+    display: flex; 
+    flex-wrap: wrap;
+    margin: 0 1rem; 
 }
 
 .flexContainer {
