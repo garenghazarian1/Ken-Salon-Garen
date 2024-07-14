@@ -22,7 +22,9 @@ const UserCard = ({ session }) => {
 
     useEffect(() => {
         if (!session) {
-          router.push('/');
+            router.push('/');
+        } else {
+            router.push('/user');
         }
     }, [session, router]);
 
