@@ -6,10 +6,10 @@ const UserProfile = () => {
     const { data: session, status: sessionStatus } = useSession();
 
     return (
-        <div>
-            <h1>User Profile</h1>
+        <>
+            
             <UserCard session={session} sessionStatus={sessionStatus} />
-        </div>
+        </>
     );
 };
 

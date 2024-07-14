@@ -53,7 +53,7 @@ const UserCard = ({ session }) => {
                 />
             <div >
                 <h3 className={styles.userName}>Welcome, {session?.user?.name}</h3>
-                <p className={styles.userP}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium voluptate velit ullam veritatis adipisci amet ratione, quam explicabo incidunt iusto est nisi, iure voluptatem eveniet magnam! Aliquid ad eos iste.</p>
+                {/* <p className={styles.userP}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium voluptate velit ullam veritatis adipisci amet ratione, quam explicabo incidunt iusto est nisi, iure voluptatem eveniet magnam! Aliquid ad eos iste.</p> */}
                 <div className={styles.goldLine}></div>
                 {session?.user?.role === 'employee' && (
                     <Link href="/employee" className={styles.employeeLink}>
@@ -68,7 +68,7 @@ const UserCard = ({ session }) => {
             </div>
            
                 </div>
-                <UpdateUserForm session={session} />
+                
                 <h2 className={styles.userName}>Your Appointments</h2>
                 <ul className={styles.appointmentList}>  
                     {sortedAppointments.length > 0 ? (
@@ -100,7 +100,7 @@ const UserCard = ({ session }) => {
                         <li>No appointments available.</li>
                     )}
                 </ul>
-                
+                <UpdateUserForm session={session} />
             
         </div>
     );
