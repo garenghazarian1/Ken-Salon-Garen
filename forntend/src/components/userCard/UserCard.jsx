@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+"use client"
+import { useEffect, useState } from 'react';
 import styles from './UserCard.module.css';
 import { useAppointment } from '@/context/AppointmentContext'; 
 import Image from 'next/image';
@@ -12,11 +13,14 @@ import UpdateUserForm from '../updateUserForm/UpdateUserForm';
 const UserCard = ({ session }) => {
     const { appointments, fetchUserAppointments, deleteAppointment, isLoading } = useAppointment();
     const router = useRouter();
+    const [isSessionLoading, setIsSessionLoading] = useState(true);
 
     useEffect(() => {
-    
         if (session?.user) {
-            fetchUserAppointments(); 
+            fetchUserAppointments();
+            setIsSessionLoading(false);
+        } else if (session === null) {
+            setIsSessionLoading(false);
         }
     }, [session, fetchUserAppointments]);
 
@@ -28,7 +32,7 @@ const UserCard = ({ session }) => {
         }
     }, [session, router]);
 
-    if (isLoading) return <LoadingSkeleton />;
+    if (isLoading || isSessionLoading) return <LoadingSkeleton />;
 
     const handleDelete = (appointmentId) => {
         if (window.confirm('Are you sure you want to delete this appointment?')) {
