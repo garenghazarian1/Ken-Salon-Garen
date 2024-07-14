@@ -96,6 +96,9 @@ const LoginPage = () => {
        {/* <button type="button" onClick={handleGoogleSignIn} className={styles.googleSignInButton}>
           Sign in with Google
         </button>   */}
+        <div className={styles.field}>
+        <Link href="/register" className={styles.loginLink}>If you do not have an account, register here</Link>
+      </div>
       <div className={styles.field}>
         <Link href="/" className={styles.loginLink}>Back to main page</Link>
       </div>
