@@ -6,6 +6,9 @@ import { baseUrl } from '@/api/ports';
 import { DateTime } from 'luxon';
 import { useRouter } from 'next/navigation';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AppointmentContext = createContext();
 
@@ -79,7 +82,7 @@ export const AppointmentProvider = ({ children }) => {
                 //console.log('Appointment booked successfully:', response.data); 
                 fetchAppointments();
                 setBookingStatus({ success: response.data.message, error: '' });
-                alert("Appointment booked successfully: ");
+                toast.success("Congratulations! Appointment booked successfully.");
                 router.push('/user');
             } else {
                 throw new Error(response.data.message);
@@ -144,6 +147,7 @@ export const AppointmentProvider = ({ children }) => {
     return (
         <AppointmentContext.Provider value={{ bookAppointment, fetchAppointments, fetchUserAppointments, bookingStatus, appointments, setAppointments, deleteAppointment,   }}>
             {children}
+            <ToastContainer />
         </AppointmentContext.Provider>
     );
     

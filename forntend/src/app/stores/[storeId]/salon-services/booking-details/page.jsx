@@ -12,6 +12,9 @@ import styles from './BookingPage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const BookingPage = () => {
     const { currentStoreId } = useStore();
@@ -29,8 +32,10 @@ const BookingPage = () => {
     const confirmButtonRef = useRef(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [comment, setComment] = useState(''); 
+
     
     
+    const notify = () => toast("Wow so easy!");
     
 
     useEffect(() => {
@@ -99,7 +104,7 @@ const BookingPage = () => {
             setModalType('alertDanger');
         } else if (bookingStatus.success) {
             setModalMessage(bookingStatus.success);
-            setModalType('alertSuccess');
+            
         }
     }, [bookingStatus]);
 
@@ -163,6 +168,8 @@ const BookingPage = () => {
                     </div>
                 </div>
             )}
+
+            
         </div>
     );
 };
