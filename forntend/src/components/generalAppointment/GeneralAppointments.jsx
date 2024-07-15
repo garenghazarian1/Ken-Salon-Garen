@@ -3,15 +3,17 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { baseUrl } from '@/api/ports'; 
+import { baseUrl } from '@/api/ports';
 import { useSession } from 'next-auth/react';
-import styles from "./GeneralAppointments.module.css"
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import styles from "./GeneralAppointments.module.css";
 
 export default function GeneralAppointments() {
     const { data: session, status } = useSession();
     const [appointments, setAppointments] = useState([]);
     const [groupedAppointments, setGroupedAppointments] = useState({});
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [error, setError] = useState(null);
     const router = useRouter();
@@ -28,19 +30,17 @@ export default function GeneralAppointments() {
                         });
                         const appointments = response.data.allAppointments;
                         setAppointments(appointments);
-                        groupAppointmentsByDateAndEmployee(appointments);
-                        //console.log(response.data)
+                        groupAppointmentsByDate(appointments);
                     } catch (err) {
                         setError(err.response ? err.response.data.message : err.message);
                     }
                 } else {
-                    // Redirect to home page or another page if the user is not an owner
                     router.push('/');
                 }
             }
         };
 
-        const groupAppointmentsByDateAndEmployee = (appointments) => {
+        const groupAppointmentsByDate = (appointments) => {
             const grouped = appointments.reduce((acc, appointment) => {
                 const date = new Date(appointment.date).toLocaleDateString();
                 const employee = appointment.employee.userInfo.name;
@@ -50,15 +50,15 @@ export default function GeneralAppointments() {
                 return acc;
             }, {});
             setGroupedAppointments(grouped);
-            const firstDate = Object.keys(grouped)[0];
-            setSelectedDate(firstDate);
-            if (grouped[firstDate]) {
-                setSelectedEmployee(Object.keys(grouped[firstDate])[0]);
-            }
         };
 
         fetchAppointments();
     }, [status, session]);
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+        setSelectedEmployee(null); // Reset selected employee on date change
+    };
 
     if (status === "loading") {
         return <div>Loading...</div>;
@@ -67,6 +67,10 @@ export default function GeneralAppointments() {
     if (error) {
         return <div>Error: {error}</div>;
     }
+
+    const selectedDateKey = selectedDate.toLocaleDateString();
+    const employeesForSelectedDate = groupedAppointments[selectedDateKey] ? Object.keys(groupedAppointments[selectedDateKey]) : [];
+    const appointmentsForSelectedDateAndEmployee = selectedEmployee ? groupedAppointments[selectedDateKey][selectedEmployee] : [];
 
     const calculateTotalPrice = (services) => {
         return services.reduce((total, service) => total + service.price, 0);
@@ -79,23 +83,15 @@ export default function GeneralAppointments() {
     return (
         <div className={styles.container}>
             <h1 className={styles.header}>Appointments</h1>
-            <div className={styles.dateList}>
-                {Object.keys(groupedAppointments).map(date => (
-                    <div
-                        key={date}
-                        className={`${styles.dateItem} ${selectedDate === date ? styles.selectedDate : ''}`}
-                        onClick={() => {
-                            setSelectedDate(date);
-                            setSelectedEmployee(Object.keys(groupedAppointments[date])[0]);
-                        }}
-                    >
-                        {date}
-                    </div>
-                ))}
-            </div>
-            {selectedDate && (
+            <Calendar
+                onChange={handleDateChange}
+                value={selectedDate}
+                className={styles.calendar}
+            />
+            <h2 className={styles.subHeader}>Appointments for {selectedDate.toLocaleDateString()}</h2>
+            {employeesForSelectedDate.length > 0 ? (
                 <div className={styles.employeeList}>
-                    {Object.keys(groupedAppointments[selectedDate]).map(employee => (
+                    {employeesForSelectedDate.map(employee => (
                         <div
                             key={employee}
                             className={`${styles.employeeItem} ${selectedEmployee === employee ? styles.selectedEmployee : ''}`}
@@ -105,22 +101,24 @@ export default function GeneralAppointments() {
                         </div>
                     ))}
                 </div>
+            ) : (
+                <p>No appointments for this date.</p>
             )}
-            {selectedDate && selectedEmployee && (
+            {selectedEmployee && (
                 <ul className={styles.appointmentList}>
-                   {groupedAppointments[selectedDate][selectedEmployee]?.map((appointment) => {
+                    {appointmentsForSelectedDateAndEmployee.map((appointment) => {
                         const totalPrice = calculateTotalPrice(appointment.services);
                         const totalPriceWithVAT = calculatePriceWithVAT(totalPrice);
                         return (
                             <li key={appointment._id} className={styles.appointmentItem}>
+                                <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
                                 <p><strong>Employee:</strong> {appointment.employee.userInfo.name}</p>
                                 <p><strong>User:</strong> {appointment.user.name}</p>
                                 <p><strong>Phone:</strong> {appointment.user.phoneNumber}</p>
-                                <p><strong>Date:</strong> {new Date(appointment.date).toLocaleDateString()}</p>
+                                
                                 <p><strong>Start Time:</strong> {appointment.startTime}</p>
                                 <p><strong>End Time:</strong> {appointment.endTime}</p>
-                                <p><strong>Phone:</strong> {appointment.phoneNumber}</p>
-                                <p><strong>comment:</strong> {appointment.comment}</p>
+                                <p><strong>Comment:</strong> {appointment.comment}</p>
                                 <p><strong>Total Price:</strong> {totalPrice} AED</p>
                                 <p><strong>Total Price (with VAT):</strong> {totalPriceWithVAT.toFixed(2)} AED</p>
                                 <p><strong>Services:</strong></p>
@@ -130,7 +128,7 @@ export default function GeneralAppointments() {
                                             <p className={styles.serviceDetails}><strong>Section:</strong> {service.section}</p>
                                             <p className={styles.serviceDetails}><strong>Category:</strong> {service.category}</p>
                                             <p className={styles.serviceDetails}><strong>Title:</strong> {service.title}</p>
-                                            <p className={styles.serviceDetails}><strong>Price:</strong> {service.price} AED</p>   
+                                            <p className={styles.serviceDetails}><strong>Price:</strong> {service.price} AED</p>
                                         </li>
                                     ))}
                                 </ul>
@@ -142,6 +140,3 @@ export default function GeneralAppointments() {
         </div>
     );
 }
-
-
-

@@ -102,3 +102,57 @@ Image {
 }
 
 
+/* React Calendar Custom Styles */
+.react-calendar {
+  background-color: var(--teal-950) !important;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--text-color) !important;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.react-calendar__navigation button {
+  color: var(--text-color) !important;
+  min-width: 44px;
+  background: var(--teal-950) !important;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: var(--teal-800) !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: var(--light-gray) !important;
+}
+
+.react-calendar__tile {
+  background: none;
+  border: none;
+  color: var(--text-color) !important;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: var(--teal-800) !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__tile--now {
+  background: gray !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__tile--active {
+  background: var(--teal-800)!important;
+  border-radius: 0.5rem;
+  color: var(--text-hover);
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: var(--teal-800) !important;
+}
