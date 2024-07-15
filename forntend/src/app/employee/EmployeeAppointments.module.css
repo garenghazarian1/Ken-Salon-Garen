@@ -1,91 +1,63 @@
 /* EmployeeAppointments.module.css */
-.table {
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--teal-950);
+    color: var(--text-color);
+    padding: 20px;
+  }
+  
+  .calendar {
+    margin-bottom: 20px;
+  }
+  
+  .appointment {
+    background-color: var(--teal-800);
+    border: 1px solid var(--header-2);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
     width: 100%;
-    border-collapse: collapse;
-    overflow-x: auto;
-    
-}
-
-.th, .td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 0.8rem;
-    
-}
-
-.th {
-    background-color: #03573b;
+    max-width: 600px;
+    box-sizing: border-box;
+  }
+  
+  .appointment p {
+    margin: 5px 0;
+  }
+  
+  .appointment span {
     font-weight: bold;
-     
-}
-
-.tr:nth-child(even) {
-    background-color: #10b981; 
-}
-
-
-
-.span{
-    font-size: 0.8rem;
-    color: azure;
-}
-.buttonGroup {
-    margin: 1rem;
-}
-
-.button {
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #10b981;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    margin-right: 4px;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #059669; /* Darker shade for hover effect */
-}
-
-/* Responsive adjustments for small screens */
-@media (max-width: 600px) {
-    .table, .thead, .tr, .th, .td {
-        display: block;
-        margin: 0.5rem;
+    color: var(--light-gray);
+  }
+  
+ 
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
     }
-
-    .thead {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
+  
+    .appointment {
+      padding: 10px;
+      max-width: 100%;
     }
-
-    .tr {
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 8px;
+  
+    .react-calendar {
+      max-width: 100%;
     }
-
-    .td {
-        text-align: left;
-        
-        position: relative;
-        border: none;
+  }
+  
+  @media (max-width: 480px) {
+    .appointment p {
+      font-size: 14px;
     }
-
-    .td:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        width: 45%; /* Adjust according to label width */
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
+  
+    .appointment span {
+      font-size: 14px;
     }
-}
-
-
+  }
+  
