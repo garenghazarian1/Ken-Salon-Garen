@@ -64,6 +64,7 @@ function EmployeeAppointments() {
         <p>No appointments for the selected date.</p>
       ) : (
         filteredAppointments.map((appointment) => (
+          
           <div key={appointment._id} className={styles.appointment}>
             <p><span className={styles.span}>Date: </span>{appointment.date}</p>
             <p><span className={styles.span}>Time: </span>{appointment.startTime} - {appointment.endTime}</p>
