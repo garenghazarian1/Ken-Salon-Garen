@@ -54,10 +54,10 @@ function calculateEndTime(startTime, duration) {
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // Helper function to calculate reminder time
-function getReminderTime(date, startTime) {
-    const appointmentTime = new Date(`${date}T${startTime}`);
-    return new Date(appointmentTime.getTime() - 4 * 60 * 60 * 1000); // Subtract 4 hours
-}
+ function getReminderTime(date, startTime) {
+     const appointmentTime = new Date(`${date}T${startTime}Z`); // Ensure UTC time zone
+     return new Date(appointmentTime.getTime() - 4 * 3600 * 1000); // Subtract 4 hours
+ }
 
 export const bookAppointment = async (req, res) => {
     const { date, startTime, user: userId, employee, services, storeId, phoneNumber, comment } = req.body;
@@ -134,26 +134,31 @@ export const bookAppointment = async (req, res) => {
            }
        });
 
-        // Send WhatsApp message
-        const reminderTime = getReminderTime(date, startTime);
-        const messageBody = `Hi ${populatedAppointment.user.name}, this is a reminder for your appointment on ${date} at ${startTime}. Please contact us if you have any questions.`;
+       // Send WhatsApp message
+ try {
+     const reminderTime = getReminderTime(date, startTime);
+     const messageBody = `Hi ${populatedAppointment.user.name}, this is a reminder for your appointment on ${date} at ${startTime}. Please contact us if you have any questions.`;
 
-        client.messages.create({
-            from: 'whatsapp:+4915257398979', 
-            body: messageBody,
-            to: `whatsapp:${populatedAppointment.user.phoneNumber}`
-        }).then(message => console.log('WhatsApp message sent:', message.sid))
-          .catch(error => console.error('Error sending WhatsApp message:', error));
+     await client.messages.create({
+         from: 'whatsapp:+4915257398979',
+         body: messageBody,
+         to: `whatsapp:${populatedAppointment.user.phoneNumber}`
+     });
+     console.log('WhatsApp message sent immediately.');
 
-          // Schedule the WhatsApp message
-        schedule.scheduleJob(reminderTime, () => {
-            client.messages.create({
-                from: 'whatsapp:+4915257398979',
-                body: messageBody,
-                to: `whatsapp:${populatedAppointment.user.phoneNumber}`
-            }).then(message => console.log('WhatsApp reminder sent:', message.sid))
-              .catch(error => console.error('Error sending WhatsApp reminder:', error));
-        });
+     // Schedule the WhatsApp reminder message
+     schedule.scheduleJob(reminderTime, async () => {
+         await client.messages.create({
+             from: 'whatsapp:+4915257398979',
+             body: messageBody,
+             to: `whatsapp:${populatedAppointment.user.phoneNumber}`
+         });
+         console.log('WhatsApp reminder sent.');
+     });
+ } catch (error) {
+     console.error('Error sending WhatsApp message:', error);
+     // Handle errors, maybe reschedule or log the failure
+ }
 
         res.status(201).json({ success: true, appointment: newAppointment });
     } catch (error) {
@@ -210,7 +215,7 @@ export const getAllAppointments = async (req, res) => {
 // GET USER APPOINTMENTS ***********************
 export const getUserAppointments = async (req, res) => {
     const userId = req.user;  
-    console.log("🚀 ~ getUserAppointments ~ userId:", userId);
+    // console.log("🚀 ~ getUserAppointments ~ userId:", userId);
 
     try {
         const appointments = await Appointment.find({ user: userId })

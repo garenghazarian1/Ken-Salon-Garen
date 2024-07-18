@@ -31,6 +31,7 @@ const HorizontalCalendar = ({ startDate, numberOfDays }) => {
 
   const isSelectedDay = (date) => {
     return selectedDate && date.toDateString() === selectedDate.toDateString();
+    console.log("🚀 ~ isSelectedDay ~ selectedDate:", selectedDate)
   };
 
 
