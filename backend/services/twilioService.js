@@ -11,11 +11,10 @@ export const sendWhatsAppTemplateMessage = async (to, templateName, templatePara
   try {
     const message = await client.messages.create({
       to: `whatsapp:${to}`,
-      from: process.env.TWILIO_WHATSAPP_NUMBER, // Optional if using Messaging Service SID
-      messagingServiceSid: 'MG2fa8df6abe118aa8c74b7043f6877b67', // Correct Messaging Service SID
-       body: 'text',
-       messagingServiceSid: 'MG2fa8df6abe118aa8c74b7043f6877b67', 
-       template: {
+      from: process.env.TWILIO_WHATSAPP_NUMBER,
+      messagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID,
+      contentSid: process.env.TWILIO_CONTENT_SID, // If you have a Content SID
+      template: {
         name: templateName,
         language: {
           code: 'en', // Use 'en' for English

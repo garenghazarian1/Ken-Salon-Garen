@@ -5,7 +5,14 @@ import StoreHours from '../models/StoreHours.js';
 import StoreClosure from '../models/StoreClosures.js';
 import Availability from "../models/EmployeeAvailability.js";
 import Unavailability from "../models/EmployeeUnavilability.js";
-import Employee from "../models/Employee.js"
+import Employee from "../models/Employee.js";
+import schedule from 'node-schedule';
+import twilio from 'twilio';
+import {twilioConfig} from "../services/whatsappService.js"
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 
 
@@ -40,13 +47,28 @@ function calculateEndTime(startTime, duration) {
     return `${date.getHours()}:${(date.getMinutes()<10?'0':'') + date.getMinutes()}`; // Added padding for minutes
 }
 
+
+
+
+
+const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+// Helper function to calculate reminder time
+function getReminderTime(date, startTime) {
+    const appointmentTime = new Date(`${date}T${startTime}`);
+    return new Date(appointmentTime.getTime() - 4 * 60 * 60 * 1000); // Subtract 4 hours
+}
+
 export const bookAppointment = async (req, res) => {
-    const { date, startTime, user, employee, services, storeId, phoneNumber, comment } = req.body;
+    const { date, startTime, user: userId, employee, services, storeId, phoneNumber, comment } = req.body;
+   
+
+    console.log("Request Body:", req.body);
 
     try {
-        const dayOfWeek = new Date(date).getDay(); // Define dayOfWeek here for availability checks
+        const dayOfWeek = new Date(date).getDay();
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        
+
         const serviceDetails = await Service.find({ '_id': { $in: services } });
         if (!serviceDetails.length) {
             return res.status(400).json({ success: false, message: 'One or more services not found.' });
@@ -65,7 +87,7 @@ export const bookAppointment = async (req, res) => {
 
         const availability = await Availability.findOne({
             employee: employee,
-            day: days[dayOfWeek],  // Correctly reference dayOfWeek now that it's defined
+            day: days[dayOfWeek],
             startTime: { $lte: startTime },
             endTime: { $gte: endTime }
         });
@@ -92,16 +114,56 @@ export const bookAppointment = async (req, res) => {
         }
 
         const newAppointment = new Appointment({
-            user, employee, services, date, startTime, endTime, status: 'pending', phoneNumber, comment
+            user: userId, employee, services, date, startTime, endTime, status: 'pending', phoneNumber, comment
         });
 
         await newAppointment.save();
+
+
+       // Populate user details right after saving to use in the message
+       const populatedAppointment = await Appointment.findById(newAppointment._id)
+       .populate({
+           path: 'user',
+           select: 'name phoneNumber'  // Include phoneNumber in the population
+       })
+       .populate({
+           path: 'employee',
+           populate: {
+               path: 'userInfo',
+               select: 'name'
+           }
+       });
+
+        // Send WhatsApp message
+        const reminderTime = getReminderTime(date, startTime);
+        const messageBody = `Hi ${populatedAppointment.user.name}, this is a reminder for your appointment on ${date} at ${startTime}. Please contact us if you have any questions.`;
+
+        client.messages.create({
+            from: 'whatsapp:+4915257398979', 
+            body: messageBody,
+            to: `whatsapp:${populatedAppointment.user.phoneNumber}`
+        }).then(message => console.log('WhatsApp message sent:', message.sid))
+          .catch(error => console.error('Error sending WhatsApp message:', error));
+
+          // Schedule the WhatsApp message
+        schedule.scheduleJob(reminderTime, () => {
+            client.messages.create({
+                from: 'whatsapp:+4915257398979',
+                body: messageBody,
+                to: `whatsapp:${populatedAppointment.user.phoneNumber}`
+            }).then(message => console.log('WhatsApp reminder sent:', message.sid))
+              .catch(error => console.error('Error sending WhatsApp reminder:', error));
+        });
+
         res.status(201).json({ success: true, appointment: newAppointment });
     } catch (error) {
         console.error('Error booking the appointment:', error);
         res.status(500).json({ success: false, message: 'Error saving the appointment.', error: error.message });
     }
+        
 };
+
+
 
 
 
