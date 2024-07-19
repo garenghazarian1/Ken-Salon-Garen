@@ -17,6 +17,11 @@
   text-align: center;
   color: var(--text-color);
 }
+.unavailable {
+  background-color: red;
+  color: white;
+  pointer-events: none; 
+}
 
 .swiper {
   width: 100%;

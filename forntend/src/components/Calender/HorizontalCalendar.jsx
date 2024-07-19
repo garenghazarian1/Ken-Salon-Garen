@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import { useDate } from '@/context/DateContext'; 
 import styles from './HorizontalCalendar.module.css';
 
+
 const HorizontalCalendar = ({ startDate, numberOfDays }) => {
   const { selectedDate, setSelectedDate, selectedTime, setSelectedTime } = useDate();
     
