@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { createContext, useContext, useState } from 'react';
 
 const DateContext = createContext();
@@ -17,11 +17,11 @@ export const DateProvider = ({ children }) => {
 
   // New function to handle time selection
   const handleSetTime = (time) => {
-    console.log("Time picked:", time.toTimeString().substring(0, 5));
+    if (time) {
+      console.log("Time picked:", time.toTimeString().substring(0, 5));
+    }
     setSelectedTime(time);
   };
-
-
 
   return (
     <DateContext.Provider value={{ selectedDate, setSelectedDate: handleSetDate, selectedTime, setSelectedTime: handleSetTime }}>
@@ -29,4 +29,3 @@ export const DateProvider = ({ children }) => {
     </DateContext.Provider>
   );
 };
-
