@@ -18,12 +18,14 @@ function EmployeeAppointments() {
     if (status === "authenticated" && session) {
       const fetchAppointments = async () => {
         try {
-          const response = await axios.get(`${baseUrl}/api/appointments/employeeAppointments`, {
+          const response = await axios.get(`${baseUrl}/api/appointments/employeeAppointments`, 
+            {
             headers: {
+             
               Authorization: `Bearer ${session.accessToken}`
             }
           });
-
+          // console.log("🚀 ~ fetchAppointments ~ response:", response)
           const sortedAppointments = response.data.appointments.sort((a, b) => {
             const dateDiff = new Date(a.date) - new Date(b.date);
             if (dateDiff === 0) {
