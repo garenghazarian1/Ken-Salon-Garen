@@ -17,9 +17,8 @@
   cursor: pointer;
   text-align: center;
   display: inline-block;
-
-  background-color: rgb(13 148 136);
-  color: var(--teal-950);
+  background-color: var(--teal-950);
+  color: var(--text-color);
   opacity: 0.75;
   font-weight: bold;
   font-size: 0.8rem;

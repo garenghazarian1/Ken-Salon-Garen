@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
   overflow-wrap: break-word;
 }
 
@@ -22,7 +22,7 @@ html {
   font-variation-settings: "slnt" 0;
 }
 
-body{
+body {
   background: #efe7e5;
   color: white;
   width: 100vw;
@@ -32,10 +32,10 @@ body{
   --custom-green: #10b981;
   --custom-green-01: #5eead4;
   --dark-green: #15251c;
-  --custom-gray:#d0d4d4;
-  --dark-gray:#1f2937;
-  
-/* used colors */
+  --custom-gray: #d0d4d4;
+  --dark-gray: #1f2937;
+
+  /* used colors */
   --text-color: #e4dede;
   --text-hover: #ffffff;
   --teal-950: #042f2e;
@@ -43,19 +43,17 @@ body{
   --navbar-background: #a0a79a;
   --header-2: #828773;
   --header-1: #293423;
-  --light-gray:#cbd1d8;
+  --light-gray: #cbd1d8;
   --olive-silvery-green: #8f9a88;
-  
 
---custom-color7: #e6e0e0;
---custom-color8: #dbd3d1;
---custom-color9: #ddd7d7;
---custom-color10: #e0dada;
+  --custom-color7: #e6e0e0;
+  --custom-color8: #dbd3d1;
+  --custom-color9: #ddd7d7;
+  --custom-color10: #e0dada;
 
-
---olive-soft-gray-green: #a7b0a2;
---olive-darker-green: #6e7a68;
---custom-teal: #115e59;
+  --olive-soft-gray-green: #a7b0a2;
+  --olive-darker-green: #6e7a68;
+  --custom-teal: #115e59;
 }
 Image {
   width: auto;
@@ -67,7 +65,7 @@ Image {
 .swiper-button-next,
 .swiper-button-prev {
   position: absolute;
-  top:50% !important;
+  top: 50% !important;
   width: 2rem !important;
   height: 2rem !important;
   margin-top: -2rem !important;
@@ -100,7 +98,6 @@ Image {
 .swiper-button-prev::after {
   font-size: 1rem !important;
 }
-
 
 /* React Calendar Custom Styles */
 .react-calendar {
@@ -148,7 +145,7 @@ Image {
 }
 
 .react-calendar__tile--active {
-  background: var(--teal-800)!important;
+  background: var(--teal-800) !important;
   border-radius: 0.5rem;
   color: var(--text-hover);
 }
