@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import styles from "./Hero.module.css";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Hero() {
   return (
@@ -34,6 +35,14 @@ export default function Hero() {
                 <Link href="/stores">
                   <span className={styles.button}>Book Now</span>
                 </Link>
+                <a
+                  href="https://wa.me/971555570029?text=Hello%20KEN%20Beauty%20Center%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.whatsappButton}
+                >
+                  <FaWhatsapp size={32} />
+                </a>
               </div>
             </div>
           </div>

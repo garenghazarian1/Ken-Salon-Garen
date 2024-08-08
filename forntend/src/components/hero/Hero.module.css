@@ -165,6 +165,22 @@
   }
 }
 
+/* WHATSAPP BUTTON */
+.whatsappButton {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #25d366;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.whatsappButton:hover {
+  background-color: #128c7e;
+}
+
 /* max-width: 599px */
 @media (max-width: 599px) {
   .gradientA {
