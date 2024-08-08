@@ -14,7 +14,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <Link href="/stores">
+          {/* <Link href="/stores">
+            <span className={styles.button}>Book Now</span>
+          </Link> */}
+          <Link href="https://kenbeauty.zenoti.com/webstoreNew/services">
             <span className={styles.button}>Book Now</span>
           </Link>
         </div>

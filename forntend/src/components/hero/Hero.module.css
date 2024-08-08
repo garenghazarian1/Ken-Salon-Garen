@@ -37,12 +37,14 @@
   background: linear-gradient(to top, #000000, transparent);
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
 }
 .gradientA {
-  padding: 1rem;
+  padding-right: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .title {

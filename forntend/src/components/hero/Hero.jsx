@@ -32,7 +32,10 @@ export default function Hero() {
                 <br /> to discover a world where brilliance and beauty meet.
               </p>
               <div className={styles.buttonContainer}>
-                <Link href="/stores">
+                {/* <Link href="/stores">
+                  <span className={styles.button}>Book Now</span>
+                </Link> */}
+                <Link href="https://kenbeauty.zenoti.com/webstoreNew/services">
                   <span className={styles.button}>Book Now</span>
                 </Link>
                 <a
