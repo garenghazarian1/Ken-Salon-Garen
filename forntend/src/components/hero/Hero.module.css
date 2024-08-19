@@ -94,13 +94,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.2rem;
-
   justify-content: center;
   overflow: hidden;
   background-image: url("/background.jpg");
   background-size: cover;
   background-position: center;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -109,15 +108,14 @@
   /* flex-direction: column; */
   align-items: flex-start;
   justify-content: center;
-  gap: 0.2rem;
+
   margin-top: 0.5rem;
-  margin-right: 3rem;
   height: 100%; /* Ensure inner container takes up full height */
   width: 100%;
 }
 
 .imageContent {
-  height: 50vh;
+  height: 100vh;
   position: relative;
 }
 
@@ -125,7 +123,6 @@
 .subTitle {
   font-size: 1.2rem;
   text-align: center;
-  margin: 0.8rem;
   color: var(--teal-950);
 }
 .endTitle {
@@ -140,8 +137,7 @@
 
 .paragraph {
   width: 44vw;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  padding: 2rem;
   font-size: 0.8rem;
   overflow-y: auto;
 }
@@ -213,6 +209,7 @@
     align-items: flex-end;
   }
   .flexContainer1 {
+    align-items: center;
     flex-direction: column;
   }
   .smallSlideShow {
@@ -238,6 +235,7 @@
     font-size: 1rem;
   }
   .flexContainer1 {
+    align-items: center;
     flex-direction: column;
   }
   .smallSlideShow {
@@ -267,12 +265,6 @@
     font-size: 1.2rem;
   }
 
-  .subtitle {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-right: 1.5rem;
-  }
-
   .button {
     padding: 1rem 2rem;
   }
@@ -293,6 +285,8 @@
   }
 
   .flexContainer1 {
+    align-items: center;
+
     flex-direction: column;
   }
 
