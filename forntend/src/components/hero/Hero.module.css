@@ -108,14 +108,13 @@
   /* flex-direction: column; */
   align-items: flex-start;
   justify-content: center;
-
   margin-top: 0.5rem;
-  height: 100%; /* Ensure inner container takes up full height */
+  height: 100%;
   width: 100%;
 }
 
 .imageContent {
-  height: 100vh;
+  height: fit-content;
   position: relative;
 }
 
@@ -210,7 +209,7 @@
   }
   .flexContainer1 {
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .smallSlideShow {
     width: 100%;
@@ -236,7 +235,7 @@
   }
   .flexContainer1 {
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .smallSlideShow {
     width: 100%;
@@ -287,7 +286,7 @@
   .flexContainer1 {
     align-items: center;
 
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .smallSlideShow {
