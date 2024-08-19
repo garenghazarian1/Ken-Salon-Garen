@@ -51,7 +51,6 @@
   font-size: 3rem;
   font-weight: bold;
   color: var(--text-color);
-
   text-align: center;
 }
 
@@ -95,31 +94,37 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
+  gap: 0.2rem;
+
   justify-content: center;
   overflow: hidden;
   background-image: url("/background.jpg");
   background-size: cover;
   background-position: center;
+  height: 100vh;
 }
 
 .flexContainer1 {
   display: flex;
   /* flex-direction: column; */
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+  margin-right: 3rem;
+  height: 100%; /* Ensure inner container takes up full height */
+  width: 100%;
 }
 
 .imageContent {
+  height: 50vh;
   position: relative;
 }
 
 .mainTitle,
 .subTitle {
-  font-size: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
   margin: 0.8rem;
   color: var(--teal-950);
 }
@@ -137,6 +142,8 @@
   width: 44vw;
   margin-right: 1rem;
   margin-left: 1rem;
+  font-size: 0.8rem;
+  overflow-y: auto;
 }
 
 .logo {
@@ -148,9 +155,11 @@
 }
 
 .smallSlideShow {
-  width: 44vw;
-  height: 100vh;
-  background-size: cover;
+  width: 100%;
+  height: 50vh;
+  background-size: contain; /* Ensures the full image is visible, maintaining aspect ratio */
+  background-position: center; /* Centers the image within the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
   animation: smallSlide 20s infinite;
 }
 
@@ -207,8 +216,11 @@
     flex-direction: column;
   }
   .smallSlideShow {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+  }
+  .paragraph {
+    padding: 0 2rem 0 2rem;
   }
 }
 
@@ -229,11 +241,14 @@
     flex-direction: column;
   }
   .smallSlideShow {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
   }
   .button {
     display: none;
+  }
+  .paragraph {
+    padding: 0 2rem 0 2rem;
   }
 }
 
@@ -249,7 +264,7 @@
   .title,
   .mainTitle,
   .subTitle {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .subtitle {
@@ -273,7 +288,8 @@
   }
 
   .paragraph {
-    width: 66.66667%;
+    width: 100%;
+    padding: 0 2rem 0 2rem;
   }
 
   .flexContainer1 {
@@ -281,8 +297,8 @@
   }
 
   .smallSlideShow {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
   }
 }
 
