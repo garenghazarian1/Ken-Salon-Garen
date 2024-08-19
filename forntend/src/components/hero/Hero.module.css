@@ -90,6 +90,15 @@
   transform: scale(1.05);
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .flexContainer {
   display: flex;
   flex-direction: row;
@@ -101,6 +110,9 @@
   background-position: center;
   width: 100vw;
   height: 100vh;
+  opacity: 1;
+  animation: fadeOut 2s forwards;
+  animation-timeline: scroll();
 }
 
 .flexContainer1 {
@@ -150,6 +162,7 @@
 }
 
 .smallSlideShow {
+  margin-bottom: 2rem;
   width: 100%;
   height: 50vh;
   background-size: contain; /* Ensures the full image is visible, maintaining aspect ratio */
@@ -207,6 +220,16 @@
     justify-content: flex-end;
     align-items: flex-end;
   }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0.8;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .flexContainer1 {
     align-items: center;
     flex-direction: column-reverse;
@@ -233,6 +256,16 @@
   .subtitle {
     font-size: 1rem;
   }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0.8;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .flexContainer1 {
     align-items: center;
     flex-direction: column-reverse;
@@ -266,6 +299,15 @@
 
   .button {
     padding: 1rem 2rem;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 0.7;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .flexContainer {
