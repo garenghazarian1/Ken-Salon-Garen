@@ -1,6 +1,6 @@
 # Ken Beauty Salon Website
 
-![Ken Beauty Salon](https://raw.githubusercontent.com/garenghazarian1/Ken-Salon-Garen/main/frontend/public/logo01.png)
+![Ken Beauty Salon]([https://raw.githubusercontent.com/garenghazarian1/Ken-Salon-Garen/main/frontend/public/logo01.png](https://github.com/garenghazarian1/Ken-Salon-Garen/blob/main/forntend/public/logo01.png))
 
 Ken Beauty Salon's official website, providing a user-friendly interface for booking appointments, viewing services, and learning more about the salon's offerings.
 
