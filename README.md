@@ -1,6 +1,6 @@
 # Ken Beauty Salon Website
 
-![Ken Beauty Salon](https://kenbeautysalon.com/your-image-path.jpg)
+![Ken Beauty Salon](./public/logo01.png)
 
 Ken Beauty Salon's official website, providing a user-friendly interface for booking appointments, viewing services, and learning more about the salon's offerings.
 
